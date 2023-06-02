@@ -24,7 +24,7 @@ install_github_module() {
 
     # Download release code
     wget https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
-    tar -xvf $tag.tar.gz
+    tar -xf $tag.tar.gz
     rm $tag.tar.gz
 
     mv $module_name-$tag $module_name
@@ -34,7 +34,7 @@ install_github_module() {
 
 # Build seq first since it doesn't depend on anything
 wget "http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-$SEQUENCER_VERSION.tar.gz"
-tar -xvf seq-$SEQUENCER_VERSION.tar.gz
+tar -xf seq-$SEQUENCER_VERSION.tar.gz
 rm seq-$SEQUENCER_VERSION.tar.gz
 mv seq-$SEQUENCER_VERSION seq
 install_module seq "
