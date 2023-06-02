@@ -1,4 +1,4 @@
-FROM lnls-debian-epics-7 AS BUILD_STAGE
+FROM ghcr.io/cnpem/lnls-debian-11-epics-7 AS BUILD_STAGE
 
 ARG JOBS=1
 ARG REPONAME
