@@ -41,14 +41,14 @@ install_module seq "
 EPICS_BASE = ${EPICS_BASE_PATH}
 "
 
-install_github_module epics-modules calc R${CALC_VERSION} "
+install_github_module epics-modules calc $CALC_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 
 SEQ = ${EPICS_MODULES_PATH}/seq
 "
 
 # Build asyn without seq since it's only needed for testIPServer
-install_github_module epics-modules asyn R$ASYN_VERSION "
+install_github_module epics-modules asyn $ASYN_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 
 CALC = ${EPICS_MODULES_PATH}/calc
@@ -61,6 +61,6 @@ ASYN = ${EPICS_MODULES_PATH}/asyn
 CALC = ${EPICS_MODULES_PATH}/calc
 "
 
-install_github_module epics-modules autosave R$AUTOSAVE_VERSION "
+install_github_module epics-modules autosave $AUTOSAVE_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 "
