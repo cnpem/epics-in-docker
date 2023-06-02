@@ -3,6 +3,10 @@ services:
     image: ghcr.io/cnpem/lnls-debian-11-epics-7:$DATE
     build:
       dockerfile: Dockerfile
+      labels:
+        org.opencontainers.image.revision: ${DATE}
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+        org.opencontainers.image.description: "EPICS base and modules build image"
       args:
         JOBS: 8
         EPICS_BASE_VERSION: ${EPICS7_BASE_VERSION}
