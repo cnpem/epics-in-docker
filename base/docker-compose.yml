@@ -1,6 +1,6 @@
 services:
   epics-base:
-    image: lnls-debian-epics-7
+    image: ghcr.io/cnpem/lnls-debian-11-epics-7:$DATE
     build:
       dockerfile: Dockerfile
       args:
