@@ -2,6 +2,7 @@ services:
   epics-base:
     image: ghcr.io/cnpem/lnls-debian-11-epics-7:$DATE
     build:
+      context: ./
       dockerfile: Dockerfile
       labels:
         org.opencontainers.image.revision: ${DATE}
