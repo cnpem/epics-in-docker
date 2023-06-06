@@ -1,11 +1,11 @@
 services:
   epics-base:
-    image: ghcr.io/cnpem/lnls-debian-11-epics-7:$DATE
+    image: ghcr.io/cnpem/lnls-debian-11-epics-7:$TAG
     build:
       context: ./
       dockerfile: Dockerfile
       labels:
-        org.opencontainers.image.revision: ${DATE}
+        org.opencontainers.image.revision: ${TAG}
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
         org.opencontainers.image.description: "EPICS base and modules build image"
       args:
