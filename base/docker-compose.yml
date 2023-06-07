@@ -10,6 +10,7 @@ services:
         org.opencontainers.image.description: "EPICS base and modules build image"
       args:
         JOBS: ${JOBS:-1}
+        DEBIAN_VERSION: ${DEBIAN_VERSION}
         EPICS_BASE_VERSION: ${EPICS7_BASE_VERSION}
         SEQUENCER_VERSION: ${SEQUENCER_VERSION}
         CALC_VERSION: ${CALC_VERSION}
