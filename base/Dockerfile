@@ -1,6 +1,6 @@
 FROM debian:11.7
 
-ARG JOBS=1
+ARG JOBS
 
 ENV DEBIAN_FRONTEND noninteractive
 
