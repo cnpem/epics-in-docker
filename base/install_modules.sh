@@ -67,6 +67,18 @@ ASYN = ${EPICS_MODULES_PATH}/asyn
 CALC = ${EPICS_MODULES_PATH}/calc
 "
 
+install_github_module epics-modules busy BUSY $BUSY_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+
+ASYN = ${EPICS_MODULES_PATH}/asyn
+"
+
 install_github_module epics-modules autosave AUTOSAVE $AUTOSAVE_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
+"
+
+install_github_module epics-modules sscan SSCAN $SSCAN_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+
+SNCSEQ = ${EPICS_MODULES_PATH}/seq
 "

@@ -8,6 +8,7 @@ git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
 cd areaDetector
 
 git submodule update --init --depth 1 -j ${JOBS} \
+    ADSimDetector \
     ADSupport \
     ADCore
 
@@ -15,6 +16,7 @@ cd configure
 
 module_releases="
 AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
+ADSIMDETECTOR=${EPICS_MODULES_PATH}/areaDetector/ADSimDetector
 ADSUPPORT=${EPICS_MODULES_PATH}/areaDetector/ADSupport
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
 "
@@ -27,6 +29,8 @@ EPICS_BASE=${EPICS_BASE_PATH}
 $module_releases
 
 ASYN=${EPICS_MODULES_PATH}/asyn
+BUSY=${EPICS_MODULES_PATH}/busy
+SSCAN=${EPICS_MODULES_PATH}/sscan
 " > RELEASE.local
 
 ln -s RELEASE.local RELEASE_PRODS.local
