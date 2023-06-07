@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build image
-        run: cd base && docker compose build
+        run: cd base && JOBS=$(nproc) docker compose build
       - name: Log in to registry
         if: github.event_name == 'push'
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
