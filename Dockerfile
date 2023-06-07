@@ -18,13 +18,13 @@ FROM debian:${DEBIAN_VERSION}-slim
 
 ARG REPONAME
 ARG RUNDIR
-ARG ENTRYPOINT
+ARG ENTRYPOINT=/bin/bash
 
 RUN apt update -y && apt install -y --no-install-recommends busybox netcat-openbsd procserv && apt clean && rm -rf /var/lib/apt/lists/*
 COPY --from=BUILD_STAGE /opt/${REPONAME} /opt/${REPONAME}
 
 WORKDIR ${RUNDIR}
 
-RUN if [ -n "${ENTRYPOINT}" ]; then ln -s ${ENTRYPOINT} ./entrypoint; else ln -s /bin/bash ./entrypoint; fi
+RUN ln -s ${ENTRYPOINT} ./entrypoint
 
 ENTRYPOINT ["./entrypoint"]
