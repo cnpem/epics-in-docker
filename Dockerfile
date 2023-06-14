@@ -10,7 +10,7 @@ ARG RUNDIR
 WORKDIR /opt/${REPONAME}
 
 COPY . .
-RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE.local
+RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE.local && cp /opt/epics/RELEASE configure/RELEASE
 
 RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
 
