@@ -24,7 +24,7 @@ ARG RUNDIR
 ARG ENTRYPOINT=/bin/bash
 ARG RUNTIME_PACKAGES
 
-RUN apt update -y && apt install -y --no-install-recommends busybox netcat-openbsd procserv $RUNTIME_PACKAGES && apt clean && rm -rf /var/lib/apt/lists/*
+RUN apt update -y && apt install -y --no-install-recommends libreadline8 busybox netcat-openbsd procserv $RUNTIME_PACKAGES && apt clean && rm -rf /var/lib/apt/lists/*
 COPY --from=BUILD_STAGE /opt/${REPONAME} /opt/${REPONAME}
 
 WORKDIR ${RUNDIR}

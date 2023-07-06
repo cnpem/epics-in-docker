@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
+        libreadline-dev \
         re2c \
         wget \
         ca-certificates
