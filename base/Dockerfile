@@ -9,6 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
+        git \
         libreadline-dev \
         re2c \
         wget \
@@ -26,8 +27,14 @@ ARG SEQUENCER_VERSION
 ARG CALC_VERSION
 ARG ASYN_VERSION
 ARG STREAMDEVICE_VERSION
+ARG BUSY_VERSION
 ARG AUTOSAVE_VERSION
+ARG SSCAN_VERSION
+ARG AREA_DETECTOR_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY install_modules.sh .
 RUN ./install_modules.sh
+
+COPY install_area_detector.sh .
+RUN ./install_area_detector.sh
