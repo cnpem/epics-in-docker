@@ -10,7 +10,9 @@ RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
         git \
+        libaravis-dev \
         libreadline-dev \
+        libusb-1.0-0-dev \
         libxml2-dev \
         re2c \
         wget \

@@ -8,6 +8,8 @@ git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
 cd areaDetector
 
 git submodule update --init --depth 1 -j ${JOBS} \
+    ADAravis \
+    ADGenICam \
     ADSimDetector \
     ADSupport \
     ADCore
@@ -16,6 +18,8 @@ cd configure
 
 module_releases="
 AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
+ADARAVIS=${EPICS_MODULES_PATH}/areaDetector/ADAravis
+ADGENICAM=${EPICS_MODULES_PATH}/areaDetector/ADGenICam
 ADSIMDETECTOR=${EPICS_MODULES_PATH}/areaDetector/ADSimDetector
 ADSUPPORT=${EPICS_MODULES_PATH}/areaDetector/ADSupport
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
@@ -76,6 +80,9 @@ XML2_INCLUDE=$(pkg-config --cflags-only-I libxml-2.0 | sed -e "s|-I||g")
 
 WITH_ZLIB=YES
 ZLIB_EXTERNAL=NO
+
+GLIB_INCLUDE=$(pkg-config --cflags-only-I glib-2.0 | sed -e "s|-I||g")
+ARAVIS_INCLUDE=$(pkg-config --cflags-only-I aravis-0.8 | sed -e "s|-I||g")
 " > CONFIG_SITE.local
 
 cd -
