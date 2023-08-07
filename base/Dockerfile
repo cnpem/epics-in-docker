@@ -35,5 +35,6 @@ WORKDIR ${EPICS_MODULES_PATH}
 COPY install_modules.sh .
 RUN ./install_modules.sh
 
+COPY nanohttp_stream.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh

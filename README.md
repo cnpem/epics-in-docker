@@ -60,6 +60,12 @@ Packages essential to all (or most) IOCs should be added to this repository's
 The template above assumes the containers will be uploaded to the GitHub
 registry.
 
+### areaDetector IOCs
+
+`areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
+must include `libxml2` in the `RUNTIME_PACKAGES`, as it is not built in
+`ADSupport`.
+
 ### Possible issues
 
 Known build and runtime issues are documented in the [SwC
