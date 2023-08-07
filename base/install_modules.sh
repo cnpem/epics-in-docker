@@ -39,7 +39,7 @@ install_github_module() {
 echo EPICS_BASE=${EPICS_BASE_PATH} > ${EPICS_MODULES_PATH}/../RELEASE
 
 # Build seq first since it doesn't depend on anything
-wget "http://www-csr.bessy.de/control/SoftDist/sequencer/releases/seq-$SEQUENCER_VERSION.tar.gz"
+wget "https://static.erico.dev/seq-$SEQUENCER_VERSION.tar.gz"
 tar -xf seq-$SEQUENCER_VERSION.tar.gz
 rm seq-$SEQUENCER_VERSION.tar.gz
 mv seq-$SEQUENCER_VERSION seq
