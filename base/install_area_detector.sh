@@ -66,13 +66,17 @@ WITH_OPENCV=NO
 WITH_SZIP=YES
 SZIP_EXTERNAL=NO
 
-XML2_EXTERNAL=NO
+XML2_EXTERNAL=YES
+XML2_LIB=$(pkg-config --variable=libdir libxml-2.0)
+XML2_INCLUDE=$(pkg-config --cflags-only-I libxml-2.0 | sed -e "s|-I||g")
 
 WITH_ZLIB=YES
 ZLIB_EXTERNAL=NO
 " > CONFIG_SITE.local
 
 cd -
+
+git apply --directory ADSupport ${EPICS_MODULES_PATH}/nanohttp_stream.patch
 
 make -j${JOBS}
 make clean
