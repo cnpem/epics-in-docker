@@ -2,6 +2,18 @@
 
 set -ex
 
+download_github_module() {
+    github_org=$1
+    module_name=$2
+    tag=$3
+
+    wget https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
+    tar -xf $tag.tar.gz
+    rm $tag.tar.gz
+
+    mv $module_name-$tag $module_name
+}
+
 install_module() {
     module_name=$1
     dependency_name=$2
@@ -26,13 +38,7 @@ install_github_module() {
     tag=$4
     release_content="$5"
 
-    # Download release code
-    wget https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
-    tar -xf $tag.tar.gz
-    rm $tag.tar.gz
-
-    mv $module_name-$tag $module_name
-
+    download_github_module $github_org $module_name $tag
     install_module $module_name $dependency_name "$release_content"
 }
 
@@ -81,4 +87,9 @@ install_github_module epics-modules sscan SSCAN $SSCAN_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 
 SNCSEQ = ${EPICS_MODULES_PATH}/seq
+"
+
+download_github_module ChannelFinder recsync $RECCASTER_VERSION
+install_module recsync/client RECCASTER "
+EPICS_BASE = ${EPICS_BASE_PATH}
 "
