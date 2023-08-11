@@ -46,10 +46,10 @@ you **need** to link them dynamically, you must define the build target as
 dependencies will also be copied.
 
 Some Docker versions don't use
-[BuildKit](https://docs.docker.com/build/buildkit/) by default, and it is
-necessary to enable it, for instance, by exporting `DOCKER_BUILDKIT=1` when
-building the IOC image, because the classic builder goes through all stages
-even when they are not needed or are known to fail.
+[BuildKit](https://docs.docker.com/build/buildkit/) by default, and it can be
+more efficient to enable it, for instance, by exporting `DOCKER_BUILDKIT=1`
+when building the IOC image, because the classic builder goes through all
+stages even when they are not needed.
 
 Additional build and runtime packages to be installed can be listed in `args`,
 under the `BUILD_PACKAGES` and `RUNTIME_PACKAGES` keys, respectively. It is not
