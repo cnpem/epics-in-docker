@@ -3,9 +3,7 @@ ARG DEBIAN_VERSION=11.7
 
 FROM ghcr.io/cnpem/lnls-debian-11-epics-7:${BUILD_STAGE_VERSION} AS build-stage
 
-ARG JOBS=1
 ARG REPONAME
-ARG RUNDIR
 ARG BUILD_PACKAGES
 
 RUN if [ -n "$BUILD_PACKAGES" ]; then apt update && apt install $BUILD_PACKAGES; fi
@@ -17,21 +15,8 @@ COPY . .
 RUN cp /opt/epics/RELEASE configure/RELEASE
 
 
-FROM build-stage AS static-build
-
-RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE.local
-
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
-
-
-FROM build-stage AS dynamic-build
-
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
-
-
 FROM debian:${DEBIAN_VERSION}-slim as base
 
-ARG REPONAME
 ARG RUNDIR
 ARG ENTRYPOINT=/bin/bash
 ARG RUNTIME_PACKAGES
@@ -53,11 +38,31 @@ RUN ln -s ${ENTRYPOINT} ./entrypoint
 ENTRYPOINT ["./entrypoint"]
 
 
+FROM build-stage AS dynamic-build
+
+ARG JOBS=1
+ARG RUNDIR
+
+RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+
+
 FROM base AS dynamic-link
 
 COPY --from=dynamic-build /opt /opt
 
 
+FROM build-stage AS static-build
+
+ARG JOBS=1
+ARG RUNDIR
+
+RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE.local
+
+RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+
+
 FROM base AS static-link
+
+ARG REPONAME
 
 COPY --from=static-build /opt/${REPONAME} /opt/${REPONAME}
