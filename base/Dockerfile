@@ -12,6 +12,7 @@ RUN apt update -y && \
         git \
         libaravis-dev \
         libreadline-dev \
+        libtiff-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
         re2c \

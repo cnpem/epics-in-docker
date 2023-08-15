@@ -63,8 +63,8 @@ registry.
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
-must include `libxml2` in the `RUNTIME_PACKAGES`, as it is not built in
-`ADSupport`.
+must include `libxml2` and `libtiff5` in the `RUNTIME_PACKAGES`, as they are
+not built in `ADSupport`.
 
 ### Possible issues
 
