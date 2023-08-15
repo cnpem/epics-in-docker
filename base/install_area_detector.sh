@@ -74,6 +74,11 @@ WITH_OPENCV=NO
 WITH_SZIP=YES
 SZIP_EXTERNAL=NO
 
+WITH_TIFF=YES
+TIFF_EXTERNAL=YES
+TIFF_LIB=$(pkg-config --variable=libdir libtiff-4)
+TIFF_INCLUDE=$(pkg-config --cflags-only-I libtiff-4 | sed -e "s|-I||g")
+
 XML2_EXTERNAL=YES
 XML2_LIB=$(pkg-config --variable=libdir libxml-2.0)
 XML2_INCLUDE=$(pkg-config --cflags-only-I libxml-2.0 | sed -e "s|-I||g")
