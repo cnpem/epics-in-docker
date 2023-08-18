@@ -93,3 +93,7 @@ download_github_module ChannelFinder recsync $RECCASTER_VERSION
 install_module recsync/client RECCASTER "
 EPICS_BASE = ${EPICS_BASE_PATH}
 "
+
+install_github_module epics-modules ipac IPAC $IPAC_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+"
