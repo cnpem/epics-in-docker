@@ -34,7 +34,9 @@ ARG BUSY_VERSION
 ARG AUTOSAVE_VERSION
 ARG SSCAN_VERSION
 ARG RECCASTER_VERSION
+ARG IPAC_VERSION
 ARG AREA_DETECTOR_VERSION
+ARG MOTOR_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY install_modules.sh .
@@ -43,3 +45,6 @@ RUN ./install_modules.sh
 COPY nanohttp_stream.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
+
+COPY install_motor.sh .
+RUN ./install_motor.sh
