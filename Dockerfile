@@ -1,21 +1,8 @@
 ARG DEBIAN_VERSION=11.7
 
-FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.3.0 AS build-stage
+FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.3.0 AS build-image
 
-ARG REPONAME
-ARG BUILD_PACKAGES
-
-RUN if [ -n "$BUILD_PACKAGES" ]; then apt update && apt install $BUILD_PACKAGES; fi
-
-WORKDIR /opt/${REPONAME}
-
-COPY . .
-
-RUN cp /opt/epics/RELEASE configure/RELEASE
-RUN rm -rf .git/
-
-
-FROM debian:${DEBIAN_VERSION}-slim as base
+FROM debian:${DEBIAN_VERSION}-slim AS base
 
 ARG RUNDIR
 ARG ENTRYPOINT=/bin/bash
@@ -36,6 +23,26 @@ WORKDIR ${RUNDIR}
 RUN ln -s ${ENTRYPOINT} ./entrypoint
 
 ENTRYPOINT ["./entrypoint"]
+
+
+FROM base AS no-build
+
+COPY --from=build-image /opt /opt
+
+
+FROM build-image AS build-stage
+
+ARG REPONAME
+ARG BUILD_PACKAGES
+
+RUN if [ -n "$BUILD_PACKAGES" ]; then apt update && apt install $BUILD_PACKAGES; fi
+
+WORKDIR /opt/${REPONAME}
+
+COPY . .
+
+RUN cp /opt/epics/RELEASE configure/RELEASE
+RUN rm -rf .git/
 
 
 FROM build-stage AS dynamic-build
