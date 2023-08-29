@@ -8,10 +8,7 @@ install_github_module mdavidsaver pvxs PVXS $PVXS_VERSION "
 EPICS_BASE
 "
 
-# Build seq first since it doesn't depend on anything
-lnls-get-n-unpack -l "https://static.erico.dev/seq-$SEQUENCER_VERSION.tar.gz"
-mv seq-$SEQUENCER_VERSION seq
-install_module seq SNCSEQ "
+install_github_module epics-modules sequencer SNCSEQ $SEQUENCER_VERSION "
 EPICS_BASE
 "
 
