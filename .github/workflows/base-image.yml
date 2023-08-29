@@ -1,7 +1,8 @@
 name: Base image build
 on:
   push:
-    tags-ignore:
+    tags:
+      - 'v*'
     branches:
       - main
 
