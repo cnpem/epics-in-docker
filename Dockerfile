@@ -13,6 +13,7 @@ WORKDIR /opt/${REPONAME}
 COPY . .
 
 RUN cp /opt/epics/RELEASE configure/RELEASE
+RUN rm -rf .git/
 
 
 FROM debian:${DEBIAN_VERSION}-slim as base
