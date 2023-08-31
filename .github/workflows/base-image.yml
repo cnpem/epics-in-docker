@@ -25,13 +25,13 @@ jobs:
       - name: Build image
         run: cd base && JOBS=$(nproc) docker compose build
       - name: Log in to registry
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true'
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push tagged image
-        if: github.event_name == 'push' && github.ref_type == 'tag'
+        if: github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true' && github.ref_type == 'tag'
         run: docker push $REGISTRY/$IMAGE:$TAG
       - name: Push latest image
-        if: github.event_name == 'push' && github.ref_type == 'branch'
+        if: github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true' && github.ref_type == 'branch'
         run: |
           docker tag $REGISTRY/$IMAGE:$TAG $REGISTRY/$IMAGE:latest
           docker push $REGISTRY/$IMAGE:latest
