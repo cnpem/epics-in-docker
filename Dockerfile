@@ -1,7 +1,6 @@
-ARG BUILD_STAGE_VERSION=v0.2.0
 ARG DEBIAN_VERSION=11.7
 
-FROM ghcr.io/cnpem/lnls-debian-11-epics-7:${BUILD_STAGE_VERSION} AS build-stage
+FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.3.0 AS build-stage
 
 ARG REPONAME
 ARG BUILD_PACKAGES
