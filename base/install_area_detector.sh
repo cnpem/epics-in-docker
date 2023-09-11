@@ -2,6 +2,8 @@
 
 set -ex
 
+. /opt/epics/install-functions.sh
+
 git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
     https://github.com/areaDetector/areaDetector
 
@@ -96,3 +98,16 @@ git apply --directory ADSupport ${EPICS_MODULES_PATH}/nanohttp_stream.patch
 
 make -j${JOBS}
 make clean
+
+cd ..
+
+download_github_module cnpem ssc-pimega $LIBSSCPIMEGA_VERSION
+make -C ssc-pimega/c install
+
+install_github_module cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+
+ASYN=${EPICS_MODULES_PATH}/asyn
+AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
+ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
+"
