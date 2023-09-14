@@ -11,6 +11,8 @@ RUN apt update -y && \
         build-essential \
         git \
         libaravis-dev \
+        libczmq-dev \
+        libjson-c-dev \
         libreadline-dev \
         libssh2-1-dev \
         libtiff-dev \
@@ -22,6 +24,11 @@ RUN apt update -y && \
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
+
+ARG LIBPIMEGA_VERSION
+
+RUN lnls-get-n-unpack -r \
+    http://download.lnls.br/packages/libpimega_${LIBPIMEGA_VERSION}_amd64.tar.gz
 
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
@@ -46,6 +53,7 @@ ARG IPAC_VERSION
 ARG CAPUTLOG_VERSION
 
 ARG AREA_DETECTOR_VERSION
+ARG ADPIMEGA_VERSION
 ARG NDSSCPIMEGA_VERSION
 ARG MOTOR_VERSION
 ARG PMAC_VERSION
@@ -59,6 +67,9 @@ RUN ./install_modules.sh
 COPY nanohttp_stream.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
+
+COPY install-ad-modules.sh .
+RUN ./install-ad-modules.sh
 
 COPY install_motor.sh .
 RUN ./install_motor.sh
