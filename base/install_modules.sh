@@ -7,9 +7,7 @@ download_github_module() {
     module_name=$2
     tag=$3
 
-    wget https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
-    tar -xf $tag.tar.gz
-    rm $tag.tar.gz
+    lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
 
     mv $module_name-$tag $module_name
 }
@@ -45,9 +43,7 @@ install_github_module() {
 echo EPICS_BASE=${EPICS_BASE_PATH} > ${EPICS_MODULES_PATH}/../RELEASE
 
 # Build seq first since it doesn't depend on anything
-wget "https://static.erico.dev/seq-$SEQUENCER_VERSION.tar.gz"
-tar -xf seq-$SEQUENCER_VERSION.tar.gz
-rm seq-$SEQUENCER_VERSION.tar.gz
+lnls-get-n-unpack -l "https://static.erico.dev/seq-$SEQUENCER_VERSION.tar.gz"
 mv seq-$SEQUENCER_VERSION seq
 install_module seq SNCSEQ "
 EPICS_BASE = ${EPICS_BASE_PATH}

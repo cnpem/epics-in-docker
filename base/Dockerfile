@@ -19,6 +19,8 @@ RUN apt update -y && \
         wget \
         ca-certificates
 
+COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
+
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
