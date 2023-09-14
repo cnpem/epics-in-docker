@@ -7,6 +7,7 @@ FROM debian:${DEBIAN_VERSION}-slim AS base
 ARG RUNDIR
 ARG ENTRYPOINT=/bin/bash
 ARG RUNTIME_PACKAGES
+ARG RUNTIME_TAR_PACKAGES
 
 RUN apt update -y && \
     apt install -y --no-install-recommends \
@@ -14,9 +15,14 @@ RUN apt update -y && \
         busybox \
         netcat-openbsd \
         procserv \
+        wget \
         $RUNTIME_PACKAGES && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
+
+COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get-n-unpack
+RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
+    ldconfig
 
 WORKDIR ${RUNDIR}
 
@@ -34,8 +40,10 @@ FROM build-image AS build-stage
 
 ARG REPONAME
 ARG BUILD_PACKAGES
+ARG BUILD_TAR_PACKAGES
 
 RUN if [ -n "$BUILD_PACKAGES" ]; then apt update && apt install $BUILD_PACKAGES; fi
+RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES
 
 WORKDIR /opt/${REPONAME}
 
