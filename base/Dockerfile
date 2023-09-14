@@ -11,6 +11,8 @@ RUN apt update -y && \
         build-essential \
         git \
         libaravis-dev \
+        libczmq-dev \
+        libjson-c-dev \
         libreadline-dev \
         libtiff-dev \
         libusb-1.0-0-dev \
@@ -20,6 +22,11 @@ RUN apt update -y && \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
+
+ARG LIBPIMEGA_VERSION
+
+RUN lnls-get-n-unpack -r \
+    http://gca-jobs:1234/packages/libpimega_${LIBPIMEGA_VERSION}_amd64.tar.gz
 
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
@@ -42,6 +49,7 @@ ARG SSCAN_VERSION
 ARG RECCASTER_VERSION
 ARG IPAC_VERSION
 ARG AREA_DETECTOR_VERSION
+ARG ADPIMEGA_VERSION
 ARG NDSSCPIMEGA_VERSION
 ARG MOTOR_VERSION
 

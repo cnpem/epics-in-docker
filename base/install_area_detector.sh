@@ -113,3 +113,18 @@ ASYN=${EPICS_MODULES_PATH}/asyn
 AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
 "
+
+cd areaDetector
+
+lnls-get-n-unpack -l http://gca-jobs:1234/packages/ad-pimega_${ADPIMEGA_VERSION}.tar.gz
+
+echo "
+EPICS_BASE=${EPICS_BASE_PATH}
+" > ADPimega/configure/RELEASE.local
+
+echo "ADPIMEGA=${EPICS_MODULES_PATH}/areaDetector/ADPimega" >> $EPICS_RELEASE_FILE
+
+echo "BUILD_IOCS=YES" >> configure/CONFIG_SITE
+cp $EPICS_RELEASE_FILE ADPimega/iocs/pimegaIOC/configure/RELEASE
+
+make -C ADPimega
