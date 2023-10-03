@@ -27,6 +27,8 @@ ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
 
 WORKDIR /opt/epics
+COPY install-functions.sh .
+
 COPY install_epics.sh .
 RUN ./install_epics.sh
 
