@@ -42,7 +42,10 @@ ARG REPONAME
 ARG BUILD_PACKAGES
 ARG BUILD_TAR_PACKAGES
 
-RUN if [ -n "$BUILD_PACKAGES" ]; then apt update && apt install $BUILD_PACKAGES; fi
+RUN if [ -n "$BUILD_PACKAGES" ]; then \
+        apt update && \
+        apt install -y --no-install-recommends $BUILD_PACKAGES; \
+    fi
 RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES
 
 WORKDIR /opt/${REPONAME}
