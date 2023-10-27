@@ -20,6 +20,7 @@ RUN apt update -y && \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
+COPY lnls-run.sh /usr/local/bin/lnls-run
 
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
