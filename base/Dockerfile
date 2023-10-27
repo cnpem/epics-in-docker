@@ -12,6 +12,7 @@ RUN apt update -y && \
         git \
         libaravis-dev \
         libreadline-dev \
+        libssh2-1-dev \
         libtiff-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
@@ -46,6 +47,7 @@ ARG CAPUTLOG_VERSION
 
 ARG AREA_DETECTOR_VERSION
 ARG MOTOR_VERSION
+ARG PMAC_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY install_modules.sh .

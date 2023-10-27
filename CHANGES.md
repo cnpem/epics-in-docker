@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add support for Pmac module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/26
+
 ## v0.4.0
 
 All users should update to ease deployment on container setups with limited
