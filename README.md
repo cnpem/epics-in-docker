@@ -70,6 +70,11 @@ registry.
 must include `libxml2` and `libtiff5` in the `RUNTIME_PACKAGES`, as they are
 not built in `ADSupport`.
 
+### Pmac IOCs
+
+`Pmac` IOCs must include `libssh2-1` in the `RUNTIME PACKAGES`, because the
+module depends on it.
+
 ### Possible issues
 
 Known build and runtime issues are documented in the [SwC

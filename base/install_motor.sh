@@ -2,6 +2,8 @@
 
 set -ex
 
+. /opt/epics/install-functions.sh
+
 git clone --depth 1 --branch ${MOTOR_VERSION} \
     https://github.com/epics-modules/motor
 
@@ -34,3 +36,30 @@ cd ..
 
 make -j${JOBS}
 make clean
+
+cd $EPICS_MODULES_PATH
+
+download_github_module dls-controls pmac $PMAC_VERSION
+
+rm pmac/configure/RELEASE.local.linux-x86_64
+rm pmac/configure/RELEASE.linux-x86_64.Common
+rm pmac/configure/CONFIG_SITE.linux-x86_64.Common
+
+echo "
+BUILD_IOCS=NO
+USE_GRAPHICSMAGICK=NO
+
+SSH             = YES
+SSH_LIB         = $(pkg-config --variable=libdir libssh2)
+SSH_INCLUDE     = $(pkg-config --cflags-only-I libssh2)
+
+WITH_BOOST = NO
+" >> pmac/configure/CONFIG_SITE
+
+JOBS=1 install_module pmac PMAC "
+EPICS_BASE=${EPICS_BASE_PATH}
+ASYN=${EPICS_MODULES_PATH}/asyn
+CALC=${EPICS_MODULES_PATH}/calc
+MOTOR=${EPICS_MODULES_PATH}/motor
+BUSY=${EPICS_MODULES_PATH}/busy
+"
