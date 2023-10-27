@@ -45,6 +45,10 @@ you **need** to link them dynamically, you must define the build target as
 `dynamic-link`. This will increase the resulting image size, since unused
 dependencies will also be copied.
 
+The resulting image contains a standard IOC run script, `lnls-run`, which will
+be run inside `RUNDIR` and will launch the container's command under procServ,
+or `st.cmd` if no command is specified.
+
 Some Docker versions don't use
 [BuildKit](https://docs.docker.com/build/buildkit/) by default, and it can be
 more efficient to enable it, for instance, by exporting `DOCKER_BUILDKIT=1`
@@ -70,3 +74,16 @@ not built in `ADSupport`.
 
 Known build and runtime issues are documented in the [SwC
 wiki](http://swc.lnls.br/).
+
+## Containers
+
+### Accessing `iocsh` inside containers
+
+If a container is using the default `lnls-run` entrypoint (i.e. this won't work
+for containers launched by the `iocs` script for SIRIUS beamlines), its IOC's
+`iocsh` can be accessed with the following command (use `podman` if
+appropriate):
+
+```
+$ docker exec -ti <container> nc -U ioc.sock
+```
