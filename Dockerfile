@@ -5,7 +5,7 @@ FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.3.0 AS build-image
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
 ARG RUNDIR
-ARG ENTRYPOINT=/bin/bash
+ARG ENTRYPOINT=/usr/local/bin/lnls-run
 ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
 
@@ -23,6 +23,8 @@ RUN apt update -y && \
 COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get-n-unpack
 RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig
+
+COPY --from=build-image /usr/local/bin/lnls-run /usr/local/bin/lnls-run
 
 WORKDIR ${RUNDIR}
 
