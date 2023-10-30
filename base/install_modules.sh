@@ -62,7 +62,9 @@ EPICS_BASE = ${EPICS_BASE_PATH}
 CALC = ${EPICS_MODULES_PATH}/calc
 "
 
-install_github_module paulscherrerinstitute StreamDevice STREAM $STREAMDEVICE_VERSION "
+download_github_module paulscherrerinstitute StreamDevice $STREAMDEVICE_VERSION
+git apply --directory StreamDevice ${EPICS_MODULES_PATH}/streambuffer-grow.patch
+install_module StreamDevice STREAM "
 EPICS_BASE = ${EPICS_BASE_PATH}
 
 ASYN = ${EPICS_MODULES_PATH}/asyn
