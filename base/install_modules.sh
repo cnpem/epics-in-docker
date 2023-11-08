@@ -93,3 +93,7 @@ EPICS_BASE = ${EPICS_BASE_PATH}
 install_github_module epics-modules ipac IPAC $IPAC_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 "
+
+install_github_module epics-modules caPutLog CAPUTLOG $CAPUTLOG_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+"
