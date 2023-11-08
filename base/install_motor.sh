@@ -14,7 +14,7 @@ module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
 "
-echo "$module_releases" >> ${EPICS_MODULES_PATH}/../RELEASE
+echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
 cd ../configure
 

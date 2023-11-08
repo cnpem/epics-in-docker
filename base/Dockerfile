@@ -25,6 +25,7 @@ COPY lnls-run.sh /usr/local/bin/lnls-run
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
+ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
 
 WORKDIR /opt/epics
 COPY install-functions.sh .
