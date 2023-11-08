@@ -18,7 +18,7 @@ IOC repositories should include this repository as a submodule in their root,
 as such:
 
 ```
-$ git submodule add https://github.com/cnpem/epics-in-docker.git docker/
+$ git submodule add -b release https://github.com/cnpem/epics-in-docker.git docker/
 ```
 
 The build parameters should be defined in a `docker-compose.yml` file with the
