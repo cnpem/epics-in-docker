@@ -19,7 +19,7 @@ install_module() {
     make -j${JOBS} install
     make clean
 
-    echo ${dependency_name}=${PWD} >> ${EPICS_MODULES_PATH}/../RELEASE
+    echo ${dependency_name}=${PWD} >> ${EPICS_RELEASE_FILE}
 
     cd -
 }

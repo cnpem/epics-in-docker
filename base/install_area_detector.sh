@@ -25,7 +25,7 @@ ADSUPPORT=${EPICS_MODULES_PATH}/areaDetector/ADSupport
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
 "
 
-echo "$module_releases" >> ${EPICS_MODULES_PATH}/../RELEASE
+echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
 echo "
 EPICS_BASE=${EPICS_BASE_PATH}
