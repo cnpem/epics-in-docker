@@ -4,8 +4,6 @@ set -ex
 
 . /opt/epics/install-functions.sh
 
-echo EPICS_BASE=${EPICS_BASE_PATH} > ${EPICS_MODULES_PATH}/../RELEASE
-
 # Build seq first since it doesn't depend on anything
 lnls-get-n-unpack -l "https://static.erico.dev/seq-$SEQUENCER_VERSION.tar.gz"
 mv seq-$SEQUENCER_VERSION seq
