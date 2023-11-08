@@ -33,6 +33,9 @@ ENTRYPOINT ["./entrypoint"]
 
 FROM base AS no-build
 
+COPY --from=build-image /usr/local/lib /usr/local/lib
+RUN ldconfig
+
 COPY --from=build-image /opt /opt
 
 
@@ -65,6 +68,9 @@ RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
 
 
 FROM base AS dynamic-link
+
+COPY --from=dynamic-build /usr/local/lib /usr/local/lib
+RUN ldconfig
 
 COPY --from=dynamic-build /opt /opt
 
