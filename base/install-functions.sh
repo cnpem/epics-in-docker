@@ -19,9 +19,9 @@ install_module() {
     make -j${JOBS} install
     make clean
 
-    cd -
+    echo ${dependency_name}=${PWD} >> ${EPICS_MODULES_PATH}/../RELEASE
 
-    echo ${dependency_name}=${EPICS_MODULES_PATH}/${module_name} >> ${EPICS_MODULES_PATH}/../RELEASE
+    cd -
 }
 
 # Install module from GitHub tagged versions or URL
