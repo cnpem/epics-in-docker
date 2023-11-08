@@ -20,6 +20,7 @@ RUN apt update -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY --from=build-image /usr/local/lib /usr/local/lib
 COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get-n-unpack
 RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig

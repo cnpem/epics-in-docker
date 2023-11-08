@@ -6,6 +6,11 @@
 
 * base: add support for Pmac module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/26
+* base: add NDSSCPimega areaDetector plugin. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/31
+  * This copies libraries built from source in the build image to the runtime
+    image for all targets. This removes the need to use `RUNTIME_TAR_PACKAGES`
+    for local libraries required during a module build.
 
 ## v0.4.0
 
