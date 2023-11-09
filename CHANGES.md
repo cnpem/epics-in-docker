@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.4.0
+
 All users should update to ease deployment on container setups with limited
 user ranges. Users interested in using the `lnls-run` script or the `caPutLog`
 module should update as well.
