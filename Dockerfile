@@ -1,6 +1,6 @@
 ARG DEBIAN_VERSION=11.7
 
-FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.4.0 AS build-image
+FROM ghcr.io/cnpem/lnls-debian-11-epics-7:v0.4.0-dev AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
