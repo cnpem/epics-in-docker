@@ -26,7 +26,7 @@ COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 ARG LIBPIMEGA_VERSION
 
 RUN lnls-get-n-unpack -r \
-    http://gca-jobs:1234/packages/libpimega_${LIBPIMEGA_VERSION}_amd64.tar.gz
+            http://10.30.1.74/packages/libpimega_${LIBPIMEGA_VERSION}_amd64.tar.gz
 
 ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
@@ -62,6 +62,9 @@ RUN ./install_modules.sh
 COPY nanohttp_stream.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
+
+COPY install_pimega.sh .
+RUN ./install_pimega.sh
 
 COPY install_motor.sh .
 RUN ./install_motor.sh
