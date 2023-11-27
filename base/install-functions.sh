@@ -15,6 +15,9 @@ install_module() {
 
     cd $module_name
     echo "$release_content" > configure/RELEASE
+    if [ -n "$NEEDS_TIRPC" ]; then
+        echo "TIRPC=YES" >> configure/CONFIG_SITE
+    fi
 
     make -j${JOBS} install
     make clean
