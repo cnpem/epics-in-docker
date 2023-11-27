@@ -8,23 +8,26 @@ on:
 
   pull_request:
 
-env:
-  TAG: ${{ github.event_name == 'push' && github.ref_name || github.head_ref }}
-  REGISTRY: ghcr.io/${{ github.repository_owner }}
-  IMAGE: lnls-debian-11-epics-7
-  SOURCE: https://github.com/${{ github.repository }}
-
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
-
+    strategy:
+      matrix:
+        image:
+          - { dir: base, name: lnls-debian-11-epics-7 }
+          - { dir: base/musl, name: lnls-alpine-3.18-epics-7 }
+    env:
+      TAG: ${{ github.event_name == 'push' && github.ref_name || github.head_ref }}
+      REGISTRY: ghcr.io/${{ github.repository_owner }}
+      IMAGE: ${{ matrix.image.name }}
+      SOURCE: https://github.com/${{ github.repository }}
     steps:
       - uses: actions/checkout@v3
       - name: Build image
-        run: cd base && JOBS=$(nproc) docker compose build
+        run: cd ${{ matrix.image.dir }} && JOBS=$(nproc) docker compose build
       - name: Log in to registry
         if: github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true'
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
