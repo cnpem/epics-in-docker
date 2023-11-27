@@ -1,0 +1,24 @@
+services:
+  epics-base:
+    image: ${REGISTRY:-ghcr.io/cnpem}/lnls-alpine-3.18-epics-7:$TAG
+    build:
+      context: ../
+      dockerfile: musl/Dockerfile
+      labels:
+        org.opencontainers.image.revision: ${TAG}
+        org.opencontainers.image.source: ${SOURCE:-https://github.com/cnpem/epics-in-docker}
+        org.opencontainers.image.description: "EPICS base and modules build image for fully static executables"
+      args:
+        JOBS: ${JOBS:-1}
+        ALPINE_VERSION: ${ALPINE_VERSION}
+        EPICS_BASE_VERSION: ${EPICS7_BASE_VERSION}
+        SEQUENCER_VERSION: ${SEQUENCER_VERSION}
+        CALC_VERSION: ${CALC_VERSION}
+        ASYN_VERSION: ${ASYN_VERSION}
+        STREAMDEVICE_VERSION: ${STREAMDEVICE_VERSION}
+        BUSY_VERSION: ${BUSY_VERSION}
+        AUTOSAVE_VERSION: ${AUTOSAVE_VERSION}
+        SSCAN_VERSION: ${SSCAN_VERSION}
+        RECCASTER_VERSION: ${RECCASTER_VERSION}
+        IPAC_VERSION: ${IPAC_VERSION}
+        CAPUTLOG_VERSION: ${CAPUTLOG_VERSION}

@@ -92,3 +92,13 @@ appropriate):
 ```
 $ docker exec -ti <container> nc -U ioc.sock
 ```
+
+## Alpine base image
+
+This alternative base image can be used to build fully static IOCs for
+scenarios where containerized deployment isn't an option or isn't desired for
+some reason. It should also be able to cope better than the Debian-based
+default image with older kernels.
+
+It can be obtained directly from the [GitHub
+registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-alpine-3.18-epics-7).
