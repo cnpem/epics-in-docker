@@ -31,6 +31,7 @@ ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
 WORKDIR /opt/epics
 COPY install-functions.sh .
 
+COPY backport-epics-base-musl.patch .
 COPY install_epics.sh .
 RUN ./install_epics.sh
 
