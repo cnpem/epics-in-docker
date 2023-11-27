@@ -11,6 +11,8 @@
   * This copies libraries built from source in the build image to the runtime
     image for all targets. This removes the need to use `RUNTIME_TAR_PACKAGES`
     for local libraries required during a module build.
+* base: add musl build. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/35
 
 ## v0.4.0
 
