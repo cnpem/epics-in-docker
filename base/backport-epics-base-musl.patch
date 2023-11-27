@@ -1,0 +1,42 @@
+From 7c4a21eab44183a84f25ea234ce2fde8ad08c4ed Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89rico=20Nogueira?= <erico.rolim@lnls.br>
+Date: Mon, 31 Jul 2023 11:36:11 -0300
+Subject: [PATCH] libCom: detect support for backtrace() with __has_include.
+
+This is necessary in order to build epics-base with musl libc, for
+example, and any other C libraries which don't include this
+functionality. In order to not regress builds with older compilers, we
+still support the uclibc check. Furthermore, it has been checked that
+uclibc-ng (the maintained version of uclibc) doesn't install the
+<execinfo.h> header when the functionality is disabled [1] [2].
+
+To avoid repetition, we don't define HAS_EXECINFO to 0 when it is not
+available.
+
+[1] https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git/tree/Makefile.in?id=cdb07d2cd52af39feb425e6d36c02b30916b9f0a#n224
+[2] https://cgit.uclibc-ng.org/cgi/cgit/uclibc-ng.git/tree/Makefile.in?id=cdb07d2cd52af39feb425e6d36c02b30916b9f0a#n277
+---
+ modules/libcom/src/osi/os/posix/osdExecinfoBackTrace.cpp | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/modules/libcom/src/osi/os/posix/osdExecinfoBackTrace.cpp b/modules/libcom/src/osi/os/posix/osdExecinfoBackTrace.cpp
+index 8d50e6a8e0..9be48755af 100644
+--- a/modules/libcom/src/osi/os/posix/osdExecinfoBackTrace.cpp
++++ b/modules/libcom/src/osi/os/posix/osdExecinfoBackTrace.cpp
+@@ -12,10 +12,13 @@
+ #include <stdlib.h>
+ 
+ // execinfo.h may not be present if uclibc is configured to omit backtrace()
+-#if !defined(__UCLIBC_MAJOR__) || defined(__UCLIBC_HAS_EXECINFO__)
++// some C libraries, such as musl, don't have execinfo.h at all
++#if defined(__has_include)
++#  if __has_include(<execinfo.h>)
++#    define HAS_EXECINFO 1
++#  endif
++#elif !defined(__UCLIBC_MAJOR__) || defined(__UCLIBC_HAS_EXECINFO__)
+ #  define HAS_EXECINFO 1
+-#else
+-#  define HAS_EXECINFO 0
+ #endif
+ 
+ #if HAS_EXECINFO
