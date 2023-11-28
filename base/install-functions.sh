@@ -1,11 +1,11 @@
 download_github_module() {
     github_org=$1
     module_name=$2
-    tag=$3
+    commit=$3
 
-    lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/refs/tags/$tag.tar.gz
+    lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/$commit.tar.gz
 
-    mv $module_name-$tag $module_name
+    mv $module_name-$commit $module_name
 }
 
 install_module() {
