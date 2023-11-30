@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add retools module. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/37
+
 ## v0.5.0
 
 Users willing to use Pmac or NDSSCPimega should update to this release. A
