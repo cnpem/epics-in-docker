@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v0.5.0
+
+Users willing to use Pmac or NDSSCPimega should update to this release. A
+musl-based image has been added, enabling support for linking fully static
+binaries for deployment outside of containers.
+
 ### New features
 
 * base: add support for Pmac module. by @guirodrigueslima in
