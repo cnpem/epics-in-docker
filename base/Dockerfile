@@ -55,10 +55,12 @@ ARG PMAC_VERSION
 ARG LIBSSCPIMEGA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
+
+COPY patches/streambuffer-grow.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh
 
-COPY nanohttp_stream.patch .
+COPY patches/nanohttp_stream.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
 

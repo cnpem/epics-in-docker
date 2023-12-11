@@ -1,0 +1,27 @@
+From https://github.com/paulscherrerinstitute/StreamDevice/pull/96
+From 34cf0476915ac7b6770af88ab02f836b6ffb710d Mon Sep 17 00:00:00 2001
+From: sudastelaro <james@lnls.br>
+Date: Fri, 27 Oct 2023 12:54:27 -0300
+Subject: [PATCH] Clear the right number of bytes in StreamBuffer
+
+The wrong number of bytes was being cleared in StreamBuffer::grow. That
+could lead to memory access out of bounds.
+---
+ src/StreamBuffer.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/StreamBuffer.cc b/src/StreamBuffer.cc
+index fdba24f..c7d53b4 100644
+--- a/src/StreamBuffer.cc
++++ b/src/StreamBuffer.cc
+@@ -144,7 +144,7 @@ grow(size_t minsize)
+         // just move contents to start of buffer and clear end
+         // to avoid reallocation
+         memmove(buffer, buffer+offs, len);
+-        memset(buffer+len, 0, offs);
++        memset(buffer+len, 0, cap-len);
+         offs = 0;
+         return;
+     }
+-- 
+2.34.1
