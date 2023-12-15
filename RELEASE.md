@@ -54,4 +54,5 @@ The `release` branch should be updated to point to the new tag.
 
 A new commit should be created in the `main` branch, updating the version used
 in [Dockerfile](./Dockerfile) to `vX.Y.Z-dev` to avoid usage of the `main`
-branch in actual deployments.
+branch in actual deployments. It should be titled `Post-release development
+version bump.`.
