@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.6.0
+
+Users interested in the retools module should update to this release.
+
 ### New features
 
 * base: add retools module. by @ericonr in
