@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: update modules. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/43
+  * This updates the autosave module and removes some resource leaks.
+
 ## v0.6.0
 
 Users interested in the retools module should update to this release.
