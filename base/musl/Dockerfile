@@ -39,6 +39,7 @@ COPY backport-epics-base-musl.patch .
 COPY install_epics.sh .
 RUN ./install_epics.sh
 
+ARG PVXS_VERSION
 ARG SEQUENCER_VERSION
 ARG CALC_VERSION
 ARG ASYN_VERSION
