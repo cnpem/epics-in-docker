@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add PVXS module. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/42
+
 ### Bug fixes
 
 * base: update modules. by @ericonr in
