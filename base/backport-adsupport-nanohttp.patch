@@ -1,5 +1,4 @@
-From https://github.com/areaDetector/ADSupport/pull/41
-From 0ecb38c9b8981b4e92c2ebbdff5503052a5c0ba9 Mon Sep 17 00:00:00 2001
+From 9326adbf88b7e4501b4ba1b53d267c2c3f921c78 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=89rico=20Nogueira?= <erico.rolim@lnls.br>
 Date: Thu, 3 Aug 2023 08:16:00 -0300
 Subject: [PATCH] Fix nanohttp_stream build with external libxml2.
@@ -16,14 +15,14 @@ only define IN_LIBXML in that case.
  2 files changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/supportApp/xml2Src/Makefile b/supportApp/xml2Src/Makefile
-index 1ba2696..1a0c189 100644
+index 1ba2696..b855c48 100644
 --- a/supportApp/xml2Src/Makefile
 +++ b/supportApp/xml2Src/Makefile
 @@ -123,6 +123,7 @@ ifeq ($(XML2_EXTERNAL),NO)
    LIB_SRCS += xmlstring.c
  
    nanohttp_stream_LIBS += xml2
-+  USR_CFLAGS = -DIN_LIBXML
++  nanohttp_stream_CFLAGS += -DIN_LIBXML
  
  else 
    nanohttp_stream_SYS_LIBS += xml2
