@@ -1,3 +1,11 @@
+get_module_path() {
+    for module in $@; do
+        if [ -n "$module" ]; then
+            grep -E "^$module=" $EPICS_RELEASE_FILE
+        fi
+    done
+}
+
 download_github_module() {
     github_org=$1
     module_name=$2
@@ -11,10 +19,11 @@ download_github_module() {
 install_module() {
     module_name=$1
     dependency_name=$2
-    release_content="$3"
+    release_modules="$3"
 
     cd $module_name
-    echo "$release_content" > configure/RELEASE
+    get_module_path "$release_modules" > configure/RELEASE
+
     if [ -n "$NEEDS_TIRPC" ]; then
         echo "TIRPC=YES" >> configure/CONFIG_SITE
     fi

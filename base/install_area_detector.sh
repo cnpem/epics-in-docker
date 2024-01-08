@@ -29,15 +29,13 @@ ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
 
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
-echo "
-EPICS_BASE=${EPICS_BASE_PATH}
-
-$module_releases
-
-ASYN=${EPICS_MODULES_PATH}/asyn
-BUSY=${EPICS_MODULES_PATH}/busy
-SSCAN=${EPICS_MODULES_PATH}/sscan
+get_module_path "
+EPICS_BASE
+ASYN
+BUSY
+SSCAN
 " > RELEASE.local
+echo "$module_releases" >> RELEASE.local
 
 ln -s RELEASE.local RELEASE_PRODS.local
 ln -s RELEASE.local RELEASE_LIBS.local
@@ -105,9 +103,8 @@ download_github_module cnpem ssc-pimega $LIBSSCPIMEGA_VERSION
 make -C ssc-pimega/c install
 
 install_github_module cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION "
-EPICS_BASE = ${EPICS_BASE_PATH}
-
-ASYN=${EPICS_MODULES_PATH}/asyn
-AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
-ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
+EPICS_BASE
+ASYN
+AREA_DETECTOR
+ADCORE
 "

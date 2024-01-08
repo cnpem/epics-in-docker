@@ -20,12 +20,12 @@ echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
 cd ../configure
 
-echo "
-EPICS_BASE=${EPICS_BASE_PATH}
-ASYN=${EPICS_MODULES_PATH}/asyn
-SNCSEQ=${EPICS_MODULES_PATH}/seq
-BUSY=${EPICS_MODULES_PATH}/busy
-IPAC=${EPICS_MODULES_PATH}/ipac
+get_module_path "
+EPICS_BASE
+ASYN
+SNCSEQ
+BUSY
+IPAC
 " > RELEASE.local
 
 echo "
@@ -57,9 +57,9 @@ WITH_BOOST = NO
 " >> pmac/configure/CONFIG_SITE
 
 JOBS=1 install_module pmac PMAC "
-EPICS_BASE=${EPICS_BASE_PATH}
-ASYN=${EPICS_MODULES_PATH}/asyn
-CALC=${EPICS_MODULES_PATH}/calc
-MOTOR=${EPICS_MODULES_PATH}/motor
-BUSY=${EPICS_MODULES_PATH}/busy
+EPICS_BASE
+ASYN
+CALC
+MOTOR
+BUSY
 "
