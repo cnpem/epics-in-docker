@@ -6,6 +6,8 @@
 
 * base: add PVXS module. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/42
+* ci: add reusable job for IOC images. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/49
 
 ### Bug fixes
 
