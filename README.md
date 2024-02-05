@@ -64,6 +64,11 @@ Packages essential to all (or most) IOCs should be added to [this repository's
 The template above assumes the containers will be uploaded to the GitHub
 registry.
 
+`:${TAG}` adds versioning to images using [our CI workflows](#ci-workflows),
+and when building images locally and exporting the `TAG` environment variable.
+If there is no interest in using versioned images and the resulting container
+image should be tagged as `latest`, `:${TAG}` can simply be omitted.
+
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
@@ -79,6 +84,34 @@ module depends on it.
 
 Known build and runtime issues are documented in the [SwC
 wiki](http://swc.lnls.br/).
+
+## CI Workflows
+
+Users of this repository for building IOC images can also take advantage of
+pre-defined continuous integration workflows in order to verify that images are
+built correctly after changes, and for uploading container images to the
+desired registry on Git tag creation.
+
+### GitHub Actions
+
+A YAML file must be added to the repository's `.github/workflows/` directory
+(e.g. `.github/workflows/build.yml`), with the following contents:
+
+```
+name: Build image
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+
+jobs:
+  build_and_push:
+    permissions:
+      packages: write
+      contents: read
+    uses: cnpem/epics-in-docker/.github/workflows/ioc-images.yml
+```
 
 ## Containers
 
