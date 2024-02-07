@@ -18,7 +18,7 @@ EPICS_BASE = ${EPICS_BASE_PATH}
 install_github_module epics-modules calc CALC $CALC_VERSION "
 EPICS_BASE = ${EPICS_BASE_PATH}
 
-SEQ = ${EPICS_MODULES_PATH}/seq
+SNCSEQ = ${EPICS_MODULES_PATH}/seq
 "
 
 # Build asyn without seq since it's only needed for testIPServer
