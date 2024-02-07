@@ -12,6 +12,8 @@
 * base: update modules. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/43
   * This updates the autosave module and removes some resource leaks.
+* base: build CALC with Sequencer support. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/48
 
 ## v0.6.0
 
