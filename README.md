@@ -110,7 +110,7 @@ jobs:
     permissions:
       packages: write
       contents: read
-    uses: cnpem/epics-in-docker/.github/workflows/ioc-images.yml
+    uses: cnpem/epics-in-docker/.github/workflows/ioc-images.yml@main
 ```
 
 ## Containers
