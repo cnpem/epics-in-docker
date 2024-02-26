@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### Breaking changes
+
+* base: update areaDetector to R3-14. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/53
+  * The PV interface for clipping in NDPluginProcess was changed, as documented
+    in the [ADCore Release
+    Notes](https://github.com/areaDetector/ADCore/blob/d27d71fb73bd915bdd714c8c4c78c05e3f31b1ce/RELEASE.md#ndpluginprocess).
+
+### New features
+
+* base: update areaDetector to R3-14. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/53
+
 ## v0.13.0
 
 Users of the `dynamic-link` target for IOC images should update in order to
