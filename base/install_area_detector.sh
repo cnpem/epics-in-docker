@@ -92,8 +92,6 @@ ARAVIS_INCLUDE=$(pkg-config --cflags-only-I aravis-0.8 | sed -e "s|-I||g")
 
 cd -
 
-patch -d ADSupport -Np1 < ${EPICS_MODULES_PATH}/backport-adsupport-nanohttp.patch
-
 make -j${JOBS}
 make clean
 
