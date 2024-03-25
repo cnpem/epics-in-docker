@@ -3,6 +3,15 @@
 scripts=(
     /opt/epics-in-docker/install*sh
     /opt/epics-in-docker/*patch
+    /usr/local/bin/lnls-*
 )
 
-rm ${scripts[@]}
+keep_list=(
+    /usr/local/bin/lnls-run
+)
+
+for script in ${scripts[@]}; do
+    if ! echo ${keep_list[@]} | grep -qx "$script" -; then
+        rm $script
+    fi
+done
