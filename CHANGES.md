@@ -10,6 +10,13 @@
   https://github.com/cnpem/epics-in-docker/pull/157
 * base: update to Alpine 3.24 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/201
+* ioc: copy locally installed software from build stages by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/55
+  * This allows the IOC build scripts to install custom software, available at
+    runtime, under `/usr/local` tree for all targets. Additionally, software
+    installed via `BUILD_TAR_PACKAGES` become automatically available at
+    runtime if installed to that tree, making the use of `RUNTIME_TAR_PACKAGES`
+    in combination usually not necessary anymore.
 
 ### Bug fixes
 

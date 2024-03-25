@@ -36,15 +36,12 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY --from=build-image /usr/local/lib /usr/local/lib
 COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get-n-unpack
 RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig
 RUN if [ -n "$RUNTIME_PIP_PACKAGES" ]; then \
         pip install --break-system-packages $RUNTIME_PIP_PACKAGES; \
     fi
-
-COPY --from=build-image /usr/local/bin/lnls-run /usr/local/bin/lnls-run
 
 WORKDIR ${RUNDIR}
 
@@ -75,7 +72,9 @@ LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
 LABEL br.lnls.epics-in-docker.target="no-build"
 
 COPY --from=pruned-build /opt /opt
+COPY --from=pruned-build /usr/local /usr/local
 
+RUN ldconfig
 
 FROM build-image AS build-stage
 
@@ -137,7 +136,9 @@ LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
 LABEL br.lnls.epics-in-docker.target="dynamic-link"
 
 COPY --from=dynamic-build /opt /opt
+COPY --from=dynamic-build /usr/local /usr/local
 
+RUN ldconfig
 
 FROM build-stage AS static-build
 
@@ -158,3 +159,6 @@ ARG REPONAME
 LABEL br.lnls.epics-in-docker.target="static-link"
 
 COPY --from=static-build /opt/${REPONAME} /opt/${REPONAME}
+COPY --from=static-build /usr/local /usr/local
+
+RUN ldconfig
