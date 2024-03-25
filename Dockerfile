@@ -71,6 +71,7 @@ LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
 LABEL br.lnls.epics-in-docker.target="no-build"
 
 COPY --from=pruned-build /opt /opt
+COPY --from=pruned-build /usr/local /usr/local
 
 
 FROM build-image AS build-stage
@@ -117,6 +118,7 @@ LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
 LABEL br.lnls.epics-in-docker.target="dynamic-link"
 
 COPY --from=dynamic-build /opt /opt
+COPY --from=dynamic-build /usr/local /usr/local
 
 
 FROM build-stage AS static-build
@@ -137,3 +139,4 @@ ARG REPONAME
 LABEL br.lnls.epics-in-docker.target="static-link"
 
 COPY --from=static-build /opt/${REPONAME} /opt/${REPONAME}
+COPY --from=static-build /usr/local /usr/local
