@@ -3,6 +3,15 @@
 files=(
     /opt/epics-in-docker/install*sh
     /opt/epics-in-docker/*patch
+    /usr/local/bin/lnls-*
 )
 
-rm ${files[@]}
+keep_list=(
+    /usr/local/bin/lnls-run
+)
+
+for file in ${files[@]}; do
+    if ! echo ${keep_list[@]} | grep -qx "$file" -; then
+        rm $file
+    fi
+done
