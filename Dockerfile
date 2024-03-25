@@ -37,6 +37,7 @@ ENTRYPOINT ["./entrypoint"]
 FROM base AS no-build
 
 COPY --from=build-image /opt /opt
+COPY --from=build-image /usr/local /usr/local
 
 
 FROM build-image AS build-stage
@@ -70,6 +71,7 @@ RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
 FROM base AS dynamic-link
 
 COPY --from=dynamic-build /opt /opt
+COPY --from=dynamic-build /usr/local /usr/local
 
 
 FROM build-stage AS static-build
@@ -87,3 +89,4 @@ FROM base AS static-link
 ARG REPONAME
 
 COPY --from=static-build /opt/${REPONAME} /opt/${REPONAME}
+COPY --from=static-build /usr/local /usr/local
