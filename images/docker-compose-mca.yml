@@ -8,6 +8,6 @@ services:
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        REPONAME: mca
+        APP_DIRS: /opt/epics/modules/mca
         RUNDIR: /opt/epics/modules/mca/iocBoot/iocAmptek
         RUNTIME_PACKAGES: libpcap0.8 libnet1 libusb-1.0-0
