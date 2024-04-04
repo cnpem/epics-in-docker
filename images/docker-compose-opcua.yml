@@ -8,6 +8,6 @@ services:
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        REPONAME: opcua
+        APP_DIRS: /opt/epics/modules/opcua
         RUNDIR: /opt/epics/modules/opcua/iocBoot/iocUaDemoServer
         RUNTIME_PACKAGES: libxml2 libssl3
