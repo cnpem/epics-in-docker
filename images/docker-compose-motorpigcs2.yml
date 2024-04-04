@@ -8,5 +8,5 @@ services:
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        REPONAME: motorpigcs2
+        APP_DIRS: /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC
         RUNDIR: /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2
