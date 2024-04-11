@@ -27,6 +27,19 @@ get_all_epics_modules() {
     echo "$modules"
 }
 
+remove_static_libs() {
+    for target; do
+        libs=$(find $target -type f -name *.a -print)
+
+        if [ -n "$libs" ]; then
+            size=$(du -hsc $libs | tail -n 1 | cut -f 1)
+
+            echo "Removing static libraries from $target ($size)"
+            rm -f $libs
+        fi
+    done
+}
+
 remove_unused_epics_modules() {
     targets=$@
 
@@ -43,3 +56,4 @@ remove_unused_epics_modules() {
 }
 
 remove_unused_epics_modules $target_paths
+remove_static_libs /opt
