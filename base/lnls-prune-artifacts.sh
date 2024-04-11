@@ -81,6 +81,24 @@ remove_static_libs() {
     done
 }
 
+remove_unused_shared_libs() {
+    used_libs=$(find_linked_libraries $@)
+
+    remove_libs=$(find_elf_executables /opt /usr/local)
+    remove_libs=$(echo "$remove_libs" | grep -E "*.so(.[0-9]+)*$" | sort -u)
+
+    for lib in $used_libs; do
+        remove_libs=$(echo "$remove_libs" | grep -vx $lib)
+    done
+
+    for lib in $remove_libs; do
+        size=$(du -hs $lib | cut -f 1)
+
+        echo "Removing shared library '$lib' ($size)"
+        rm -f ${lib%.so*}.so*
+    done
+}
+
 remove_unused_epics_modules() {
     targets=$@
 
@@ -103,3 +121,4 @@ remove_unused_epics_modules() {
 
 remove_unused_epics_modules $@
 remove_static_libs /opt
+remove_unused_shared_libs $@
