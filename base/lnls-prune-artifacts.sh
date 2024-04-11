@@ -3,6 +3,22 @@
 set -eu
 
 
+get_linked_libraries() {
+    targets=$@
+
+    executables=$(find $targets -type f -executable)
+
+    # Depend on the glibc-specific behavior of supporting multiple executables
+    # to be queried at once
+    libs="$(ldd $executables 2>/dev/null | grep '=>' | cut -d'=' -f 1)"
+
+    for lib in $libs; do
+        # Strip version from soname so that we match any version of the library
+        # in use
+        echo ${lib%.so*}.so
+    done | sort -u
+}
+
 get_used_epics_modules() {
     targets=$@
 
@@ -40,6 +56,26 @@ remove_static_libs() {
     done
 }
 
+remove_unused_shared_libs() {
+    targets=$@
+
+    used_libs=$(get_linked_libraries $targets)
+
+    remove_libs=$(find /opt /usr/local -type f -executable -name *.so*)
+    remove_libs=$(echo "$remove_libs" | grep -E "*.so(.[0-9]+)*$" | sort -u)
+
+    for lib in $used_libs; do
+        remove_libs=$(echo "$remove_libs" | grep -v $lib)
+    done
+
+    for lib in $remove_libs; do
+        size=$(du -hs $lib | cut -f 1)
+
+        echo "Removing shared library '$lib' ($size)"
+        rm -f $lib
+    done
+}
+
 remove_unused_epics_modules() {
     targets=$@
 
@@ -57,3 +93,4 @@ remove_unused_epics_modules() {
 
 remove_unused_epics_modules $@
 remove_static_libs /opt
+remove_unused_shared_libs $@
