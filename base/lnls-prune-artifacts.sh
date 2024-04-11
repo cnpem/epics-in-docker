@@ -110,4 +110,18 @@ EOF
     done
 }
 
+remove_static_libraries() {
+    for target; do
+        libs=$(find $target -type f -name *.a)
+
+        if [ -n "$libs" ]; then
+            size=$(du -hsc $libs | tail -n 1 | cut -f 1)
+
+            echo "Removing static libraries from $target ($size)"
+            rm -f $libs
+        fi
+    done
+}
+
 remove_unused_epics_modules $@
+remove_static_libraries /opt /usr/local
