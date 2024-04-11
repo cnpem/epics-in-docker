@@ -46,6 +46,12 @@ find_elf_executables() {
     done < <(find $targets -type f)
 }
 
+find_shared_libraries() {
+    elf_files=$(find_elf_executables $@)
+
+    echo "$elf_files" | grep -E "\.so(.[0-9]+)*$" | sort -u
+}
+
 find_linked_libraries() {
     executables=$(find_elf_executables $@)
 
@@ -151,5 +157,28 @@ remove_static_libraries() {
     done
 }
 
+remove_unused_shared_libraries() {
+    target_libs=$(find_shared_libraries $@)
+    linked_libs=$(find_linked_libraries $@)
+    remove_libs=$(find_shared_libraries /opt /usr/local)
+
+    keep_paths="$target_libs $linked_libs"
+    keep_paths="$keep_paths $(get_defined_paths_to_keep $remove_libs)"
+
+    for lib in $remove_libs; do
+        size=$(du -hs $lib | cut -f 1)
+
+        # if library is not found inside any $keep_paths, remove it
+        if find $keep_paths -path "$lib" -exec false {} + 2> /dev/null; then
+            echo "Removing shared library '$lib' ($size)..."
+
+            rm -f ${lib%.so*}.so*
+        else
+            echo "Keeping shared library '$lib' ($size)..."
+        fi
+    done
+}
+
 remove_unused_epics_modules $@
 remove_static_libraries /opt /usr/local
+remove_unused_shared_libraries $@
