@@ -57,6 +57,7 @@ ARG PMAC_VERSION
 ARG LIBSSCPIMEGA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
+COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh
 
