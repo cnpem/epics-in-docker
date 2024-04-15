@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## v0.7.0
+
+Users of the `autosave` and `caPutLog` modules should update to this release,
+which includes critical bug fixes for both. Users of the `calc` module only
+need to update if they noticed missing features.
+
 ### New features
 
 * base: add PVXS module. by @ericonr in
