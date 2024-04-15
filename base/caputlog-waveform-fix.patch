@@ -1,0 +1,68 @@
+From: https://github.com/epics-modules/caPutLog/pull/23
+From 4b2137458a94348fde9e25d350838a72ddaf6730 Mon Sep 17 00:00:00 2001
+From: Simon Rose <simon.rose@ess.eu>
+Date: Mon, 29 Jan 2024 11:23:15 +0100
+Subject: [PATCH] Add a patch to fix issues with pvmonitors in EPICS base
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If you have a waveform-type array (aai, waveform, etc.) and have caputlog
+loaded and initialised, then the IOC will no longer send out pvmonitors
+on changes (though it still sends on CA monitors). This seems to be due
+to a bug in PVAccessCPP about caching of PV channels: when we hit the
+caPutLog callback code on a put, we call get_array_info from the record
+rset code, which overwrites the requested field with the internal array
+buffer. This means that we modify the original pchan in memory which
+later causes a field comparison in the db event code (db_post_events) to
+fail.
+
+This patch is a minimal fix to caPutLog to get rid of the problem. While
+the actual issue seems to be a PVAccessCPP one (it seems that the latest
+version of PVXS does not have this problem), it seems simpler to fix it
+here instead of digging deeply into code that ultimately will be no
+longer in use in a few years.
+
+Co-authored-by: Lucas A. M. Magalhães <lucmaga@gmail.com>
+Co-authored-by: Gabriel Fedel <gabriel.fedel@ess.eu>
+Co-authored-by: Mateusz Nabywaniec <mateusz.nabywaniec@ess.eu>
+---
+ caPutLogApp/caPutLogAs.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/caPutLogApp/caPutLogAs.c b/caPutLogApp/caPutLogAs.c
+index efdae46..3038067 100644
+--- a/caPutLogApp/caPutLogAs.c
++++ b/caPutLogApp/caPutLogAs.c
+@@ -122,6 +122,13 @@ static void caPutLogAs(asTrapWriteMessage *pmessage, int afterPut)
+     LOGDATA *plogData;
+     long options, num_elm;
+     long status;
++    /*
++     * tmp_addr is used so that we don't overwrite the original pchan when we
++     * call get_array_info from caPutLogActualArraySize.
++     */
++    dbAddr tmp_addr;
++
++    memcpy(&tmp_addr, paddr, sizeof(dbAddr));
+ 
+     if (!afterPut) {                    /* before put */
+         plogData = caPutLogDataCalloc();
+@@ -153,7 +160,7 @@ static void caPutLogAs(asTrapWriteMessage *pmessage, int afterPut)
+         status = dbGetField(
+             paddr, plogData->type, &plogData->old_value, &options, &num_elm, 0);
+         plogData->old_log_size = num_elm;
+-        plogData->old_size = caPutLogActualArraySize(paddr);
++        plogData->old_size = caPutLogActualArraySize(&tmp_addr);
+         plogData->is_array = paddr->no_elements > 1 ? TRUE : FALSE;
+ 
+         if (status) {
+@@ -172,7 +179,7 @@ static void caPutLogAs(asTrapWriteMessage *pmessage, int afterPut)
+         status = dbGetField(
+             paddr, plogData->type, &plogData->new_value, &options, &num_elm, 0);
+         plogData->new_log_size = num_elm;
+-        plogData->new_size = caPutLogActualArraySize(paddr);
++        plogData->new_size = caPutLogActualArraySize(&tmp_addr);
+         plogData->is_array = plogData->is_array || paddr->no_elements > 1 ? TRUE : FALSE;
+ 
+         if (status) {

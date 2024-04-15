@@ -53,5 +53,6 @@ ARG CAPUTLOG_VERSION
 ARG RETOOLS_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
+COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN NEEDS_TIRPC=YES ./install_modules.sh
