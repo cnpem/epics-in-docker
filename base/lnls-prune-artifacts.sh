@@ -124,6 +124,8 @@ clean_up_epics_modules() {
         echo "Pruning module '$dir'..."
         prune_module_dirs $dir
     done
+
+    prune_module_dirs $EPICS_BASE_PATH
 }
 
 remove_static_libraries() {
