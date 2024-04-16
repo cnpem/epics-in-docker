@@ -17,6 +17,8 @@ git submodule update --init -j ${JOBS} \
 
 git -C motorPIGCS2 checkout ${PIGCS2_VERSION}
 
+rm -rf .git
+
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
