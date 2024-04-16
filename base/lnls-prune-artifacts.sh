@@ -76,6 +76,8 @@ get_all_epics_modules() {
     release_defs=$(grep = ${EPICS_RELEASE_FILE} | cut -d'=' -f 2)
 
     echo "$release_defs" | grep $EPICS_MODULES_PATH
+
+    echo $EPICS_BASE_PATH
 }
 
 get_used_epics_modules() {
