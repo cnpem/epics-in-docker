@@ -117,6 +117,8 @@ clean_up_epics_modules() {
             prune_module_dirs $module
         fi
     done
+
+    prune_module_dirs $EPICS_BASE_PATH
 }
 
 clean_up_epics_modules $@
