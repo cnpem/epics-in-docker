@@ -16,6 +16,8 @@ git submodule update --init --depth 1 -j ${JOBS} \
     ADSupport \
     ADCore
 
+rm -rf .git
+
 cd configure
 
 module_releases="

@@ -12,6 +12,8 @@ cd motor/modules
 git submodule update --init --depth 1 -j ${JOBS} \
     motorMotorSim
 
+rm -rf .git
+
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
