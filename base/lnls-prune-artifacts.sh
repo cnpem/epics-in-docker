@@ -15,6 +15,14 @@ get_linked_libraries() {
     done | sort | uniq
 }
 
+find_shared_libs() {
+    search_paths=$@
+
+    libs=$(find $search_paths -type f -executable -name *.so* -print)
+
+    echo "$libs" | grep -E "*.so(.[0-9]+)*$" | sort | uniq
+}
+
 get_used_epics_modules() {
     targets=$@
 
@@ -53,9 +61,7 @@ remove_static_libs() {
 remove_unused_shared_libs() {
     targets=$@
 
-    remove_libs=$(find /opt /usr/local -type f -executable -name *.so* -print)
-    remove_libs=$(echo "$remove_libs" | grep -E "*.so(.[0-9]+)*$" | sort | uniq)
-
+    remove_libs=$(find_shared_libs /opt /usr/local)
     used_libs=$(get_linked_libraries $targets)
 
     for lib in $used_libs; do
@@ -70,7 +76,27 @@ remove_unused_shared_libs() {
     done
 }
 
-remove_unused_epics_modules() {
+prune_module_dirs() {
+    module=$1
+
+    keep_paths="
+        $(find_shared_libs $module)
+        $(find $module -type f -regex ".*\.\(db\|template\|req\)" -printf "%h\n" | sort | uniq)
+    "
+
+    for candidate in $(find $module -type d); do
+        [ -d $candidate ] || continue
+
+        if [[ ! $keep_paths =~ "$candidate".* ]]; then
+            size=$(du -hs $candidate | cut -f 1)
+
+            printf "Removing directory '$candidate' ($size)...\n"
+            rm -rf $candidate
+        fi
+    done
+}
+
+clean_up_epics_modules() {
     targets=$@
 
     used_modules=$(get_used_epics_modules $targets)
@@ -81,10 +107,12 @@ remove_unused_epics_modules() {
 
             echo "Removing module '$module' ($size)..."
             rm -rf $module
+        elif [ -d $module/lib ]; then
+            prune_module_dirs $module
         fi
     done
 }
 
-remove_unused_epics_modules $target_paths
+clean_up_epics_modules $target_paths
 remove_static_libs /opt
 remove_unused_shared_libs $target_paths
