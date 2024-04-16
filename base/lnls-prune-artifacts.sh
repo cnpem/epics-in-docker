@@ -77,7 +77,27 @@ get_used_epics_modules() {
     filter_out_paths "$all_modules" "$unused_modules"
 }
 
-remove_unused_epics_modules() {
+prune_module_dirs() {
+    module=$1
+
+    keep_paths="
+        $(find_shared_libs $module)
+        $(find $module -type f -regex ".*\.\(cmd\|db\|template\|req\|substitutions\)" -printf "%h\n" | sort -u)
+    "
+
+    while read -r candidate; do
+        [ -d $candidate ] || continue
+
+        if [[ ! $keep_paths =~ "$candidate".* ]]; then
+            size=$(du -hs $candidate | cut -f 1)
+
+            printf "Removing directory '$candidate' ($size)...\n"
+            rm -rf $candidate
+        fi
+    done < <(find $module -type d)
+}
+
+clean_up_epics_modules() {
     targets=$@
 
     all_modules=$(get_all_epics_modules)
@@ -96,6 +116,13 @@ remove_unused_epics_modules() {
 
         echo "Removing module '$module' ($size)..."
         rm -rf $module
+    done
+
+    prune_dirs=$(filter_out_paths "$used_modules" "$targets")
+
+    for dir in $prune_dirs; do
+        echo "Pruning module '$dir'..."
+        prune_module_dirs $dir
     done
 }
 
@@ -129,6 +156,6 @@ remove_unused_shared_libraries() {
     done
 }
 
-remove_unused_epics_modules $@
+clean_up_epics_modules $@
 remove_static_libraries /opt /usr/local
 remove_unused_shared_libraries $@
