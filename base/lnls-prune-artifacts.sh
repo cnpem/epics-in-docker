@@ -115,7 +115,39 @@ get_defined_paths_to_keep() {
     done | sort -u
 }
 
-remove_unused_epics_modules() {
+prune_directories() {
+    local targets="$1"
+    local keep_paths="$2"
+
+    remove_dirs=$(filter_out_paths "$targets" "$keep_paths")
+
+    while read -r remove_dir; do
+        # if we already removed it because of its parent directory, move on to
+        # the next.
+        [ ! -d "$remove_dir" ] && continue
+
+        size=$(du -hs "$remove_dir" | cut -f 1)
+
+        echo "Removing directory '$remove_dir' ($size)..."
+        rm -rf "$remove_dir"
+    done <<< "$remove_dirs"
+}
+
+prune_module_directories() {
+    module=$1
+
+    module_dirs=$(find $module -type d)
+    keep_paths=$(cat << EOF
+$(find_shared_libraries $module)
+$(find $module -type f -regex ".*\.\(cmd\|db\|template\|req\|substitutions\)" -printf "%h\n" | sort -u)
+$(get_defined_paths_to_keep $module)
+EOF
+    )
+
+    prune_directories "$module_dirs" "$keep_paths"
+}
+
+clean_up_epics_modules() {
     targets=$(echo $@ | sed -E "s|\s+|\n|g")
 
     all_modules=$(get_all_epics_modules)
@@ -129,18 +161,15 @@ $used_modules
 EOF
 
     keep_paths=$(printf "$targets\n$used_modules")
-    unused_modules=$(filter_out_paths "$all_modules" "$keep_paths")
+    prune_directories "$all_modules" "$keep_paths"
 
-    # Assume module paths do not contain spaces, as we mostly control them
-    for module in $unused_modules; do
-        # if we already removed it because of its top-level repository or
-        # because it is an IOC, move on to the next.
-        [ ! -d $module ] && continue
+    # Filter out targets to provide a way to disable module pruning in special
+    # cases
+    prune_dirs=$(filter_out_paths "$used_modules" "$targets")
 
-        size=$(du -hs $module | cut -f 1)
-
-        echo "Removing module '$module' ($size)..."
-        rm -rf $module
+    for dir in $prune_dirs; do
+        echo "Pruning module '$dir'..."
+        prune_module_directories $dir
     done
 }
 
@@ -179,6 +208,6 @@ remove_unused_shared_libraries() {
     done
 }
 
-remove_unused_epics_modules $@
+clean_up_epics_modules $@
 remove_static_libraries /opt /usr/local
 remove_unused_shared_libraries $@
