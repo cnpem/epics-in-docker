@@ -61,7 +61,6 @@ COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh
 
-COPY backport-adsupport-nanohttp.patch .
 COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
 
