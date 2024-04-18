@@ -6,7 +6,7 @@ get_module_path() {
     done
 }
 
-download_github_module() {
+download_from_github() {
     github_org=$1
     module_name=$2
     commit=$3
@@ -17,6 +17,12 @@ download_github_module() {
 }
 
 install_module() {
+    is_ioc=false
+    if [ "$1" = "-i" ]; then
+        is_ioc=true
+        shift
+    fi
+
     module_name=$1
     dependency_name=$2
     release_modules="$3"
@@ -30,6 +36,9 @@ install_module() {
 
     make -j${JOBS} install
     make clean
+    if $is_ioc; then
+        make -C iocBoot
+    fi
 
     echo ${dependency_name}=${PWD} >> ${EPICS_RELEASE_FILE}
 
@@ -37,13 +46,19 @@ install_module() {
 }
 
 # Install module from GitHub tagged versions or URL
-install_github_module() {
+install_from_github() {
+    flag_ioc=""
+    if [ "$1" = "-i" ]; then
+        flag_ioc=$1
+        shift
+    fi
+
     github_org=$1
     module_name=$2
     dependency_name=$3
     tag=$4
     release_content="$5"
 
-    download_github_module $github_org $module_name $tag
-    install_module $module_name $dependency_name "$release_content"
+    download_from_github $github_org $module_name $tag
+    install_module $flag_ioc $module_name $dependency_name "$release_content"
 }
