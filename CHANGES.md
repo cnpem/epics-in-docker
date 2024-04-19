@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add `ether_ip` IOC and module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/57
+
 ## v0.7.0
 
 Users of the `autosave` and `caPutLog` modules should update to this release,
