@@ -61,3 +61,7 @@ EPICS_BASE
 install_from_github brunoseivam retools RETOOLS $RETOOLS_VERSION "
 EPICS_BASE
 "
+
+install_from_github -i epics-modules ether_ip ETHER_IP $ETHER_IP_VERSION "
+EPICS_BASE
+"
