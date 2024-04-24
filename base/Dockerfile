@@ -17,6 +17,7 @@ RUN apt update -y && \
         libtiff-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
+        libssl-dev \
         re2c \
         wget \
         ca-certificates
@@ -69,3 +70,9 @@ ARG PMAC_VERSION
 
 COPY install_motor.sh .
 RUN ./install_motor.sh
+
+ARG DEBIAN_VERSION
+ARG OPCUA_VERSION
+
+COPY install_opcua.sh .
+RUN ./install_opcua.sh
