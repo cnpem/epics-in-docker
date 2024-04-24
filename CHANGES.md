@@ -4,7 +4,7 @@
 
 ### New features
 
-* base: add `ether_ip` IOC and module. by @guirodrigueslima in
+* base: add OPCUA and `ether_ip` IOCs and modules. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/57
 
 ## v0.7.0
