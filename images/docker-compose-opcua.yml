@@ -1,0 +1,13 @@
+services:
+  ioc:
+    image: ghcr.io/cnpem/opcua-epics-ioc
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: no-build
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        REPONAME: opcua
+        RUNDIR: /opt/epics/modules/opcua/iocBoot/iocUaDemoServer
+        RUNTIME_PACKAGES: libxml2 libssl1.1

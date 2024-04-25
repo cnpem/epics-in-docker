@@ -2,10 +2,14 @@
 
 ## Unreleased
 
+A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
+
 ### New features
 
 * base: add OPCUA and `ether_ip` IOCs and modules. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/57
+* images: add OPCUA image. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/61
 
 ## v0.7.0
 
