@@ -53,7 +53,9 @@ ARG CAPUTLOG_VERSION
 ARG RETOOLS_VERSION
 ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
+ARG IPMICOMM_VERSION
 
+COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh
