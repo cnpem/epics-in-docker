@@ -1,0 +1,157 @@
+From: https://github.com/slac-epics-modules/ipmiComm/pull/26/
+From: https://github.com/slac-epics-modules/ipmiComm/pull/28/
+diff --git a/iocs/ipmicomm-test-IOC/configure/RELEASE b/iocs/ipmicomm-test-IOC/configure/RELEASE
+index 2822ab1..0ab1707 100644
+--- a/iocs/ipmicomm-test-IOC/configure/RELEASE
++++ b/iocs/ipmicomm-test-IOC/configure/RELEASE
+@@ -16,13 +16,6 @@
+ # Build variables that are NOT used in paths should be set in
+ # the CONFIG_SITE file.
+ 
+-# These lines allow developers to override these RELEASE settings
+-# without having to modify this file directly.
+--include $(TOP)/../RELEASE.local
+--include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
+--include $(TOP)/configure/RELEASE.local
+--include $(TOP)/../../RELEASE_SITE
+-
+ # modules this app depends upon. this builds a search path for libraries, header files, db files.
+ # ==========================================================
+ # Define the version strings for all needed modules
+@@ -47,3 +40,10 @@ IPMICOMM=$(TOP)/../..
+ # Set EPICS_BASE last so it appears last in the DB, DBD, INCLUDE, and LIB search paths
+ # ====================================================================
+ EPICS_BASE=$(BASE_SITE_TOP)/$(BASE_MODULE_VERSION)
++
++# These lines allow developers to override these RELEASE settings
++# without having to modify this file directly.
++-include $(TOP)/../RELEASE.local
++-include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
++-include $(TOP)/configure/RELEASE.local
++-include $(TOP)/../../RELEASE_SITE
+diff --git a/src/devMch.c b/src/devMch.c
+index ee1e6b0..20346d0 100644
+--- a/src/devMch.c
++++ b/src/devMch.c
+@@ -206,6 +206,10 @@ extern uint32_t mchStat[MAX_MCH];
+  */
+ uint8_t SENSOR_SCAN_PERIODS[5] = { 5, 10, 20, 30, 60 }; 
+ 
++IOSCANPVT drvMchStatScan;
++IOSCANPVT drvMchInitScan;
++IOSCANPVT drvMchFruScan;
++
+ #define MAX_STRING_LENGTH 39
+ #define MAX_EGU_LENGTH 16
+ 
+diff --git a/src/devMch.h b/src/devMch.h
+index 81e74aa..6c82f49 100644
+--- a/src/devMch.h
++++ b/src/devMch.h
+@@ -25,9 +25,9 @@ extern "C" {
+ #define MAX_NAME_LENGTH 50 
+ #define MAX_TASK_LENGTH 10
+ 
+-IOSCANPVT drvMchStatScan;
+-IOSCANPVT drvMchInitScan;
+-IOSCANPVT drvMchFruScan;
++extern IOSCANPVT drvMchStatScan;
++extern IOSCANPVT drvMchInitScan;
++extern IOSCANPVT drvMchFruScan;
+ 
+ /* Much of this stolen from devBusMapped */
+ 
+diff --git a/src/drvMch.c b/src/drvMch.c
+index 33e9b00..18e41cb 100644
+--- a/src/drvMch.c
++++ b/src/drvMch.c
+@@ -71,6 +71,9 @@ static int postIocStart = 0;
+ epicsMutexId mchStatMtx[MAX_MCH];
+ uint32_t     mchStat[MAX_MCH] = { 0 };
+ 
++IOSCANPVT drvSensorScan[MAX_MCH];
++struct MchCbRec_ *MchCb;
++
+ static int mchSdrGetDataAll(MchData mchData);
+ static int mchFruGetDataAll(MchData mchData);
+ int mchGetFruIdFromIndex(MchData mchData, int index);
+@@ -702,7 +705,7 @@ int rval = 0;
+  * Caller must perform locking.
+  */
+ static void
+-mchSensorGetFru(MchData mchData, uint8_t index)
++mchSensorGetFru(MchData mchData, int index)
+ {
+ MchSys mchSys = mchData->mchSys;
+ Sensor sens   = &mchSys->sens[index];
+diff --git a/src/drvMch.h b/src/drvMch.h
+index d231b94..bd371d6 100644
+--- a/src/drvMch.h
++++ b/src/drvMch.h
+@@ -20,8 +20,6 @@
+ #define MAX_MCH             255
+ #define MAX_SENS_INST       32    /* Max instances of one sensor type on one FRU or Management Controller entity */
+ 
+-extern const void *mchCbRegistryId;
+-
+ extern uint32_t mchStat[MAX_MCH];
+ 
+ /* Sensor scan period [seconds] */
+@@ -30,7 +28,7 @@ extern volatile uint8_t mchSensorScanPeriod;
+ extern epicsMutexId mchStatMtx[MAX_MCH];
+ 
+ /* Used for sensor scanning; one list per MCH */
+-IOSCANPVT drvSensorScan[MAX_MCH];
++extern IOSCANPVT drvSensorScan[MAX_MCH];
+ 
+ /* Vadatech typically sends 2 replies; NAT sends 1 */
+ #define RPLY_TIMEOUT_SENDMSG_RPLY    0.50
+@@ -254,7 +252,7 @@ extern char mchDescString[MCH_TYPE_MAX][MCH_DESC_MAX_LENGTH]; /* Defined in drvM
+ #define VT_ENTITY_ID_RTM      0xC0  /* asked Vivek to verify */
+ 
+ extern const void *mchCbRegistryId;
+-struct MchCbRec_ {
++extern struct MchCbRec_ {
+     void   (*assign_sys_sizes)   (MchData mchData);
+     void   (*assign_site_info)   (MchData mchData);
+     void   (*assign_fru_lkup)    (MchData mchData);    
+diff --git a/src/drvMchServerPc.c b/src/drvMchServerPc.c
+index 9bf5314..08c9380 100644
+--- a/src/drvMchServerPc.c
++++ b/src/drvMchServerPc.c
+@@ -97,23 +97,21 @@ Fru fru;
+ }
+ 
+ MchCbRec drvMchSupermicroCb = {
+-    assign_sys_sizes: assign_sys_sizes_supermicro,   
+-    assign_site_info: 0,
+-    assign_fru_lkup:  assign_fru_lkup_supermicro,
+-    fru_data_suppl:   0,
+-    sensor_get_fru:   sensor_get_fru_supermicro,
+-    get_chassis_status: mchMsgGetChassisStatus
+-
++    .assign_sys_sizes	= assign_sys_sizes_supermicro,   
++    .assign_site_info	= 0,
++    .assign_fru_lkup	= assign_fru_lkup_supermicro,
++    .fru_data_suppl		= 0,
++    .sensor_get_fru		= sensor_get_fru_supermicro,
++    .get_chassis_status	= mchMsgGetChassisStatus
+ };
+ 
+ MchCbRec drvMchAdvantechCb = {
+-    assign_sys_sizes: 0,   
+-    assign_site_info: 0,
+-    assign_fru_lkup:  assign_fru_lkup_advantech,
+-    fru_data_suppl:   0,
+-    sensor_get_fru:   sensor_get_fru_advantech,
+-    get_chassis_status: mchMsgGetChassisStatus
+-
++    .assign_sys_sizes 	= 0,   
++    .assign_site_info 	= 0,
++    .assign_fru_lkup 	= assign_fru_lkup_advantech,
++    .fru_data_suppl 	= 0,
++    .sensor_get_fru 	= sensor_get_fru_advantech,
++    .get_chassis_status = mchMsgGetChassisStatus
+ };
+ 
+ static void
