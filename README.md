@@ -12,6 +12,13 @@ registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-debian-11
 
 The versions used in the base image are defined in `base/.env`.
 
+## Included IOC images
+
+Some IOC images are provided by this repository directly, and can be used
+without any build step.
+
+- OPCUA IOC: `ghcr.io/cnpem/opcua-epics-ioc`
+
 ## IOC images
 
 IOC repositories should include this repository as a submodule in their root,
