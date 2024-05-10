@@ -1,7 +1,7 @@
 name: Build included image
 on:
   workflow_run:
-    workflows: ["Base image build"]
+    workflows: ["build_and_push (base, lnls-debian-11-epics-7)"]
     tags:
       - 'v*'
     types:
