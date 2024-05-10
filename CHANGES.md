@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.8.0
+
 A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
 
 ### New features
