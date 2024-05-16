@@ -7,6 +7,11 @@
 * base: remove CALC dependency on Sequencer. by @henriquesimoes in
   https://github.com/cnpem/epics-in-docker/pull/68.
 
+### Bug fixes
+
+* base: update PMAC version. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
+
 ### New features
 
 * base: add IOCStats module. by @gustavosr8 in
