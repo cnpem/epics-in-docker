@@ -18,6 +18,7 @@ Some IOC images are provided by this repository directly, and can be used
 without any build step.
 
 - OPCUA IOC: `ghcr.io/cnpem/opcua-epics-ioc`
+- Motor PIGCS2 IOC: `ghcr.io/cnpem/motor-pigcs2-epics-ioc`
 
 ## IOC images
 
