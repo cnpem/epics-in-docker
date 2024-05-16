@@ -10,11 +10,15 @@ git clone --depth 1 --branch ${MOTOR_VERSION} \
 cd motor/modules
 
 git submodule update --init --depth 1 -j ${JOBS} \
-    motorMotorSim
+    motorMotorSim \
+    motorPIGCS2
+
+git -C motorPIGCS2 checkout ${PIGCS2_VERSION}
 
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
+MOTOR_PIGCS2=${EPICS_MODULES_PATH}/motor/modules/motorPIGCS2
 "
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
@@ -36,6 +40,13 @@ cd ..
 
 make -j${JOBS}
 make clean
+
+install_module -i modules/motorPIGCS2/iocs/pigcs2IOC PIGCS2 "
+EPICS_BASE
+ASYN
+MOTOR
+SNCSEQ
+"
 
 cd $EPICS_MODULES_PATH
 
