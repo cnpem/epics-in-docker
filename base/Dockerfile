@@ -12,6 +12,8 @@ RUN apt update -y && \
         git \
         libaravis-dev \
         libevent-dev \
+        libnet-dev \
+        libpcap-dev \
         libreadline-dev \
         libssh2-1-dev \
         libtiff-dev \
@@ -61,6 +63,7 @@ ARG IPMICOMM_VERSION
 ARG PYDEVSUP_VERSION
 ARG SNMP_VERSION
 ARG SCALER_VERSION
+ARG MCA_VERSION
 
 COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
