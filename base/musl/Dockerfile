@@ -9,8 +9,11 @@ RUN apk add --no-cache \
     g++ \
     libevent-dev \
     libevent-static \
+    libnet-dev \
+    libpcap-dev \
     libtirpc-dev \
     libtirpc-static \
+    libusb-dev \
     linux-headers \
     make \
     musl-dev \
@@ -55,6 +58,7 @@ ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
 ARG SCALER_VERSION
+ARG MCA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY ipmicomm.patch .

@@ -32,4 +32,5 @@ jobs:
           files: |
             docker-compose-opcua.yml
             docker-compose-motorpigcs2.yml
+            docker-compose-mca.yml
           push: true

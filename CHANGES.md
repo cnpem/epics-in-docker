@@ -13,6 +13,8 @@
   https://github.com/cnpem/epics-in-docker/pull/64
 * base: Add scaler module. by @guirodrigueslima in 
   https://github.com/cnpem/epics-in-docker/pull/64
+* base: Add MCA IOC, and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
 
 ## v0.8.0
 
