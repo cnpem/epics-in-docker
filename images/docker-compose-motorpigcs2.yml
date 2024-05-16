@@ -1,0 +1,12 @@
+services:
+  ioc:
+    image: ghcr.io/cnpem/motor-pigcs2-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: no-build
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        REPONAME: motorpigcs2
+        RUNDIR: /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2

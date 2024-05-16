@@ -75,6 +75,7 @@ COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
 
 ARG MOTOR_VERSION
+ARG PIGCS2_VERSION
 ARG PMAC_VERSION
 
 COPY install_motor.sh .
