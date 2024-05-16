@@ -94,3 +94,15 @@ install_from_github epics-modules scaler SCALER $SCALER_VERSION "
 EPICS_BASE
 ASYN
 "
+
+install_from_github -i epics-modules mca MCA $MCA_VERSION "
+EPICS_BASE
+CALC
+SSCAN
+BUSY
+SCALER
+SNCSEQ
+AUTOSAVE
+ASYN
+MCA
+"
