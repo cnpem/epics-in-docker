@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: Pmac module version update. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
+
 ## v0.8.0
 
 A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
