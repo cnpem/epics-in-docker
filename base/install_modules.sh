@@ -76,3 +76,8 @@ install_module ipmiComm IPMICOMM "
 EPICS_BASE
 ASYN
 "
+
+install_from_github epics-modules scaler SCALER $SCALER_VERSION "
+EPICS_BASE
+ASYN
+"
