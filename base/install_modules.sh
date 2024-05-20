@@ -89,3 +89,8 @@ cd ..
 install_module -i snmp SNMP "
 EPICS_BASE
 "
+
+install_from_github epics-modules scaler SCALER $SCALER_VERSION "
+EPICS_BASE
+ASYN
+"

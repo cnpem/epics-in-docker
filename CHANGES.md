@@ -28,6 +28,8 @@
   https://github.com/cnpem/epics-in-docker/pull/67
 * base: add motorPIGCS2 IOC and module, and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/64
+* base: add Scaler module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
 
 ## v0.8.1
 
