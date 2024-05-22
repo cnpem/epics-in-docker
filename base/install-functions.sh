@@ -28,6 +28,9 @@ install_module() {
     release_modules="$3"
 
     cd $module_name
+
+    echo ${dependency_name}=${PWD} >> ${EPICS_RELEASE_FILE}
+
     get_module_path "$release_modules" > configure/RELEASE
 
     if [ -n "$NEEDS_TIRPC" ]; then
@@ -39,8 +42,6 @@ install_module() {
     if $is_ioc; then
         make -C iocBoot
     fi
-
-    echo ${dependency_name}=${PWD} >> ${EPICS_RELEASE_FILE}
 
     cd -
 }
