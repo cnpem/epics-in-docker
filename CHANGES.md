@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: Pmac module version update. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
+
+### New features
+
+* base: Add motorPIGCS2 IOC and module, and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
+* base: Add scaler module. by @guirodrigueslima in 
+  https://github.com/cnpem/epics-in-docker/pull/64
+* base: Add MCA IOC, and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/64
+
 ## v0.8.0
 
 A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.

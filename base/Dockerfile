@@ -12,12 +12,14 @@ RUN apt update -y && \
         git \
         libaravis-dev \
         libevent-dev \
+        libnet-dev \
+        libpcap-dev \
         libreadline-dev \
         libssh2-1-dev \
+        libssl-dev \
         libtiff-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
-        libssl-dev \
         re2c \
         wget \
         ca-certificates
@@ -54,6 +56,8 @@ ARG RETOOLS_VERSION
 ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
+ARG SCALER_VERSION
+ARG MCA_VERSION
 
 COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
@@ -69,6 +73,7 @@ COPY install_area_detector.sh .
 RUN ./install_area_detector.sh
 
 ARG MOTOR_VERSION
+ARG PIGCS2_VERSION
 ARG PMAC_VERSION
 
 COPY install_motor.sh .

@@ -29,5 +29,8 @@ jobs:
         uses: docker/bake-action@v4
         with:
           workdir: images/
-          files: docker-compose-opcua.yml
+          files: |
+            docker-compose-opcua.yml
+            docker-compose-motorpigcs2.yml
+            docker-compose-mca.yml
           push: true
