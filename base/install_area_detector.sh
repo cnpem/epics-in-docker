@@ -16,6 +16,8 @@ git submodule update --init --depth 1 -j ${JOBS} \
     ADSupport \
     ADCore
 
+rm -rf .git
+
 cd configure
 
 module_releases="
@@ -101,6 +103,7 @@ cd ..
 
 download_from_github cnpem ssc-pimega $LIBSSCPIMEGA_VERSION
 make -C ssc-pimega/c install
+rm -rf ssc-pimega
 
 install_from_github cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION "
 EPICS_BASE

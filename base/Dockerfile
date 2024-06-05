@@ -79,3 +79,5 @@ ARG OPCUA_VERSION
 
 COPY install_opcua.sh .
 RUN ./install_opcua.sh
+
+COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
