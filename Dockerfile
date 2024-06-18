@@ -77,7 +77,7 @@ FROM build-stage AS static-build
 ARG JOBS=1
 ARG RUNDIR
 
-RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE.local
+RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
 RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
 
