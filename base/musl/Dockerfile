@@ -22,7 +22,9 @@ RUN apk add --no-cache \
     meson \
     re2c \
     readline-dev \
-    readline-static
+    readline-static \
+    python3-dev \
+    py3-numpy-dev
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
@@ -54,6 +56,7 @@ ARG RETOOLS_VERSION
 ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
+ARG PYDEVSUP_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY ipmicomm.patch .

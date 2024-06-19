@@ -76,3 +76,9 @@ install_module ipmiComm IPMICOMM "
 EPICS_BASE
 ASYN
 "
+
+download_from_github mdavidsaver pyDevSup $PYDEVSUP_VERSION
+echo PYTHON=python3 >> pyDevSup/configure/CONFIG_SITE
+install_module pyDevSup PYDEVSUP "
+EPICS_BASE
+"
