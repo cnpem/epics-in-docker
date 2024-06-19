@@ -65,8 +65,10 @@ stages even when they are not needed.
 Additional build and runtime packages to be installed can be listed in `args`,
 under the `BUILD_PACKAGES` and `RUNTIME_PACKAGES` keys, respectively. It is not
 necessary to quote them - e.g. `BUILD_PACKAGES: python3 python3-requests`.
-Packages essential to all (or most) IOCs should be added to [this repository's
-`Dockerfile`](./Dockerfile).
+Packages that strictly need to be installed via `pip` can be listed under the
+`RUNTIME_PIP_PACKAGES` key.
+Packages essential to all (or most) IOCs should be added to
+[this repository's `Dockerfile`](./Dockerfile).
 
 The template above assumes the containers will be uploaded to the GitHub
 registry.

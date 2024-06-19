@@ -8,6 +8,7 @@ ARG RUNDIR
 ARG ENTRYPOINT=/usr/local/bin/lnls-run
 ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
+ARG RUNTIME_PIP_PACKAGES
 
 RUN apt update -y && \
     apt install -y --no-install-recommends \
@@ -16,6 +17,7 @@ RUN apt update -y && \
         netcat-openbsd \
         procserv \
         wget \
+        $([ -n "$RUNTIME_PIP_PACKAGES" ] && echo pip) \
         $RUNTIME_PACKAGES && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
@@ -24,6 +26,9 @@ COPY --from=build-image /usr/local/lib /usr/local/lib
 COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get-n-unpack
 RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig
+RUN if [ -n "$RUNTIME_PIP_PACKAGES" ]; then \
+        pip install $RUNTIME_PIP_PACKAGES; \
+    fi
 
 COPY --from=build-image /usr/local/bin/lnls-run /usr/local/bin/lnls-run
 
