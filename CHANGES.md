@@ -16,6 +16,8 @@ A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
   https://github.com/cnpem/epics-in-docker/pull/62
 * base: add IPMIComm module. by @gustavosr8 in
   https://github.com/cnpem/epics-in-docker/pull/62
+* base: add pyDevSup module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/62
 
 ## v0.7.0
 
