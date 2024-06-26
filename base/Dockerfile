@@ -20,6 +20,8 @@ RUN apt update -y && \
         libssl-dev \
         re2c \
         wget \
+        python3-dev \
+        python3-numpy \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
@@ -54,6 +56,7 @@ ARG RETOOLS_VERSION
 ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
+ARG PYDEVSUP_VERSION
 
 COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
