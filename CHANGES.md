@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+### New features
+
+* base: add IOCStats module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/62
+* base: add IPMIComm module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/62
+* base: add pyDevSup module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/62
+
+## v0.8.1
+
+OPCUA container image build with GitHub Actions has been fixed.
+
 ## v0.8.0
 
 A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
@@ -12,12 +25,6 @@ A new container image, `ghcr.io/cnpem/opcua-epics-ioc`, is now available.
   https://github.com/cnpem/epics-in-docker/pull/57
 * images: add OPCUA image. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/61
-* base: add IOCStats module. by @gustavosr8 in
-  https://github.com/cnpem/epics-in-docker/pull/62
-* base: add IPMIComm module. by @gustavosr8 in
-  https://github.com/cnpem/epics-in-docker/pull/62
-* base: add pyDevSup module. by @gustavosr8 in
-  https://github.com/cnpem/epics-in-docker/pull/62
 
 ## v0.7.0
 
