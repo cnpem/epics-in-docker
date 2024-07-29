@@ -39,9 +39,17 @@ RUN ln -s ${ENTRYPOINT} ./entrypoint
 ENTRYPOINT ["./entrypoint"]
 
 
+FROM build-image AS pruned-build
+
+ARG REPONAME
+ARG RUNDIR
+
+RUN lnls-prune-artifacts /opt/${REPONAME} ${RUNDIR}
+
+
 FROM base AS no-build
 
-COPY --from=build-image /opt /opt
+COPY --from=pruned-build /opt /opt
 
 
 FROM build-image AS build-stage
@@ -70,6 +78,8 @@ ARG JOBS=1
 ARG RUNDIR
 
 RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+
+RUN lnls-prune-artifacts . ${RUNDIR}
 
 
 FROM base AS dynamic-link
