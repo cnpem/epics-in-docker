@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* ioc: disable APT sandbox. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/69
+  * This allows to use APT in containers deployed in systems without subuid and
+    subgid.
+
 ### New features
 
 * base: update ipmiComm patch to install general templates. by
