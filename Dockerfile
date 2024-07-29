@@ -10,6 +10,8 @@ ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
 ARG RUNTIME_PIP_PACKAGES
 
+COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
+
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         libreadline8 \
