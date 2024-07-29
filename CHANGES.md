@@ -19,6 +19,8 @@
   https://github.com/cnpem/epics-in-docker/pull/67
   * This allows to use ZIP files in `RUNTIME_TAR_PACKAGES` and
     `BUILD_TAR_PACKAGES`.
+* base: add SNMP module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/67
 
 ## v0.8.1
 

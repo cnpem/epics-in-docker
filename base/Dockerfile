@@ -17,6 +17,7 @@ RUN apt update -y && \
         libtiff-dev \
         libusb-1.0-0-dev \
         libxml2-dev \
+        libsnmp-dev \
         libssl-dev \
         re2c \
         unzip \
@@ -58,6 +59,7 @@ ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
 ARG PYDEVSUP_VERSION
+ARG SNMP_VERSION
 
 COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .

@@ -15,6 +15,7 @@ RUN apk add --no-cache \
     make \
     musl-dev \
     ncurses-terminfo \
+    net-snmp-dev \
     patch \
     perl \
     rpcsvc-proto \
@@ -57,6 +58,7 @@ ARG ETHER_IP_VERSION
 ARG IOCSTATS_VERSION
 ARG IPMICOMM_VERSION
 ARG PYDEVSUP_VERSION
+ARG SNMP_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY ipmicomm.patch .

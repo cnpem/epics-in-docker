@@ -81,3 +81,11 @@ echo PYTHON=python3 >> pyDevSup/configure/CONFIG_SITE
 install_module pyDevSup PYDEVSUP "
 EPICS_BASE
 "
+
+mkdir snmp
+cd snmp
+lnls-get-n-unpack -l https://groups.nscl.msu.edu/controls/files/epics-snmp-$SNMP_VERSION.zip
+cd ..
+install_module -i snmp SNMP "
+EPICS_BASE
+"
