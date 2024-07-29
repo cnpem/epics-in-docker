@@ -19,6 +19,7 @@ RUN apt update -y && \
         wget \
         $([ -n "$RUNTIME_PIP_PACKAGES" ] && echo pip) \
         $RUNTIME_PACKAGES && \
+    ln -s /bin/busybox /usr/bin/unzip && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 

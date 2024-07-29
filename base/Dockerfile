@@ -19,6 +19,7 @@ RUN apt update -y && \
         libxml2-dev \
         libssl-dev \
         re2c \
+        unzip \
         wget \
         python3-dev \
         python3-numpy \

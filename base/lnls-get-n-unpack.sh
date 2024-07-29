@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Download and extract tarball archive from the network.
+# Download and extract archive from the network.
 
 set -eu
 
@@ -19,6 +19,14 @@ for url; do
 
     echo Downloading "$url"...
     wget -P $download_dir -o /tmp/wget.log "$url" || (cat /tmp/wget.log && false)
-    tar --no-same-owner -xf $download_dir/* -C $dest
+
+    filename=$(basename $download_dir/*)
+
+    if [[ ${filename,,} == *".zip" ]]; then
+        unzip -qo $download_dir/$filename -d $dest
+    else
+        tar --no-same-owner -xf $download_dir/$filename -C $dest
+    fi
+
     rm -rf $download_dir /tmp/wget.log
 done
