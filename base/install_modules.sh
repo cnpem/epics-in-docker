@@ -14,7 +14,6 @@ EPICS_BASE
 
 install_from_github epics-modules calc CALC $CALC_VERSION "
 EPICS_BASE
-SNCSEQ
 "
 
 # Build asyn without seq since it's only needed for testIPServer

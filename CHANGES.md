@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Breaking changes
+
+* base: remove CALC dependency on Sequencer. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/68.
+
 ### New features
 
 * base: add IOCStats module. by @gustavosr8 in
