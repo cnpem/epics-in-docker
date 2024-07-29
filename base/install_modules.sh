@@ -71,7 +71,7 @@ EPICS_BASE
 
 download_from_github slac-epics-modules ipmiComm $IPMICOMM_VERSION
 patch -d ipmiComm -Np1 < ipmicomm.patch
-install_module ipmiComm IPMICOMM "
+JOBS=1 install_module ipmiComm IPMICOMM "
 EPICS_BASE
 ASYN
 "
