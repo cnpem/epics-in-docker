@@ -15,6 +15,10 @@
   https://github.com/cnpem/epics-in-docker/pull/62
 * base: add pyDevSup module. by @gustavosr8 in
   https://github.com/cnpem/epics-in-docker/pull/62
+* base: teach lnls-get-n-unpack about ZIP files. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/67
+  * This allows to use ZIP files in `RUNTIME_TAR_PACKAGES` and
+    `BUILD_TAR_PACKAGES`.
 
 ## v0.8.1
 
