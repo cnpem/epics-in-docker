@@ -6,6 +6,10 @@ ARG JOBS
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# Disable APT sandbox so that single UID restriction is satisfied in systems
+# without subuid and subgid configured.
+RUN echo 'APT::Sandbox::User "root";' > /etc/apt/apt.conf.d/90-disable-sandbox.conf
+
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
