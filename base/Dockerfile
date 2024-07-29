@@ -6,6 +6,9 @@ ARG JOBS
 
 ENV DEBIAN_FRONTEND noninteractive
 
+COPY lnls-single-uid.sh /usr/local/bin/lnls-single-uid
+RUN lnls-single-uid
+
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
