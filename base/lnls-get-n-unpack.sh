@@ -18,7 +18,7 @@ for url; do
     download_dir=$(mktemp -d)
 
     echo Downloading "$url"...
-    wget -P $download_dir -o /tmp/wget.log "$url" || (cat /tmp/wget.log && false)
+    wget -P $download_dir "$url" &> /tmp/wget.log || (cat /tmp/wget.log && false)
 
     filename=$(basename $download_dir/*)
 
