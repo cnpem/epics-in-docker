@@ -16,10 +16,9 @@ RUN apt update -y && \
         busybox \
         netcat-openbsd \
         procserv \
-        wget \
         $([ -n "$RUNTIME_PIP_PACKAGES" ] && echo pip) \
         $RUNTIME_PACKAGES && \
-    ln -s /bin/busybox /usr/bin/unzip && \
+    busybox --install && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
