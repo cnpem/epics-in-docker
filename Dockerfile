@@ -10,6 +10,9 @@ ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
 ARG RUNTIME_PIP_PACKAGES
 
+COPY --from=build-image /usr/local/bin/lnls-single-uid /usr/local/bin/lnls-single-uid
+RUN lnls-single-uid
+
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         libreadline8 \

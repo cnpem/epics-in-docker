@@ -7,6 +7,13 @@
 * base: remove CALC dependency on Sequencer. by @henriquesimoes in
   https://github.com/cnpem/epics-in-docker/pull/68.
 
+### Bug fixes
+
+* ioc: ensure single UID is used in containers. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/69
+  * This allows to use ignore_chown_errors=True without subuid and subgid, but
+    still have everything working, especially apt.
+
 ### New features
 
 * base: add IOCStats module. by @gustavosr8 in
