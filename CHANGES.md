@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v0.9.0
+
+Users willing to use `iocStats`, `ipmiComm`, `pyDevSup`, `SNMP`, `motorPIGCS2`,
+`mca`, or `scaler` modules should update to this release. Users of `pmac`
+module should also update to have critical bugs fixed. Anyone who had trouble
+with versions greater than or equal to v0.7.0 building IOCs depending on Calc
+due to Sequencer linkage issues should find it easier to build with this
+release. Two new IOC images are also available: MCA and Motor PIGCS2.
+
 ### Breaking changes
 
 * base: remove CALC dependency on Sequencer. by @henriquesimoes in
