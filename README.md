@@ -72,6 +72,11 @@ Packages that strictly need to be installed via `pip` can be listed under the
 Packages essential to all (or most) IOCs should be added to
 [this repository's `Dockerfile`](./Dockerfile).
 
+Extra files can also be downloaded and installed by listing their TAR or ZIP
+archive URLs under `BUILD_TAR_PACKAGES` or `RUNTIME_TAR_PACKAGES`. To use HTTPS
+(or any other TLS-based protocol), `ca-certificates` must also be added to
+`RUNTIME_PACKAGES`.
+
 The template above assumes the containers will be uploaded to the GitHub
 registry.
 
