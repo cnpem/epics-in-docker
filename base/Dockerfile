@@ -65,7 +65,7 @@ ARG SNMP_VERSION
 ARG SCALER_VERSION
 ARG MCA_VERSION
 
-COPY ipmicomm.patch .
+COPY backport-ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh
