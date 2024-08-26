@@ -1,5 +1,24 @@
 From: https://github.com/slac-epics-modules/ipmiComm/pull/26/
 From: https://github.com/slac-epics-modules/ipmiComm/pull/28/
+From: https://github.com/slac-epics-modules/ipmiComm/pull/29/
+diff --git a/Db/Makefile b/Db/Makefile
+index 207577c..3ac6be8 100644
+--- a/Db/Makefile
++++ b/Db/Makefile
+@@ -22,6 +22,13 @@ include $(TOP)/configure/CONFIG
+ #  Optimization of db files using dbst (DEFAULT: NO)
+ #DB_OPT = YES.
+ 
++# General modules
++DB += fru_common.db
++DB += fru_cu_common.db
++DB += sensor_ai.db
++DB += system_chassis_status.db
++DB += system_common.db
++
+ # Files that make up our high-level templates
+ DB += fru_basic.db
+ DB += fru_extended.db
 diff --git a/iocs/ipmicomm-test-IOC/configure/RELEASE b/iocs/ipmicomm-test-IOC/configure/RELEASE
 index 2822ab1..0ab1707 100644
 --- a/iocs/ipmicomm-test-IOC/configure/RELEASE

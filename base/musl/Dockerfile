@@ -66,7 +66,7 @@ ARG SCALER_VERSION
 ARG MCA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
-COPY ipmicomm.patch .
+COPY backport-ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN NEEDS_TIRPC=YES ./install_modules.sh
