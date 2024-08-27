@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## v0.10.0
+
+Users of `ipmiComm` should update to this release, since it makes the module
+much more useful. Anyone distributing or using images in hosts which aren't
+properly configured with subuid and subgid should update as well, to improve
+the experience of using the images.
+
 ### Bug fixes
 
 * ioc: disable APT sandbox. by @henriquesimoes in
