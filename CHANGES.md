@@ -11,8 +11,8 @@
 
 ### New features
 
-* base: update ipmiComm patch to install general templates. by
-@gustavosr8 in https://github.com/cnpem/epics-in-docker/pull/73.
+* base: update ipmiComm patch to install general templates. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/73.
 
 ## v0.9.0
 
