@@ -44,6 +44,7 @@ ENV EPICS_MODULES_PATH /opt/epics/modules
 ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
 
 COPY backport-epics-base-musl.patch .
+COPY epics-base-static-linking.patch .
 COPY install_epics.sh .
 RUN ./install_epics.sh
 

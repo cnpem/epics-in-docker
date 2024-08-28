@@ -42,6 +42,7 @@ WORKDIR /opt/epics
 COPY install-functions.sh .
 
 COPY backport-epics-base-musl.patch .
+COPY epics-base-static-linking.patch .
 COPY install_epics.sh .
 RUN ./install_epics.sh
 

@@ -8,5 +8,6 @@ lnls-get-n-unpack -l https://epics-controls.org/download/base/base-${EPICS_BASE_
 mv base-${EPICS_BASE_VERSION} ${EPICS_BASE_PATH}
 
 patch -d ${EPICS_BASE_PATH} -Np1 < backport-epics-base-musl.patch
+patch -d ${EPICS_BASE_PATH} -Np1 < epics-base-static-linking.patch
 
 install_module base EPICS_BASE

@@ -1,0 +1,48 @@
+From: https://github.com/epics-base/epics-base/pull/413
+From bbee325ad9e2d044f44a523d5336d8be927f9b48 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89rico=20Nogueira?= <erico.rolim@lnls.br>
+Date: Thu, 3 Aug 2023 15:57:23 -0300
+Subject: [PATCH] Support full static linking in CONFIG_COMMON.
+
+For now, only linuxCommon has the necessary definitions for this to
+work. Users must define FULL_STATIC_BUILD in CONFIG_SITE for their IOC.
+We don't add a new value for STATIC_BUILD since it's used in multiple
+places and would make any changes to the build system more complicated.
+---
+ configure/CONFIG_COMMON                | 4 +++-
+ configure/os/CONFIG.Common.linuxCommon | 2 ++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure/CONFIG_COMMON b/configure/CONFIG_COMMON
+index 2595231f4..f9c711980 100644
+--- a/configure/CONFIG_COMMON
++++ b/configure/CONFIG_COMMON
+@@ -280,7 +280,9 @@ OPT_LDFLAGS = $(OPT_LDFLAGS_$($(BUILD_CLASS)_OPT))
+ STATIC_CFLAGS = $(STATIC_CFLAGS_$(STATIC_BUILD))
+ STATIC_CXXFLAGS = $(STATIC_CXXFLAGS_$(STATIC_BUILD))
+ STATIC_LDFLAGS = $(STATIC_LDFLAGS_$(STATIC_BUILD))
+-STATIC_LDLIBS = $(STATIC_LDLIBS_$(STATIC_BUILD))
++
++STATIC_LDLIBS_FULL_YES = YES
++STATIC_LDLIBS = $(STATIC_LDLIBS_$(if $(STATIC_LDLIBS_FULL_$(FULL_STATIC_BUILD)),FULL,$(STATIC_BUILD)))
+ 
+ #--------------------------------------------------
+ # cflags for shared library src files
+diff --git a/configure/os/CONFIG.Common.linuxCommon b/configure/os/CONFIG.Common.linuxCommon
+index 24b1a0c33..4eb14d32e 100644
+--- a/configure/os/CONFIG.Common.linuxCommon
++++ b/configure/os/CONFIG.Common.linuxCommon
+@@ -20,8 +20,10 @@ OP_SYS_LDFLAGS += -rdynamic
+ 
+ # Linker flags for static & shared-library builds
+ STATIC_LDFLAGS_YES= -Wl,-Bstatic
++STATIC_LDFLAGS_FULL= -Wl,-Bstatic
+ STATIC_LDFLAGS_NO=
+ STATIC_LDLIBS_YES= -Wl,-Bdynamic
++STATIC_LDLIBS_FULL= -Wl,-Bstatic
+ 
+ # Set runtime path for shared libraries if LINKER_USE_RPATH=YES
+ SHRLIBDIR_RPATH_LDFLAGS_YES = $(SHRLIB_DEPLIB_DIRS:%=-Wl,-rpath,%)
+-- 
+2.34.1
+
