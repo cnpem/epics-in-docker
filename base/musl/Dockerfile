@@ -28,6 +28,7 @@ RUN apk add --no-cache \
     re2c \
     readline-dev \
     readline-static \
+    ncurses-static \
     python3-dev \
     py3-numpy-dev
 
@@ -45,7 +46,7 @@ COPY install-functions.sh .
 COPY backport-epics-base-musl.patch .
 COPY epics-base-static-linking.patch .
 COPY install_epics.sh .
-RUN ./install_epics.sh
+RUN COMMANDLINE_LIBRARY=READLINE_NCURSES ./install_epics.sh
 
 ARG PVXS_VERSION
 ARG SEQUENCER_VERSION
