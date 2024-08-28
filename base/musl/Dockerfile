@@ -6,6 +6,7 @@ ARG JOBS
 
 RUN apk add --no-cache \
     bash \
+    git \
     g++ \
     libevent-dev \
     libevent-static \
