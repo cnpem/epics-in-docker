@@ -74,3 +74,5 @@ COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN NEEDS_TIRPC=YES ./install_modules.sh
+
+COPY lnls-build-static-ioc.sh /usr/local/bin/lnls-build-static-ioc
