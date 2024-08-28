@@ -151,3 +151,38 @@ default image with older kernels.
 
 It can be obtained directly from the [GitHub
 registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-alpine-3.18-epics-7).
+
+### Building fully static IOCs
+
+Fully static IOCs can be built using the `lnls-build-static-ioc` script
+provided by this image. One way to automate this is using a
+`docker-compose.yml` file and running `docker compose up`; the file should have
+the following contents:
+
+```yaml
+services:
+  build-static-ioc:
+    image: ghcr.io/cnpem/lnls-alpine-3.18-epics-7:RELEASE
+    volumes:
+      - type: bind
+        source: ./
+        target: /opt/REPOSITORY
+    working_dir: /opt/REPOSITORY
+    command: lnls-build-static-ioc REPOSITORY
+```
+
+Where `RELEASE` should be the latest available version in
+<https://github.com/cnpem/epics-in-docker/tags>.
+
+This will generate a versioned tarball containing the built IOC. For this
+reason, it is recommended to use git repositories with tagged releases.
+Furthermore, the `target` and `working_dir` keys are where the IOC expects to
+be installed, meaning files like `envPaths` will encode this information. If it
+is necessary to install it elsewhere, and building it with different values for
+the keys isn't possible, it will be necessary to edit `envPaths`.
+
+For development, one can set the `SKIP_CLEAN` environment variable (under
+`environment`), to skip the cleanup build steps and speed up rebuilds.
+
+Further `CONFIG_SITE` options can be added to a
+`configure/CONFIG_SITE.local.lnls-build-static-ioc` file, if necessary.
