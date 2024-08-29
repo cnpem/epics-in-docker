@@ -113,7 +113,7 @@ desired registry on Git tag creation.
 A YAML file must be added to the repository's `.github/workflows/` directory
 (e.g. `.github/workflows/build.yml`), with the following contents:
 
-```
+```yaml
 name: Build image
 on:
   push:
