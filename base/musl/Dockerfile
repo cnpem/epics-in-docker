@@ -67,6 +67,7 @@ ARG MCA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY backport-ipmicomm.patch .
+COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN NEEDS_TIRPC=YES ./install_modules.sh

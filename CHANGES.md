@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: patch ipmiComm to handle `CODE_DESTINATION_UNAVAIL`. by
+  @gustavosr8 in https://github.com/cnpem/epics-in-docker/pull/76.
+
 ## v0.10.0
 
 Users of `ipmiComm` should update to this release, since it makes the module
