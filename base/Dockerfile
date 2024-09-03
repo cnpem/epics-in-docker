@@ -70,6 +70,7 @@ ARG SCALER_VERSION
 ARG MCA_VERSION
 
 COPY backport-ipmicomm.patch .
+COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
 COPY install_modules.sh .
 RUN ./install_modules.sh

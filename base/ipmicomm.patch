@@ -1,0 +1,24 @@
+From: https://github.com/slac-epics-modules/ipmiComm/pull/33/
+From d73ee36351ac3914ed780d432e2a03c382f2c349 Mon Sep 17 00:00:00 2001
+From: Gustavo de Souza dos Reis <gustavo.reis@lnls.br>
+Date: Tue, 3 Sep 2024 10:50:43 -0300
+Subject: [PATCH] Handles `IPMI_COMP_CODE_DESTINATION_UNAVAIL` completion code.
+
+This message is sent by MCH when the destination is not available. So,
+in order to handle this, the sens->unavail flag must be set to 1.
+---
+ src/drvMch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/src/drvMch.c b/src/drvMch.c
+index 33e9b00..8a057d0 100644
+--- a/src/drvMch.c
++++ b/src/drvMch.c
+@@ -1340,7 +1340,7 @@ size_t  tmp = sens->readMsgLength; /* Initially set to requested msg length,
+ 
+ 	/* If error code ... */
+ 	if ( rval ) {
+-		if ( rval == IPMI_COMP_CODE_REQUESTED_DATA )	
++		if ( rval == IPMI_COMP_CODE_REQUESTED_DATA || rval == IPMI_COMP_CODE_DESTINATION_UNAVAIL )	
+ 			sens->unavail = 1;
+ 		return -1;
+ 	}
