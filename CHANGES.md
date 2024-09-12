@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Breaking changes
+
+* base: only use major version for Alpine image names. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/77.
+  * Users of the Alpine image must update their workflows to use
+    `ghcr.io/cnpem/lnls-alpine-3-epics-7`.
+
 ### New features
 
 * base: add bitshuffle support for areaDetector. by @gustavosr8 in
