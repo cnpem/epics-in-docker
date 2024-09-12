@@ -1,6 +1,6 @@
 services:
   epics-base:
-    image: ${REGISTRY:-ghcr.io/cnpem}/lnls-alpine-3.18-epics-7:$TAG
+    image: ${REGISTRY:-ghcr.io/cnpem}/lnls-alpine-3-epics-7:$TAG
     build:
       context: ../
       dockerfile: musl/Dockerfile

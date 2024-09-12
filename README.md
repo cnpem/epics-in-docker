@@ -150,7 +150,7 @@ some reason. It should also be able to cope better than the Debian-based
 default image with older kernels.
 
 It can be obtained directly from the [GitHub
-registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-alpine-3.18-epics-7).
+registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-alpine-3-epics-7).
 
 ### Building fully static IOCs
 
@@ -162,7 +162,7 @@ the following contents:
 ```yaml
 services:
   build-static-ioc:
-    image: ghcr.io/cnpem/lnls-alpine-3.18-epics-7:RELEASE
+    image: ghcr.io/cnpem/lnls-alpine-3-epics-7:RELEASE
     volumes:
       - type: bind
         source: ./
