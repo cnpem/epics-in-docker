@@ -30,6 +30,7 @@ RUN apk add --no-cache \
     readline-static \
     ncurses-static \
     python3-dev \
+    py3-setuptools \
     py3-numpy-dev
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
