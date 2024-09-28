@@ -49,4 +49,53 @@ check_arguments () {
 
 }
 
+shacheck() {
+
+    download_dir=$1
+    sha=$2
+    url=$3
+
+    downloaded_file=$(find $download_dir -type f)
+    if [[ $(echo $downloaded_file | wc -w) -ne 1 ]]; then
+        echo "ERROR: Download of $url is yielding something different than one single file."
+        echo "Don't know how to proceed. Exiting..."
+        exit 1
+    fi
+
+    if ! echo $sha $downloaded_file | sha256sum --check; then
+        echo "ERROR: SHA $sha for URL $url does not match."
+        exit 1
+    fi
+
+}
+
+download () {
+
+    shift # Throw extraction mode argument away
+
+    while [[ $# -gt 1 ]]; do
+    url=$1
+    sha=$2
+    download_dir=$(mktemp -d)
+
+    echo Downloading "$url"...
+    wget -P $download_dir "$url" &> /tmp/wget.log || (cat /tmp/wget.log && false)
+
+    filename=$(basename $download_dir/*)
+    shacheck $download_dir $sha $url
+
+    if [[ ${filename,,} == *".zip" ]]; then
+        unzip -qo $download_dir/$filename -d $dest
+    else
+        tar --no-same-owner -xf $download_dir/$filename -C $dest
+    fi
+
+    rm -rf $download_dir /tmp/wget.log
+
+    shift 2
+    done
+
+}
+
 check_arguments ${@}
+download ${@}
