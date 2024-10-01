@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.10.1
+
+This bug fix release is relevant to ipmiComm users.
+
 ### Bug fixes
 
 * base: patch ipmiComm to handle `CODE_DESTINATION_UNAVAIL`. by
