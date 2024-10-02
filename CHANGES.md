@@ -97,6 +97,10 @@ need to update if they noticed missing features.
   https://github.com/cnpem/epics-in-docker/pull/42
 * ci: add reusable job for IOC images. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/49
+* ioc: copy locally installed software from build stages. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/55
+  * This allows the IOC build phase to install custom files, available at
+    runtime, under `/usr/local` tree for all targets.
 
 ### Bug fixes
 
