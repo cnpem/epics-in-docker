@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.11.0
+
 ### Breaking changes
 
 * base: only use major version for Alpine image names. by @ericonr in
