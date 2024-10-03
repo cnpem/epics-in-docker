@@ -62,7 +62,7 @@ shacheck() {
         exit 1
     fi
 
-    if ! echo $sha $downloaded_file | sha256sum --check; then
+    if ! echo $sha $downloaded_file | sha256sum -c; then
         echo "ERROR: SHA $sha for URL $url does not match."
         exit 1
     fi
