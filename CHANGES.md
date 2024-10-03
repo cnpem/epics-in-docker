@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### New features
+* base: add bitshuffle support for areaDetector. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/78
+
 ## v0.10.1
 
 This bug fix release is relevant to ipmiComm users.
