@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add modbus module. by @Nicolas-Moliterno in
+  https://github.com/cnpem/epics-in-docker/pull/81
+
 ## v0.11.0
 
 ### Breaking changes
