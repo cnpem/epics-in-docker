@@ -22,6 +22,11 @@ EPICS_BASE
 CALC
 "
 
+install_from_github epics-modules modbus MODBUS $MODBUS_VERSION "
+EPICS_BASE
+ASYN
+"
+
 install_from_github paulscherrerinstitute StreamDevice STREAM $STREAMDEVICE_VERSION "
 EPICS_BASE
 ASYN
