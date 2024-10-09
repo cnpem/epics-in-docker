@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.12.0
+
 ### New features
 
 * base: add modbus module. by @Nicolas-Moliterno in
