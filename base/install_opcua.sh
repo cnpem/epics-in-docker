@@ -6,7 +6,7 @@ set -ex
 
 opcua_release_url=https://github.com/epics-modules/opcua/releases/download/v${OPCUA_VERSION}
 opcua_release_file=IOC_opcua-${OPCUA_VERSION}_Base-${EPICS_BASE_VERSION}_debian${DEBIAN_VERSION%.*}.tar.gz
-lnls-get-n-unpack -l $opcua_release_url/$opcua_release_file
+lnls-get-n-unpack -l $opcua_release_url/$opcua_release_file $OPCUA_SHA256
 
 mv binaryOpcuaIoc opcua
 install_module -i opcua OPCUA "

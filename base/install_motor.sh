@@ -52,7 +52,7 @@ SNCSEQ
 
 cd $EPICS_MODULES_PATH
 
-download_from_github dls-controls pmac $PMAC_VERSION
+download_from_github dls-controls pmac $PMAC_VERSION $PMAC_SHA256
 
 rm pmac/configure/RELEASE.local.linux-x86_64
 rm pmac/configure/RELEASE.linux-x86_64.Common
