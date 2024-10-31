@@ -25,6 +25,7 @@ RUN apt update -y && \
         libxml2-dev \
         libsnmp-dev \
         libssl-dev \
+        libtirpc-dev \
         re2c \
         unzip \
         wget \
@@ -55,7 +56,7 @@ WORKDIR ${EPICS_MODULES_PATH}
 
 COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch $EPICS_IN_DOCKER
 COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
-RUN $EPICS_IN_DOCKER/install_modules.sh
+RUN NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
 
 COPY backport-adsupport-nanohttp.patch $EPICS_IN_DOCKER
 COPY area_detector_versions.sh install_area_detector.sh $EPICS_IN_DOCKER

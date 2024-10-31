@@ -13,6 +13,9 @@
   * Failing tests should ideally be fixed. If that isn't possible --- no
     control over upstream, or tests require hardware access --- they can be
     disabled by setting the environment variable `SKIP_TESTS` to  `1`.
+* base: update to Debian 12. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/84
+  * Refer to up to date README for new/updated `RUNTIME_PACKAGES`.
 
 ## v0.12.0
 
