@@ -46,7 +46,7 @@ ENV EPICS_RELEASE_FILE $EPICS_IN_DOCKER/RELEASE
 
 WORKDIR /opt/epics
 
-COPY backport-epics-base-musl.patch epics-base-static-linking.patch $EPICS_IN_DOCKER
+COPY epics-base-static-linking.patch $EPICS_IN_DOCKER
 COPY epics_versions.sh install_epics.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_epics.sh
 
