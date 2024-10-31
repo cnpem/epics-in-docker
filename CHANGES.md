@@ -6,6 +6,8 @@
 
 * base: update to EPICS 7.0.8.1 and OPCUA 0.10.0. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/85
+* base: update to Debian 12. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/84
 
 ## v0.12.0
 

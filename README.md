@@ -88,7 +88,7 @@ image should be tagged as `latest`, `:${TAG}` can simply be omitted.
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
-must include `libxml2` and `libtiff5` in the `RUNTIME_PACKAGES`, as they are
+must include `libxml2` and `libtiff6` in the `RUNTIME_PACKAGES`, as they are
 not built in `ADSupport`.
 
 ### Pmac IOCs

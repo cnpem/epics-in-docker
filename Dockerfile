@@ -1,4 +1,4 @@
-ARG DEBIAN_VERSION=11.9
+ARG DEBIAN_VERSION=12.8
 
 FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.12.0-dev AS build-image
 
@@ -15,6 +15,7 @@ COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         libreadline8 \
+        libtirpc3 \
         busybox \
         netcat-openbsd \
         procserv \
