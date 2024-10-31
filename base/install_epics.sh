@@ -8,7 +8,6 @@ set -ex
 lnls-get-n-unpack -l https://epics-controls.org/download/base/base-${EPICS_BASE_VERSION}.tar.gz
 mv base-${EPICS_BASE_VERSION} ${EPICS_BASE_PATH}
 
-patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/backport-epics-base-musl.patch
 patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/epics-base-static-linking.patch
 
 if [ -n "$COMMANDLINE_LIBRARY" ]; then
