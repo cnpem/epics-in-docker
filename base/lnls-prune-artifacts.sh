@@ -81,6 +81,34 @@ get_used_epics_modules() {
     compute_set_difference <(echo "$all_modules") <(echo "$unused_modules")
 }
 
+# Traverse ancestor directories of each provided path, and concatenate all
+# their .lnls-keep-paths defined entries as absolute paths.
+get_defined_paths_to_keep() {
+    for path; do
+        if [ "${path:0:1}" != "/" ]; then
+            >&2 echo "error: get_defined_paths_to_keep() expects absolute paths, but got '$path'"
+            exit 1
+        fi
+
+        while true; do
+            keep_path_file="$path/.lnls-keep-paths"
+
+            if [ -f "$keep_path_file" ]; then
+                keep_paths=$(cat "$keep_path_file")
+
+                for keep_path in $keep_paths; do
+                    # output it as an absolute path
+                    realpath "$path"/$keep_path
+                done
+            fi
+
+            [ "$path" == "/" ] && break
+
+            path=$(dirname $path)
+        done
+    done | sort -u
+}
+
 remove_unused_epics_modules() {
     targets=$(echo $@ | sed -E "s|\s+|\n|g")
 
