@@ -77,12 +77,36 @@ get_used_epics_modules() {
     filter_out_paths "$all_modules" "$unused_modules"
 }
 
+# Traverse ancestor directories of each provided path, and concatenate all
+# their .lnls-keep-paths defined entries as absolute paths.
+get_defined_paths_to_keep() {
+    for path; do
+        depth=$(echo $path | grep -o '/' | wc -l)
+
+        for i in $(seq 1 $depth); do
+            ancestor=$(echo $path | cut -d '/' -f 1-$i)
+
+            keep_path_file="$ancestor/.lnls-keep-paths"
+
+            if [ -f "$keep_path_file" ]; then
+                keep_paths=$(cat "$keep_path_file")
+
+                for keep_path in $keep_paths; do
+                    # make it an absolute path
+                    realpath "$ancestor"/$keep_path
+                done
+            fi
+        done
+    done | sort -u
+}
+
 prune_module_dirs() {
     module=$1
 
     keep_paths="
         $(find_shared_libs $module)
         $(find $module -type f -regex ".*\.\(db\|template\|req\)" -printf "%h\n" | sort -u)
+        $(get_defined_paths_to_keep $module)
     "
 
     while read -r candidate; do
@@ -150,11 +174,16 @@ remove_unused_shared_libs() {
         remove_libs=$(echo "$remove_libs" | grep -vx $lib)
     done
 
-    for lib in $remove_libs; do
-        size=$(du -hs $lib | cut -f 1)
+    keep_paths=$(get_defined_paths_to_keep $remove_libs)
 
-        echo "Removing shared library '$lib' ($size)"
-        rm -f ${lib%.so*}.so*
+    for lib in $remove_libs; do
+        # if library is not found inside any $keep_dirs, remove it
+        if find $keep_paths -path "$lib" -exec false {} +; then
+            size=$(du -hs $lib | cut -f 1)
+
+            echo "Removing shared library '$lib' ($size)"
+            rm -f ${lib%.so*}.so*
+        fi
     done
 }
 
