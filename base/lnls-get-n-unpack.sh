@@ -8,7 +8,7 @@ case "$1" in
     -r) dest=/ ;;
     -l) dest=. ;;
     *) >&2 echo "Invalid extraction mode: must be either root (-r) or local (-l)."
-       exit 1;
+       exit 1
     ;;
 esac
 
