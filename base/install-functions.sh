@@ -15,8 +15,9 @@ download_from_github() {
     github_org=$1
     module_name=$2
     commit=$3
+    sha=$4
 
-    lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/$commit.tar.gz
+    lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/$commit.tar.gz $sha
 
     # GitHub tarballs for tags starting with 'v' don't include that 'v'
     commit=${commit#v}
@@ -65,8 +66,9 @@ install_from_github() {
     module_name=$2
     dependency_name=$3
     tag=$4
-    release_content="$5"
+    sha=$5
+    release_content="$6"
 
-    download_from_github $github_org $module_name $tag
+    download_from_github $github_org $module_name $tag $sha
     install_module $flag_ioc $module_name $dependency_name "$release_content"
 }
