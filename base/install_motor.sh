@@ -55,7 +55,7 @@ SNCSEQ
 
 cd $EPICS_MODULES_PATH
 
-download_from_github dls-controls pmac $PMAC_VERSION
+download_from_github dls-controls pmac $PMAC_VERSION $PMAC_SHA256
 
 rm pmac/configure/RELEASE.local.linux-x86_64
 rm pmac/configure/RELEASE.linux-x86_64.Common
@@ -80,7 +80,7 @@ MOTOR
 BUSY
 "
 
-download_from_github cnpem motorParker $PARKER_VERSION
+download_from_github cnpem motorParker $PARKER_VERSION $PARKER_SHA256
 install_module motorParker MOTOR_PARKER "
 EPICS_BASE
 ASYN
