@@ -17,7 +17,7 @@ git submodule update --init --depth 1 -j ${JOBS} \
     ADSupport \
     ADCore
 
-download_from_github areaDetector ADEiger $ADEIGER_VERSION
+download_from_github areaDetector ADEiger $ADEIGER_VERSION $ADEIGER_SHA256
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-remove-lz4.patch
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-stream2-ub.patch
 
@@ -112,11 +112,11 @@ ADCore/bin/*/plugin-test
 
 cd ..
 
-download_from_github cnpem ssc-pimega $LIBSSCPIMEGA_VERSION
+download_from_github cnpem ssc-pimega $LIBSSCPIMEGA_VERSION $LIBSSCPIMEGA_SHA256
 make -C ssc-pimega/c install
 rm -rf ssc-pimega
 
-install_from_github cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION "
+install_from_github cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION $NDSSCPIMEGA_SHA256 "
 EPICS_BASE
 ASYN
 AREA_DETECTOR

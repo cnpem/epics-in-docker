@@ -13,9 +13,9 @@ cd motor/modules
 git submodule update --init --depth 1 -j ${JOBS} \
     motorMotorSim
 
-download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION
-download_from_github cnpem motorNewport $NEWPORT_VERSION
-download_from_github epics-motor motorParker $PARKER_VERSION
+download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION $PIGCS2_SHA256
+download_from_github cnpem motorNewport $NEWPORT_VERSION $NEWPORT_SHA256
+download_from_github epics-motor motorParker $PARKER_VERSION $PARKER_SHA256
 
 rm -rf .git
 
@@ -49,7 +49,7 @@ make clean
 
 cd $EPICS_MODULES_PATH
 
-download_from_github dls-controls pmac $PMAC_VERSION
+download_from_github dls-controls pmac $PMAC_VERSION $PMAC_SHA256
 
 rm pmac/configure/RELEASE.local.linux-x86_64
 rm pmac/configure/RELEASE.linux-x86_64.Common
