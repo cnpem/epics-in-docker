@@ -45,6 +45,13 @@ Add a changelog entry (usually the commit title and the pull request URL) in
 Use sub-items to provide relevant additional information concisely, following
 the format of existing entries.
 
+## Checksum verification
+
+When adding a new module or upgrading the version of an already supported one,
+it is necessary to also add or update the respective SHA-256 in the
+correspondent `*_version.sh` file. The recommended way to get this value is by
+passing the module tarball to `sha256sum(1)`.
+
 ## Release Procedure
 
 When tagging a new release, which we will call `vX.Y.Z`, a few steps are
