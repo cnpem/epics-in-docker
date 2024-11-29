@@ -36,7 +36,6 @@ RUN apk add --no-cache \
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
 
-ARG EPICS_BASE_VERSION
 ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
 ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
@@ -46,35 +45,14 @@ COPY install-functions.sh .
 
 COPY backport-epics-base-musl.patch .
 COPY epics-base-static-linking.patch .
-COPY install_epics.sh .
+COPY epics_versions.sh install_epics.sh .
 RUN COMMANDLINE_LIBRARY=READLINE_NCURSES ./install_epics.sh
-
-ARG PVXS_VERSION
-ARG SEQUENCER_VERSION
-ARG CALC_VERSION
-ARG ASYN_VERSION
-ARG MODBUS_VERSION
-ARG STREAMDEVICE_VERSION
-ARG BUSY_VERSION
-ARG AUTOSAVE_VERSION
-ARG SSCAN_VERSION
-ARG RECCASTER_VERSION
-ARG IPAC_VERSION
-ARG CAPUTLOG_VERSION
-ARG RETOOLS_VERSION
-ARG ETHER_IP_VERSION
-ARG IOCSTATS_VERSION
-ARG IPMICOMM_VERSION
-ARG PYDEVSUP_VERSION
-ARG SNMP_VERSION
-ARG SCALER_VERSION
-ARG MCA_VERSION
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY backport-ipmicomm.patch .
 COPY ipmicomm.patch .
 COPY caputlog-waveform-fix.patch .
-COPY install_modules.sh .
+COPY modules_versions.sh install_modules.sh .
 RUN NEEDS_TIRPC=YES ./install_modules.sh
 
 COPY lnls-build-static-ioc.sh /usr/local/bin/lnls-build-static-ioc

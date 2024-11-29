@@ -3,6 +3,7 @@
 set -ex
 
 . /opt/epics/install-functions.sh
+. ./modules_versions.sh
 
 install_from_github mdavidsaver pvxs PVXS $PVXS_VERSION "
 EPICS_BASE

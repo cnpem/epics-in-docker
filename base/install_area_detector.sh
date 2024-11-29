@@ -3,6 +3,7 @@
 set -ex
 
 . /opt/epics/install-functions.sh
+. ./area_detector_versions.sh
 
 git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
     https://github.com/areaDetector/areaDetector
