@@ -42,16 +42,13 @@ ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
 ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
 
-COPY backport-epics-base-musl.patch .
-COPY epics-base-static-linking.patch .
+COPY backport-epics-base-musl.patch epics-base-static-linking.patch .
 COPY epics_versions.sh install_epics.sh .
 RUN ./install_epics.sh
 
 WORKDIR ${EPICS_MODULES_PATH}
 
-COPY backport-ipmicomm.patch .
-COPY ipmicomm.patch .
-COPY caputlog-waveform-fix.patch .
+COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch .
 COPY modules_versions.sh install_modules.sh .
 RUN ./install_modules.sh
 
