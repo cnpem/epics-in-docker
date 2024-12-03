@@ -71,7 +71,7 @@ FROM build-stage AS dynamic-build
 ARG JOBS=1
 ARG RUNDIR
 
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+RUN make distclean && make -j ${JOBS} && make runtests && make clean && make -C ${RUNDIR}
 
 
 FROM base AS dynamic-link
@@ -86,7 +86,7 @@ ARG RUNDIR
 
 RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+RUN make distclean && make -j ${JOBS} && make runtests && make clean && make -C ${RUNDIR}
 
 
 FROM base AS static-link

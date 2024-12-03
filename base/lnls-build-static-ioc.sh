@@ -42,6 +42,8 @@ make_skip() {
 make_skip distclean
 make -j$(nproc)
 
+make runtests
+
 version=$(git describe --tags)
 
 echo $version > $IOC-version
