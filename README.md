@@ -92,6 +92,11 @@ with the `make runtests` build system target. However, if these tests fail, and
 it is not possible to fix them (no control over upstream, or tests require
 hardware access), the `SKIP_TESTS` argument can be set to `1`.
 
+### IOCs using PVXS
+
+IOCs using the `PVXS` module to provide `qsrv` and PVA link implementations
+must include `libevent-pthreads-2.1-7` in the `RUNTIME_PACKAGES`.
+
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
