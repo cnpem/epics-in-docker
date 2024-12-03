@@ -22,7 +22,7 @@ restore_configure() {
 trap restore_configure EXIT
 
 echo "overwriting configure/ files..."
-cp /opt/epics/RELEASE configure/
+cp $EPICS_RELEASE_FILE configure/
 cat << "EOF" > configure/CONFIG_SITE.local
 STATIC_BUILD=YES
 FULL_STATIC_BUILD=YES
