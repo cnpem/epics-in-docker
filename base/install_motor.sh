@@ -2,8 +2,8 @@
 
 set -ex
 
-. /opt/epics/install-functions.sh
-. ./motor_versions.sh
+. $EPICS_IN_DOCKER/install-functions.sh
+. $EPICS_IN_DOCKER/motor_versions.sh
 
 git clone --depth 1 --branch ${MOTOR_VERSION} \
     https://github.com/epics-modules/motor
