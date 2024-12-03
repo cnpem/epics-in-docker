@@ -62,7 +62,7 @@ WORKDIR /opt/${REPONAME}
 
 COPY . .
 
-RUN cp /opt/epics/RELEASE configure/RELEASE
+RUN cp $EPICS_RELEASE_FILE configure/RELEASE
 RUN rm -rf .git/
 
 
