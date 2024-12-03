@@ -8,6 +8,11 @@
   https://github.com/cnpem/epics-in-docker/pull/85
 * images: add PVAGW image. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/90
+* ioc: run available IOC tests when building them. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/89
+  * Failing tests should ideally be fixed. If that isn't possible --- no
+    control over upstream, or tests require hardware access --- they can be
+    disabled by setting the environment variable `SKIP_TESTS` to  `1`.
 
 ## v0.12.0
 

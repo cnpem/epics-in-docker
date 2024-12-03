@@ -85,6 +85,13 @@ and when building images locally and exporting the `TAG` environment variable.
 If there is no interest in using versioned images and the resulting container
 image should be tagged as `latest`, `:${TAG}` can simply be omitted.
 
+### IOC tests
+
+In case an IOC includes tests using EPICS's test framework, these will be run
+with the `make runtests` build system target. However, if these tests fail, and
+it is not possible to fix them (no control over upstream, or tests require
+hardware access), the `SKIP_TESTS` argument can be set to `1`.
+
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
@@ -186,3 +193,5 @@ For development, one can set the `SKIP_CLEAN` environment variable (under
 
 Further `CONFIG_SITE` options can be added to a
 `configure/CONFIG_SITE.local.lnls-build-static-ioc` file, if necessary.
+
+The `lnls-build-static-ioc` script also runs [IOC tests](#ioc-tests).
