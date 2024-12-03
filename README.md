@@ -8,7 +8,7 @@ build thin IOC container images.
 ## Base image
 
 The base image is built in CI and should be obtained directly from the [GitHub
-registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-debian-11-epics-7).
+registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-debian-epics-7).
 
 The versions used in the base image are defined in `base/.env`.
 
