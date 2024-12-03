@@ -41,9 +41,17 @@ RUN ln -s ${ENTRYPOINT} ./entrypoint
 ENTRYPOINT ["./entrypoint"]
 
 
+FROM build-image AS pruned-build
+
+ARG APP_DIRS
+ARG RUNDIR
+
+RUN lnls-prune-artifacts ${APP_DIRS} ${RUNDIR}
+
+
 FROM base AS no-build
 
-COPY --from=build-image /opt /opt
+COPY --from=pruned-build /opt /opt
 
 
 FROM build-image AS build-stage
@@ -69,9 +77,12 @@ RUN rm -rf .git/
 FROM build-stage AS dynamic-build
 
 ARG JOBS=1
+ARG APP_DIRS
 ARG RUNDIR
 
 RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+
+RUN lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}
 
 
 FROM base AS dynamic-link
