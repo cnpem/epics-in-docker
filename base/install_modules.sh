@@ -2,8 +2,8 @@
 
 set -ex
 
-. /opt/epics/install-functions.sh
-. ./modules_versions.sh
+. $EPICS_IN_DOCKER/install-functions.sh
+. $EPICS_IN_DOCKER/modules_versions.sh
 
 install_from_github mdavidsaver pvxs PVXS $PVXS_VERSION "
 EPICS_BASE
@@ -58,7 +58,7 @@ EPICS_BASE
 "
 
 download_from_github epics-modules caPutLog $CAPUTLOG_VERSION
-patch -d caPutLog -Np1 < caputlog-waveform-fix.patch
+patch -d caPutLog -Np1 < $EPICS_IN_DOCKER/caputlog-waveform-fix.patch
 install_module caPutLog CAPUTLOG "
 EPICS_BASE
 "
@@ -76,8 +76,8 @@ EPICS_BASE
 "
 
 download_from_github slac-epics-modules ipmiComm $IPMICOMM_VERSION
-patch -d ipmiComm -Np1 < backport-ipmicomm.patch
-patch -d ipmiComm -Np1 < ipmicomm.patch
+patch -d ipmiComm -Np1 < $EPICS_IN_DOCKER/backport-ipmicomm.patch
+patch -d ipmiComm -Np1 < $EPICS_IN_DOCKER/ipmicomm.patch
 JOBS=1 install_module ipmiComm IPMICOMM "
 EPICS_BASE
 ASYN

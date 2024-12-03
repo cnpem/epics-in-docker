@@ -2,14 +2,14 @@
 
 set -ex
 
-. /opt/epics/install-functions.sh
-. ./epics_versions.sh
+. $EPICS_IN_DOCKER/install-functions.sh
+. $EPICS_IN_DOCKER/epics_versions.sh
 
 lnls-get-n-unpack -l https://epics-controls.org/download/base/base-${EPICS_BASE_VERSION}.tar.gz
 mv base-${EPICS_BASE_VERSION} ${EPICS_BASE_PATH}
 
-patch -d ${EPICS_BASE_PATH} -Np1 < backport-epics-base-musl.patch
-patch -d ${EPICS_BASE_PATH} -Np1 < epics-base-static-linking.patch
+patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/backport-epics-base-musl.patch
+patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/epics-base-static-linking.patch
 
 if [ -n "$COMMANDLINE_LIBRARY" ]; then
     echo "COMMANDLINE_LIBRARY = $COMMANDLINE_LIBRARY" > ${EPICS_BASE_PATH}/configure/CONFIG_SITE.local

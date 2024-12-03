@@ -35,30 +35,34 @@ RUN apt update -y && \
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
 
-WORKDIR /opt/epics
-COPY install-functions.sh .
+ENV EPICS_IN_DOCKER /opt/epics-in-docker
+RUN mkdir $EPICS_IN_DOCKER
+
+COPY install-functions.sh $EPICS_IN_DOCKER
 
 ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_MODULES_PATH /opt/epics/modules
 ENV EPICS_RELEASE_FILE /opt/epics/RELEASE
 
-COPY backport-epics-base-musl.patch epics-base-static-linking.patch .
-COPY epics_versions.sh install_epics.sh .
-RUN ./install_epics.sh
+WORKDIR /opt/epics
+
+COPY backport-epics-base-musl.patch epics-base-static-linking.patch $EPICS_IN_DOCKER
+COPY epics_versions.sh install_epics.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_epics.sh
 
 WORKDIR ${EPICS_MODULES_PATH}
 
-COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch .
-COPY modules_versions.sh install_modules.sh .
-RUN ./install_modules.sh
+COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch $EPICS_IN_DOCKER
+COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_modules.sh
 
-COPY backport-adsupport-nanohttp.patch .
-COPY area_detector_versions.sh install_area_detector.sh .
-RUN ./install_area_detector.sh
+COPY backport-adsupport-nanohttp.patch $EPICS_IN_DOCKER
+COPY area_detector_versions.sh install_area_detector.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_area_detector.sh
 
-COPY motor_versions.sh install_motor.sh .
-RUN ./install_motor.sh
+COPY motor_versions.sh install_motor.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_motor.sh
 
 ARG DEBIAN_VERSION
-COPY opcua_versions.sh install_opcua.sh .
-RUN ./install_opcua.sh
+COPY opcua_versions.sh install_opcua.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_opcua.sh

@@ -2,9 +2,9 @@
 
 set -ex
 
-. /opt/epics/install-functions.sh
-. /opt/epics/epics_versions.sh
-. ./opcua_versions.sh
+. $EPICS_IN_DOCKER/install-functions.sh
+. $EPICS_IN_DOCKER/epics_versions.sh
+. $EPICS_IN_DOCKER/opcua_versions.sh
 
 opcua_release_url=https://github.com/epics-modules/opcua/releases/download/v${OPCUA_VERSION}
 opcua_release_file=IOC_opcua-${OPCUA_VERSION}_Base-${EPICS_BASE_VERSION}_debian${DEBIAN_VERSION%.*}.tar.gz

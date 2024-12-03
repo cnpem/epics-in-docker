@@ -2,8 +2,8 @@
 
 set -ex
 
-. /opt/epics/install-functions.sh
-. ./area_detector_versions.sh
+. $EPICS_IN_DOCKER/install-functions.sh
+. $EPICS_IN_DOCKER/area_detector_versions.sh
 
 git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
     https://github.com/areaDetector/areaDetector
@@ -97,7 +97,7 @@ ARAVIS_INCLUDE=$(pkg-config --cflags-only-I aravis-0.8 | sed -e "s|-I||g")
 
 cd -
 
-patch -d ADSupport -Np1 < ${EPICS_MODULES_PATH}/backport-adsupport-nanohttp.patch
+patch -d ADSupport -Np1 < ${EPICS_IN_DOCKER}/backport-adsupport-nanohttp.patch
 
 make -j${JOBS}
 make clean
