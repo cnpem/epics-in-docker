@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         image:
-          - { dir: base, name: lnls-debian-11-epics-7 }
+          - { dir: base, name: lnls-debian-epics-7 }
           - { dir: base/musl, name: lnls-alpine-3-epics-7 }
     env:
       TAG: ${{ github.event_name == 'push' && github.ref_name || github.head_ref }}
@@ -52,7 +52,7 @@ jobs:
         with:
           driver: docker
       - name: Build and push included IOC images
-        if: ${{ matrix.image.name == 'lnls-debian-11-epics-7' }}
+        if: ${{ matrix.image.name == 'lnls-debian-epics-7' }}
         uses: docker/bake-action@v5
         with:
           workdir: images/
