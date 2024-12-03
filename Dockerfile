@@ -70,8 +70,9 @@ FROM build-stage AS dynamic-build
 
 ARG JOBS=1
 ARG RUNDIR
+ARG SKIP_TESTS
 
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
 
 
 FROM base AS dynamic-link
@@ -83,10 +84,11 @@ FROM build-stage AS static-build
 
 ARG JOBS=1
 ARG RUNDIR
+ARG SKIP_TESTS
 
 RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
-RUN make distclean && make -j ${JOBS} && make clean && make -C ${RUNDIR}
+RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
 
 
 FROM base AS static-link
