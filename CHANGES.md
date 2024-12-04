@@ -6,6 +6,8 @@
 
 * base: update to EPICS 7.0.8.1 and OPCUA 0.10.0. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/85
+* images: add PVAGW image. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/90
 
 ## v0.12.0
 

@@ -5,9 +5,17 @@ set -ex
 . $EPICS_IN_DOCKER/install-functions.sh
 . $EPICS_IN_DOCKER/modules_versions.sh
 
-install_from_github mdavidsaver pvxs PVXS $PVXS_VERSION "
+install_from_github epics-base pvxs PVXS $PVXS_VERSION "
 EPICS_BASE
 "
+
+download_from_github epics-base p4p $P4P_VERSION
+echo PYTHON=python3 >> p4p/configure/CONFIG_SITE
+install_module p4p P4P "
+EPICS_BASE
+PVXS
+"
+echo 'python3*/linux*/' > p4p/.lnls-keep-paths
 
 install_from_github epics-modules sequencer SNCSEQ $SEQUENCER_VERSION "
 EPICS_BASE

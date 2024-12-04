@@ -29,6 +29,7 @@ RUN apt update -y && \
         unzip \
         wget \
         python3-dev \
+        cython3 \
         python3-numpy \
         ca-certificates
 
