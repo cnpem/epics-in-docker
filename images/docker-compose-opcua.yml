@@ -1,5 +1,5 @@
 services:
-  ioc:
+  opcua:
     image: ghcr.io/cnpem/opcua-epics-ioc:$TAG
     build:
       context: ./

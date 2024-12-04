@@ -1,5 +1,5 @@
 services:
-  ioc:
+  motor-pigcs2:
     image: ghcr.io/cnpem/motor-pigcs2-epics-ioc:$TAG
     build:
       context: ./
