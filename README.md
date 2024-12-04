@@ -8,7 +8,7 @@ build thin IOC container images.
 ## Base image
 
 The base image is built in CI and should be obtained directly from the [GitHub
-registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-debian-11-epics-7).
+registry](https://github.com/cnpem/epics-in-docker/pkgs/container/lnls-debian-epics-7).
 
 The versions used in the base image are defined in `base/.env`.
 
@@ -85,10 +85,16 @@ and when building images locally and exporting the `TAG` environment variable.
 If there is no interest in using versioned images and the resulting container
 image should be tagged as `latest`, `:${TAG}` can simply be omitted.
 
+### IOCs using PVXS
+
+IOCs using the `PVXS` module to provide a `qsrv` and PVA link implementation
+must include `libevent-2.1-7` and `libevent-pthreads-2.1-7` in the
+`RUNTIME_PACKAGES`.
+
 ### areaDetector IOCs
 
 `areaDetector` IOCs must be built with target `dynamic-link`. In addition, they
-must include `libxml2` and `libtiff5` in the `RUNTIME_PACKAGES`, as they are
+must include `libxml2` and `libtiff6` in the `RUNTIME_PACKAGES`, as they are
 not built in `ADSupport`.
 
 ### Pmac IOCs

@@ -10,4 +10,4 @@ services:
       args:
         REPONAME: opcua
         RUNDIR: /opt/epics/modules/opcua/iocBoot/iocUaDemoServer
-        RUNTIME_PACKAGES: libxml2 libssl1.1
+        RUNTIME_PACKAGES: libxml2 libssl3
