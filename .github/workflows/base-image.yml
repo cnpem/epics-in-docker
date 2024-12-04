@@ -62,4 +62,5 @@ jobs:
             docker-compose-opcua.yml
             docker-compose-motorpigcs2.yml
             docker-compose-mca.yml
+            docker-compose-pvagw.yml
           push: ${{ github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true' && github.ref_type == 'tag' }}
