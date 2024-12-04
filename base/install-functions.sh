@@ -1,3 +1,8 @@
+if [ "$JOBS" -eq "-1" ]; then
+    JOBS=$(nproc)
+    echo "Setting JOBS to $JOBS" >&2
+fi
+
 get_module_path() {
     for module in $@; do
         if [ -n "$module" ]; then

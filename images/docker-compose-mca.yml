@@ -1,5 +1,5 @@
 services:
-  ioc:
+  mca:
     image: ghcr.io/cnpem/mca-epics-ioc:$TAG
     build:
       context: ./

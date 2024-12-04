@@ -9,5 +9,5 @@ services:
         org.opencontainers.image.source: ${SOURCE:-https://github.com/cnpem/epics-in-docker}
         org.opencontainers.image.description: "EPICS base and modules build image"
       args:
-        JOBS: ${JOBS:-1}
+        JOBS: ${JOBS:--1}
         DEBIAN_VERSION: 11.9

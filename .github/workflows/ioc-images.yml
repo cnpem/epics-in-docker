@@ -25,7 +25,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push tagged image
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v5
         with:
           workdir: ./
           files: docker-compose.yml
