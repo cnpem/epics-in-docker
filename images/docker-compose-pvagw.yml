@@ -1,0 +1,12 @@
+services:
+  pvagw:
+    image: ghcr.io/cnpem/epics-pvagw:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: no-build
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNDIR: /opt/epics/modules/p4p/bin/linux-x86_64
+        RUNTIME_PACKAGES: python3-numpy python3-ply
