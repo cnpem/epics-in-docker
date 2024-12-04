@@ -39,7 +39,27 @@ jobs:
         with:
           workdir: ${{ matrix.image.dir }}
           files: docker-compose.yml
+          load: true
           set: |
             *.cache-from=type=gha,scope=${{ matrix.image.name }}
             *.cache-to=type=gha,mode=max,scope=${{ matrix.image.name }}
+          push: ${{ github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true' && github.ref_type == 'tag' }}
+      - name: Point IOC Dockerfile to image that was just built
+        run: sed -i "s/v.*-dev/$TAG/" Dockerfile
+      - name: Configure builder using docker driver
+        uses: docker/setup-buildx-action@v3
+        id: dockerbuilder
+        with:
+          driver: docker
+      - name: Build and push included IOC images
+        if: ${{ matrix.image.name == 'lnls-debian-11-epics-7' }}
+        uses: docker/bake-action@v5
+        with:
+          workdir: images/
+          builder: ${{ steps.dockerbuilder.outputs.name }}
+          allow: fs.read=../Dockerfile
+          files: |
+            docker-compose-opcua.yml
+            docker-compose-motorpigcs2.yml
+            docker-compose-mca.yml
           push: ${{ github.event_name == 'push' && vars.PUSH_TO_REGISTRY == 'true' && github.ref_type == 'tag' }}
