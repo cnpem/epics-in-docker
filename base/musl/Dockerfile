@@ -31,6 +31,7 @@ RUN apk add --no-cache \
     ncurses-static \
     python3-dev \
     py3-setuptools \
+    cython \
     py3-numpy-dev
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
