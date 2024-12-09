@@ -10,4 +10,5 @@ services:
       args:
         APP_DIRS: /opt/epics/modules/p4p
         RUNDIR: /opt/epics/modules/p4p/bin/linux-x86_64
-        RUNTIME_PACKAGES: python3-numpy python3-ply
+        ENTRYPOINT: ./pvagw
+        RUNTIME_PACKAGES: python3-numpy python3-ply libevent-pthreads-2.1-7
