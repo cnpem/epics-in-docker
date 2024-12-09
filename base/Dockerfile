@@ -35,6 +35,7 @@ RUN apt update -y && \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
+COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
 COPY lnls-run.sh /usr/local/bin/lnls-run
 
 ENV EPICS_IN_DOCKER /opt/epics-in-docker
