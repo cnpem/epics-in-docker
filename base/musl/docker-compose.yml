@@ -10,4 +10,3 @@ services:
         org.opencontainers.image.description: "EPICS base and modules build image for fully static executables"
       args:
         JOBS: ${JOBS:--1}
-        ALPINE_VERSION: 3.20.3
