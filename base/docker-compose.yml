@@ -10,4 +10,3 @@ services:
         org.opencontainers.image.description: "EPICS base and modules build image"
       args:
         JOBS: ${JOBS:--1}
-        DEBIAN_VERSION: 12.8
