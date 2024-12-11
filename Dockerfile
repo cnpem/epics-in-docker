@@ -30,7 +30,7 @@ COPY --from=build-image /usr/local/bin/lnls-get-n-unpack /usr/local/bin/lnls-get
 RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig
 RUN if [ -n "$RUNTIME_PIP_PACKAGES" ]; then \
-        pip install $RUNTIME_PIP_PACKAGES; \
+        pip install --break-system-packages $RUNTIME_PIP_PACKAGES; \
     fi
 
 COPY --from=build-image /usr/local/bin/lnls-run /usr/local/bin/lnls-run
