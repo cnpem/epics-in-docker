@@ -37,14 +37,14 @@ RUN apk add --no-cache \
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
 
-ENV EPICS_IN_DOCKER /opt/epics-in-docker
+ENV EPICS_IN_DOCKER=/opt/epics-in-docker
 RUN mkdir $EPICS_IN_DOCKER
 
 COPY install-functions.sh $EPICS_IN_DOCKER
 
-ENV EPICS_BASE_PATH /opt/epics/base
-ENV EPICS_MODULES_PATH /opt/epics/modules
-ENV EPICS_RELEASE_FILE $EPICS_IN_DOCKER/RELEASE
+ENV EPICS_BASE_PATH=/opt/epics/base
+ENV EPICS_MODULES_PATH=/opt/epics/modules
+ENV EPICS_RELEASE_FILE=$EPICS_IN_DOCKER/RELEASE
 
 WORKDIR /opt/epics
 
