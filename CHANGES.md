@@ -16,6 +16,11 @@
 * base: update to Debian 12. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/84
   * Refer to up to date README for new/updated `RUNTIME_PACKAGES`.
+* Prune unused artifacts from non-static builds by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/59
+  * Pruning will happen automatically, and most cases shouldn't require any
+    configuration. Refer to the README for instructions on how to configure the
+    procedure when needed.
 
 ## v0.12.0
 
