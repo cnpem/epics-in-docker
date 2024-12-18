@@ -1,6 +1,7 @@
 ARG DEBIAN_VERSION=12.8
+ARG EPICS_IN_DOCKER_VERSION=v0.12.0-dev
 
-FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.12.0-dev AS build-image
+FROM ghcr.io/cnpem/lnls-debian-epics-7:${EPICS_IN_DOCKER_VERSION} AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
