@@ -5,6 +5,11 @@ FROM ghcr.io/cnpem/lnls-debian-epics-7:${EPICS_IN_DOCKER_VERSION} AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
+ARG DEBIAN_VERSION
+LABEL org.opencontainers.image.debian_version=${DEBIAN_VERSION}
+ARG EPICS_IN_DOCKER_VERSION
+LABEL org.opencontainers.image.epics_in_docker_version=${EPICS_IN_DOCKER_VERSION}
+
 ARG RUNDIR
 ARG ENTRYPOINT=/usr/local/bin/lnls-run
 ARG RUNTIME_PACKAGES
@@ -81,6 +86,7 @@ FROM base AS dynamic-link
 
 COPY --from=dynamic-build /opt /opt
 
+LABEL org.opencontainers.image.build_target="dynamic-link"
 
 FROM build-stage AS static-build
 
@@ -94,6 +100,8 @@ RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo r
 
 
 FROM base AS static-link
+
+LABEL org.opencontainers.image.link_type="static-link"
 
 ARG REPONAME
 
