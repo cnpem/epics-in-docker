@@ -35,7 +35,6 @@ RUN apt update -y && \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
-COPY lnls-run.sh /usr/local/bin/lnls-run
 
 ENV EPICS_IN_DOCKER=/opt/epics-in-docker
 RUN mkdir $EPICS_IN_DOCKER
@@ -68,3 +67,6 @@ RUN $EPICS_IN_DOCKER/install_motor.sh
 ARG DEBIAN_VERSION
 COPY opcua_versions.sh install_opcua.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_opcua.sh
+
+COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
+COPY lnls-run.sh /usr/local/bin/lnls-run

@@ -51,8 +51,24 @@ services:
 
 By default, the IOC will be built with statically linked EPICS libraries. If
 you **need** to link them dynamically, you must define the build target as
-`dynamic-link`. This will increase the resulting image size, since unused
-dependencies will also be copied.
+`dynamic-link`.
+
+For non-static builds, an automatic pruning step is executed to make the IOC
+image size smaller by removing unused artifacts. This step preserves all ELF
+executables inside `RUNDIR` and the IOC repository, as well as their dependent
+EPICS modules based on the linkage information. Source code, GUI files, and
+other directories in used modules are assumed not to be needed at runtime and
+also removed. Additional paths can be provided in `args` under the `APP_DIRS`
+key to extend the list of where used applications and shared libraries are,
+including any `dlopen(3)`ed libraries. If the resulting image fails at runtime,
+a careful look at error messages might provide clues for directories to add to
+`APP_DIRS`; if that isn't possible, or if it's believed that the directories
+added to `APP_DIRS` should have been detected automatically, please open an
+issue. Please do so as well if the pruning step errors out during the build. In
+case it is necessary to build a working image before these issues can be fixed,
+the pruning step can be skipped entirely by setting the `SKIP_PRUNE=1`
+argument; note that this is highly discouraged, because it increases the image
+size significantly.
 
 The resulting image contains a standard IOC run script, `lnls-run`, which will
 be run inside `RUNDIR` and will launch the container's command under procServ,

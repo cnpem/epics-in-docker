@@ -96,6 +96,7 @@ echo PYTHON=python3 >> pyDevSup/configure/CONFIG_SITE
 install_module pyDevSup PYDEVSUP "
 EPICS_BASE
 "
+echo 'python3*/linux*/' > pyDevSup/.lnls-keep-paths
 
 mkdir snmp
 cd snmp

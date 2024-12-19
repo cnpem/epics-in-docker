@@ -42,9 +42,18 @@ RUN ln -s ${ENTRYPOINT} ./entrypoint
 ENTRYPOINT ["./entrypoint"]
 
 
+FROM build-image AS pruned-build
+
+ARG APP_DIRS
+ARG RUNDIR
+ARG SKIP_PRUNE
+
+RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${RUNDIR}; fi
+
+
 FROM base AS no-build
 
-COPY --from=build-image /opt /opt
+COPY --from=pruned-build /opt /opt
 
 
 FROM build-image AS build-stage
@@ -70,10 +79,14 @@ RUN rm -rf .git/
 FROM build-stage AS dynamic-build
 
 ARG JOBS=1
+ARG APP_DIRS
 ARG RUNDIR
 ARG SKIP_TESTS
+ARG SKIP_PRUNE
 
 RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
+
+RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}; fi
 
 
 FROM base AS dynamic-link
