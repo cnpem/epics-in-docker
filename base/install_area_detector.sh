@@ -19,6 +19,8 @@ git submodule update --init --depth 1 -j ${JOBS} \
 
 rm -rf .git
 
+echo 'ADSupport/lib/linux*/libHDF5*plugin.so' > .lnls-keep-paths
+
 cd configure
 
 module_releases="
