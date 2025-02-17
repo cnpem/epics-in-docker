@@ -23,6 +23,8 @@
     procedure when needed.
 * ioc: allow compose files to override PATH. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/100
+* images: add epics-base image. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/100
 
 ## v0.12.0
 
