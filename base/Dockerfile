@@ -57,6 +57,9 @@ COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch $EPICS_I
 COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
 RUN NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
 
+COPY cagateway_versions.sh install_cagateway.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_cagateway.sh
+
 COPY backport-adsupport-nanohttp.patch $EPICS_IN_DOCKER
 COPY area_detector_versions.sh install_area_detector.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_area_detector.sh
