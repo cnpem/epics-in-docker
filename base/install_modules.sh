@@ -122,3 +122,7 @@ AUTOSAVE
 ASYN
 MCA
 "
+
+install_from_github epics-modules pcas PCAS $PCAS_VERSION "
+EPICS_BASE
+"
