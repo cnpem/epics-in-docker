@@ -1,0 +1,13 @@
+services:
+  ca-gateway:
+    image: ghcr.io/cnpem/epics-ca-gateway:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: no-build
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        APP_DIRS: /opt/epics/modules/ca-gateway
+        RUNDIR: /opt/epics/modules/ca-gateway/bin/linux-x86_64
+        ENTRYPOINT: ./gateway

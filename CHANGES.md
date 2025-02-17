@@ -25,6 +25,8 @@
   https://github.com/cnpem/epics-in-docker/pull/100
 * images: add epics-base image. by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/100
+* Add CA Gateway image. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/101
 
 ## v0.12.0
 
