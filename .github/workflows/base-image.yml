@@ -59,6 +59,7 @@ jobs:
           builder: ${{ steps.dockerbuilder.outputs.name }}
           allow: fs.read=../Dockerfile
           files: |
+            docker-compose-epics-base.yml
             docker-compose-opcua.yml
             docker-compose-motorpigcs2.yml
             docker-compose-mca.yml
