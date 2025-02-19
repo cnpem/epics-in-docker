@@ -21,6 +21,8 @@
   * Pruning will happen automatically, and most cases shouldn't require any
     configuration. Refer to the README for instructions on how to configure the
     procedure when needed.
+* ioc: allow compose files to override PATH. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/100
 
 ## v0.12.0
 
