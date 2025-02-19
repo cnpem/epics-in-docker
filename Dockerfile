@@ -10,6 +10,9 @@ ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
 ARG RUNTIME_PIP_PACKAGES
 
+ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=$PATH
+
 COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
 
 RUN apt update -y && \
