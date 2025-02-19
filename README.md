@@ -21,6 +21,12 @@ without any build step.
 - MCA IOC: `ghcr.io/cnpem/mca-epics-ioc`
 - Motor PIGCS2 IOC: `ghcr.io/cnpem/motor-pigcs2-epics-ioc`
 
+## Included tool images
+
+Some images with EPICS tools are provided by this repository as well.
+
+- PVAccess Gateway: `ghcr.io/cnpem/epics-pvagw`
+
 ## IOC images
 
 IOC repositories should include this repository as a submodule in their root,
