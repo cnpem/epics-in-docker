@@ -4,9 +4,13 @@ FROM alpine:$ALPINE_VERSION
 
 ARG JOBS
 
+ARG CCACHE_DIR=/ccache
+ARG CCACHE_STATSLOG=/tmp/ccache.statslog
+
 RUN apk add --no-cache \
     bash \
     cmake \
+    ccache \
     git \
     g++ \
     libevent-dev \
@@ -37,7 +41,8 @@ RUN apk add --no-cache \
     python3-dev \
     py3-setuptools \
     cython \
-    py3-numpy-dev
+    py3-numpy-dev && \
+    for p in gcc g++; do ln -vs /usr/bin/ccache /usr/local/bin/$p; done
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack
 COPY lnls-run.sh /usr/local/bin/lnls-run
@@ -55,11 +60,14 @@ WORKDIR /opt/epics
 
 COPY epics-base-static-linking.patch $EPICS_IN_DOCKER
 COPY epics_versions.sh install_epics.sh $EPICS_IN_DOCKER
-RUN COMMANDLINE_LIBRARY=READLINE_NCURSES $EPICS_IN_DOCKER/install_epics.sh
+RUN --mount=type=cache,target=/ccache/ USE_CCACHE=1 COMMANDLINE_LIBRARY=READLINE_NCURSES $EPICS_IN_DOCKER/install_epics.sh
 
 WORKDIR ${EPICS_MODULES_PATH}
 
 COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
-RUN NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
+RUN --mount=type=cache,target=/ccache/ NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
+
+RUN ccache --show-log-stats && \
+    for p in gcc g++; do ln -vsf /usr/bin/$p /usr/local/bin/$p; done
 
 COPY lnls-build-static-ioc.sh /usr/local/bin/lnls-build-static-ioc
