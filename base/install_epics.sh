@@ -14,4 +14,8 @@ if [ -n "$COMMANDLINE_LIBRARY" ]; then
     echo "COMMANDLINE_LIBRARY = $COMMANDLINE_LIBRARY" > ${EPICS_BASE_PATH}/configure/CONFIG_SITE.local
 fi
 
+if [ "$USE_CCACHE" = 1 ]; then
+    printf "CC=/usr/local/bin/gcc\nCCC=/usr/local/bin/g++\n" >> ${EPICS_BASE_PATH}/configure/CONFIG.gnuCommon
+fi
+
 install_module base EPICS_BASE
