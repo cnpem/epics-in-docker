@@ -18,6 +18,8 @@ download_from_github() {
 
     lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/$commit.tar.gz
 
+    # GitHub tarballs for tags starting with 'v' don't include that 'v'
+    commit=${commit#v}
     mv $module_name-$commit $module_name
 }
 
