@@ -57,7 +57,10 @@ SNCSEQ
 "
 
 download_from_github ChannelFinder recsync $RECCASTER_VERSION
-install_module recsync/client RECCASTER "
+mv recsync recsync-root
+mv recsync-root/client recsync
+rm -r recsync-root
+install_module recsync RECCASTER "
 EPICS_BASE
 "
 
