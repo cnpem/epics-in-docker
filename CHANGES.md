@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## v0.13.0
+
+Users of the `dynamic-link` target for IOC images should update in order to
+take advantage of the new image pruning steps, which should greatly lower the
+size of those IOC images.
+
+Users interested in improvements added in EPICS 7.0.8 should also update.
+
+This release includes 3 new images: one with epics-base and PVXS tools, and one
+for each EPICS gateway.
+
 ### New features
 
 * base: update to EPICS 7.0.8.1 and OPCUA 0.10.0. by @ericonr in
