@@ -4,6 +4,8 @@ FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.12.0-dev AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
+ARG DEBIAN_VERSION
+
 ARG RUNDIR
 ARG ENTRYPOINT=/usr/local/bin/lnls-run
 ARG RUNTIME_PACKAGES
@@ -12,6 +14,9 @@ ARG RUNTIME_PIP_PACKAGES
 
 ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$PATH
+
+LABEL br.lnls.epics-in-docker.version="v0.12.0-dev"
+LABEL br.lnls.epics-in-docker.debian.version=${DEBIAN_VERSION}
 
 COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
 
@@ -51,13 +56,18 @@ ARG APP_DIRS
 ARG RUNDIR
 ARG SKIP_PRUNE
 
+LABEL br.lnls.epics-in-docker.skip-prune=${SKIP_PRUNE}
+LABEL br.lnls.epics-in-docker.app-dirs=${APP_DIRS}
+LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
+
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${RUNDIR}; fi
 
 
 FROM base AS no-build
 
-COPY --from=pruned-build /opt /opt
+LABEL br.lnls.epics-in-docker.target="no-build"
 
+COPY --from=pruned-build /opt /opt
 
 FROM build-image AS build-stage
 
@@ -87,6 +97,11 @@ ARG RUNDIR
 ARG SKIP_TESTS
 ARG SKIP_PRUNE
 
+
+LABEL br.lnls.epics-in-docker.skip-prune=${SKIP_PRUNE}
+LABEL br.lnls.epics-in-docker.app-dirs=${APP_DIRS}
+LABEL br.lnls.epics-in-docker.rundir=${RUNDIR}
+
 RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
 
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}; fi
@@ -94,8 +109,9 @@ RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RU
 
 FROM base AS dynamic-link
 
-COPY --from=dynamic-build /opt /opt
+LABEL br.lnls.epics-in-docker.target="dynamic-link"
 
+COPY --from=dynamic-build /opt /opt
 
 FROM build-stage AS static-build
 
@@ -111,5 +127,7 @@ RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo r
 FROM base AS static-link
 
 ARG REPONAME
+
+LABEL br.lnls.epics-in-docker.target="static-link"
 
 COPY --from=static-build /opt/${REPONAME} /opt/${REPONAME}
