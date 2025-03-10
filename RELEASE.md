@@ -46,10 +46,6 @@ And its contents should be only the title: `vX.Y.Z`.
 For this step, it is necessary to [configure Git to sign tags with SSH
 keys](https://docs.gitlab.com/ee/user/project/repository/signed_commits/ssh.html).
 
-## `release` branch
-
-The `release` branch should be updated to point to the new tag.
-
 ## `main` branch
 
 A new commit should be created in the `main` branch, updating the version used
