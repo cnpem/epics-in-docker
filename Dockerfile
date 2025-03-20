@@ -90,7 +90,6 @@ WORKDIR /opt/${REPONAME}
 COPY . .
 
 RUN cp $EPICS_RELEASE_FILE configure/RELEASE
-RUN rm -rf .git/
 
 
 FROM build-stage AS dynamic-build

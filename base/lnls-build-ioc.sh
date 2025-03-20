@@ -12,3 +12,5 @@ fi
 make clean
 
 make -C ${RUNDIR}
+
+rm -rf .git/
