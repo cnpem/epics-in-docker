@@ -90,7 +90,6 @@ WORKDIR /opt/${REPONAME}
 COPY . .
 
 RUN cp $EPICS_RELEASE_FILE configure/RELEASE
-RUN rm -rf .git/
 
 
 FROM build-stage AS dynamic-build
@@ -102,6 +101,7 @@ ARG SKIP_TESTS
 ARG SKIP_PRUNE
 
 RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
+RUN rm -rf .git/
 
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}; fi
 
@@ -129,6 +129,7 @@ ARG SKIP_TESTS
 RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
 RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
+RUN rm -rf .git/
 
 
 FROM base AS static-link
