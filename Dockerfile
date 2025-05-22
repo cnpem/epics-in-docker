@@ -101,7 +101,7 @@ ARG RUNDIR
 ARG SKIP_TESTS
 ARG SKIP_PRUNE
 
-RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
+RUN lnls-build-ioc
 
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}; fi
 
@@ -128,7 +128,7 @@ ARG SKIP_TESTS
 
 RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
-RUN make distclean && make -j ${JOBS} && make $([ "$SKIP_TESTS" != 1 ] && echo runtests) && make clean && make -C ${RUNDIR}
+RUN lnls-build-ioc
 
 
 FROM base AS static-link
