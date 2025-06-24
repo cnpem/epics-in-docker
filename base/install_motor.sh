@@ -79,3 +79,16 @@ CALC
 MOTOR
 BUSY
 "
+
+download_from_github cnpem motorParker $PARKER_VERSION
+install_module motorParker MOTOR_PARKER "
+EPICS_BASE
+ASYN
+MOTOR
+"
+install_module -i motorParker/iocs/parkerIOC PARKER "
+EPICS_BASE
+ASYN
+MOTOR
+MOTOR_PARKER
+"
