@@ -12,6 +12,8 @@
 
 ### New features
 
+* base: add lakeshore module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/117
 * base: update areaDetector to R3-14. by @henriquesimoes in
   https://github.com/cnpem/epics-in-docker/pull/53
 
