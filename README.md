@@ -20,6 +20,7 @@ without any build step.
 - OPCUA IOC: `ghcr.io/cnpem/opcua-epics-ioc`
 - MCA IOC: `ghcr.io/cnpem/mca-epics-ioc`
 - Motor PIGCS2 IOC: `ghcr.io/cnpem/motor-pigcs2-epics-ioc`
+- Motor Parker IOC: `ghcr.io/cnpem/motor-parker-epics-ioc`
 
 ## Included tool images
 

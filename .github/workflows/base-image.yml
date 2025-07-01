@@ -62,6 +62,7 @@ jobs:
             docker-compose-epics-base.yml
             docker-compose-opcua.yml
             docker-compose-motorpigcs2.yml
+            docker-compose-motorparker.yml
             docker-compose-mca.yml
             docker-compose-ca-gateway.yml
             docker-compose-pvagw.yml
