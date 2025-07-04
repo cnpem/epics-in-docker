@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## v0.14.0
+
+Users interested in `lakeshore` module from ISIS or `motorParker` module should
+update to this release. Motor Parker IOC image is also available.
+
+Users of areaDetector should consider upgrading to this release to benefit from
+bug fixes, improvements and new features from ADCore and drivers released in
+R3-13 and R3-14, paying attention to breaking changes. See the corresponding
+release notes for details.
+
 ### Breaking changes
 
 * base: update areaDetector to R3-14. by @henriquesimoes in

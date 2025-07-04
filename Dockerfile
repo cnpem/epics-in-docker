@@ -1,6 +1,6 @@
 ARG DEBIAN_VERSION=12.9
 
-FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.13.0-dev AS build-image
+FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.14.0 AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
@@ -15,7 +15,7 @@ ARG RUNTIME_PIP_PACKAGES
 ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$PATH
 
-LABEL br.lnls.epics-in-docker.version="v0.13.0-dev"
+LABEL br.lnls.epics-in-docker.version="v0.14.0"
 LABEL br.lnls.epics-in-docker.debian.version=${DEBIAN_VERSION}
 
 COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
