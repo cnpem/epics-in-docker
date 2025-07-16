@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: update motorParker module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/120
+
 ## v0.14.0
 
 Users interested in `lakeshore` module from ISIS or `motorParker` module should
