@@ -4,6 +4,8 @@
 
 ### Bug fixes
 
+* base: fix bug in lakeshore module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/120
 * base: update motorParker module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/120
 

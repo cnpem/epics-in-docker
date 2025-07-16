@@ -127,6 +127,8 @@ MCA
 "
 
 download_from_github ISISComputingGroup EPICS-lakeshore $LAKESHORE_VERSION
-install_module EPICS-lakeshore/lakeshore336 LAKESHORE "
+mv EPICS-lakeshore/lakeshore336 .
+rm -r EPICS-lakeshore
+install_module lakeshore336 LAKESHORE "
 EPICS_BASE
 "
