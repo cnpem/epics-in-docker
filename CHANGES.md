@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.14.1
+
 ### Bug fixes
 
 * base: fix bug in lakeshore module. by @guirodrigueslima in
