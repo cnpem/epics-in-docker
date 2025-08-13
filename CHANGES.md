@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add linStat module. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/122
+
 ## v0.14.1
 
 ### Bug fixes
