@@ -132,3 +132,10 @@ rm -r EPICS-lakeshore
 install_module lakeshore336 LAKESHORE "
 EPICS_BASE
 "
+
+install_from_github DiamondLightSource lakeshore340 LAKESHORE340 $LAKESHORE340_VERSION "
+EPICS_BASE
+ASYN
+CALC
+STREAM
+"

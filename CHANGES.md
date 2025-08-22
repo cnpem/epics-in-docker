@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add lakeshore340 module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/123
+
 ## v0.14.1
 
 ### Bug fixes
