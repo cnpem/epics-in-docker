@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### New features
+
+* base: update motorParker module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/124
+  * Support for motor resolution, motor status and reconfiguration upon reconnection added.
+
 ## v0.14.1
 
 ### Bug fixes
