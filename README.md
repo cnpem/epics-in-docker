@@ -133,6 +133,12 @@ not built in `ADSupport`.
 `Pmac` IOCs must include `libssh2-1` in the `RUNTIME PACKAGES`, because the
 module depends on it.
 
+### pyDevSup IOCs
+
+`pyDevSup` IOCs must include `libpython3-dev` in the `BUILD_PACKAGES`,
+`libpython3.11` in the `RUNTIME_PACKAGES` and `numpy==1.24` in the
+`RUNTIME_PIP_PACKAGES`.
+
 ### Possible issues
 
 Known build and runtime issues are documented in the [SwC
