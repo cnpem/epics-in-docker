@@ -60,6 +60,7 @@ ARG RUNDIR
 ARG SKIP_PRUNE
 
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${RUNDIR}; fi
+RUN lnls-clean-up
 
 
 FROM base AS no-build
@@ -116,6 +117,7 @@ ARG SKIP_PRUNE
 RUN lnls-build-ioc
 
 RUN if [ "$SKIP_PRUNE" != 1 ]; then lnls-prune-artifacts ${APP_DIRS} ${PWD} ${RUNDIR}; fi
+RUN lnls-clean-up
 
 
 FROM base AS dynamic-link
@@ -141,6 +143,7 @@ ARG SKIP_TESTS
 RUN echo STATIC_BUILD=YES >> configure/CONFIG_SITE
 
 RUN lnls-build-ioc
+RUN lnls-clean-up
 
 
 FROM base AS static-link

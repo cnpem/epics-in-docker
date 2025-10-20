@@ -85,3 +85,4 @@ COPY lnls-build-ioc.sh /usr/local/bin/lnls-build-ioc
 COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
 COPY lnls-run.sh /usr/local/bin/lnls-run
 COPY lnls-create-ioc.sh /usr/local/bin/lnls-create-ioc
+COPY lnls-clean-up.sh /usr/local/bin/lnls-clean-up
