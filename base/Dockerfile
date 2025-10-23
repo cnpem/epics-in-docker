@@ -70,6 +70,9 @@ ARG DEBIAN_VERSION
 COPY opcua_versions.sh install_opcua.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_opcua.sh
 
+COPY twincat_ads_versions.sh install_twincat_ads.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_twincat_ads.sh
+
 COPY lnls-build-ioc.sh /usr/local/bin/lnls-build-ioc
 COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
 COPY lnls-run.sh /usr/local/bin/lnls-run

@@ -1,0 +1,12 @@
+services:
+  twincat_ads:
+    image: ghcr.io/cnpem/twincat-ads-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: no-build
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        APP_DIRS: /opt/epics/modules/ads-ioc
+        RUNDIR: /opt/epics/modules/ads-ioc/iocBoot/iocads
