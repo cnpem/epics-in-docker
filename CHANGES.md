@@ -6,6 +6,8 @@
 
 * base: add lakeshore340 module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/123
+* doc: add pull request templates. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/128
 
 ## v0.14.1
 
