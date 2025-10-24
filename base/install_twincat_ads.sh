@@ -25,7 +25,7 @@ ASYN
 "
 
 mkdir ads-ioc && cd ads-ioc
-yes ads | /opt/epics/base/bin/linux-x86_64/makeBaseApp.pl -i -t example
+yes ads | ${EPICS_BASE_PATH}/bin/linux-x86_64/makeBaseApp.pl -i -t example
 cd ..
 
 cp -r ads-modules/adsExApp ads-ioc/adsExApp
