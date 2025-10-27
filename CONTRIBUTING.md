@@ -1,15 +1,17 @@
-# Release Procedure
+# Development Procedures
+
+## Release Procedure
 
 When tagging a new release, which we will call `vX.Y.Z`, a few steps are
 necessary.
 
-## Housekeeping
+### Housekeeping
 
-### Check repository Issues and Pull Requests
+#### Check repository Issues and Pull Requests
 
 Make sure there aren't any pending issues before tagging a new release.
 
-## Run release script
+### Run release script
 
 The release script is used to make the necessary changes to enable tagging
 version `vX.Y.Z`:
@@ -21,11 +23,11 @@ $ ./make-release.sh vX.Y.Z
 The script will create a separate branch, where it will make the necessary
 changes and prompt you for any further required information.
 
-### (Optional) Create Pull Request for these commits
+#### (Optional) Create Pull Request for these commits
 
 Make sure the description covers all relevant points.
 
-### Create tag
+#### Create tag
 
 The tag should be signed and created locally, and point to the release commit
 which was merged to the main branch:
