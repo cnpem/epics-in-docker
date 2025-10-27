@@ -1,5 +1,21 @@
 # Development Procedures
 
+## Pre-Commit Hooks
+
+We use the `pre-commit` tool to register pre-commit hooks; these hooks are also
+run as part of our CI setup. To use our configured hooks, the following
+packages need to be installed manually:
+
+- `pre-commit`
+- `shfmt`
+
+And the command below should be run in the repository (the additional flag is
+useful if working with older branches which are missing a configuration file):
+
+```
+$ pre-commit install --allow-missing-config
+```
+
 ## Release Procedure
 
 When tagging a new release, which we will call `vX.Y.Z`, a few steps are
