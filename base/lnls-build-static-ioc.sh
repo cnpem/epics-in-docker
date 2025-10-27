@@ -10,14 +10,14 @@ cp -p configure/RELEASE /tmp || true
 cp -p configure/CONFIG_SITE.local /tmp || true
 
 restore_configure() {
-  echo "restoring configure/ files..."
+    echo "restoring configure/ files..."
 
-  # rm is necessary in case CONFIG_SITE.local didn't exist, otherwise
-  # we might leave a file belonging to root around
-  rm -f configure/CONFIG_SITE.local
+    # rm is necessary in case CONFIG_SITE.local didn't exist, otherwise
+    # we might leave a file belonging to root around
+    rm -f configure/CONFIG_SITE.local
 
-  cp -p /tmp/RELEASE configure/ || true
-  cp -p /tmp/CONFIG_SITE.local configure/ || true
+    cp -p /tmp/RELEASE configure/ || true
+    cp -p /tmp/CONFIG_SITE.local configure/ || true
 }
 trap restore_configure EXIT
 
@@ -33,17 +33,17 @@ EOF
 git config --global --add safe.directory $PWD
 
 make_skip() {
-  # :- is used so we don't error out if SKIP_CLEAN is undefined
-  if [ -z "${SKIP_CLEAN:-}" ]; then
-    make "$@"
-  fi
+    # :- is used so we don't error out if SKIP_CLEAN is undefined
+    if [ -z "${SKIP_CLEAN:-}" ]; then
+        make "$@"
+    fi
 }
 
 make_skip distclean
 make -j$(nproc)
 
 if [ "$SKIP_TESTS" != 1 ]; then
-  make runtests
+    make runtests
 fi
 
 version=$(git describe --tags)
