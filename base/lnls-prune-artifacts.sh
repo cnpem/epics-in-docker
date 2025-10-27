@@ -57,7 +57,7 @@ find_linked_libraries() {
 
     # Depend on the glibc-specific behavior of supporting multiple executables
     # to be queried at once
-    linked=$(ldd $executables 2>/dev/null | grep '=>')
+    linked=$(ldd $executables 2> /dev/null | grep '=>')
 
     # We grep out not found libraries, since they cannot be kept if we don't
     # know where they are.
@@ -139,7 +139,8 @@ prune_module_directories() {
     module=$1
 
     module_dirs=$(find $module -type d)
-    keep_paths=$(cat << EOF
+    keep_paths=$(
+        cat << EOF
 $(find_shared_libraries $module)
 $(find $module -type f -regex ".*\.\(cmd\|db\|template\|req\|substitutions\)" -printf "%h\n" | sort -u)
 $(get_defined_paths_to_keep $module)
