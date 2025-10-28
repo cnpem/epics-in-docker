@@ -35,6 +35,8 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/143
 * base: add ADEiger module. by @gustavosr8 in
   https://github.com/cnpem/epics-in-docker/pull/141
+* base: add twincat-ads module and image. by @MaikTheWay in
+  https://github.com/cnpem/epics-in-docker/pull/127
 
 ## v0.14.1
 
