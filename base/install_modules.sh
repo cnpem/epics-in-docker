@@ -144,3 +144,11 @@ install_module rgamv2 RGAMV2 "
 EPICS_BASE
 ASYN
 "
+
+download_from_github epics-modules twincat-ads $TWINCAT_ADS_VERSION
+download_from_github Beckhoff ADS $ADS_VERSION
+rmdir twincat-ads/BeckhoffADS && mv ADS twincat-ads/BeckhoffADS
+install_module twincat-ads ADS "
+EPICS_BASE
+ASYN
+"
