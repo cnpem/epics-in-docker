@@ -6,6 +6,10 @@
 
 * base: add lakeshore340 module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/123
+* base: add twincat-ads module. by @MaikTheWay in
+  https://github.com/cnpem/epics-in-docker/pull/127
+* images: add twincat-ads image. by @MaikTheWay in
+  https://github.com/cnpem/epics-in-docker/pull/127
 
 ## v0.14.1
 
