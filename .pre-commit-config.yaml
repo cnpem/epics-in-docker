@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: shfmt
+        name: shfmt
+        entry: shfmt --space-redirects --case-indent --indent=4 --write
+        language: system
+        types:
+          - file
+          - shell
