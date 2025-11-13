@@ -4,6 +4,9 @@
 
 ### New features
 
+* base: update motorParker module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/124
+  * Support for motor resolution, motor status and reconfiguration upon reconnection added.
 * base: add lakeshore340 module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/123
 
