@@ -6,6 +6,10 @@
 
 * base: add lakeshore340 module. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/123
+* ioc: copy locally installed software from build stages. by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/55
+  * This allows the IOC build phase to install custom software, available at
+    runtime, under `/usr/local` tree for all targets.
 
 ## v0.14.1
 
