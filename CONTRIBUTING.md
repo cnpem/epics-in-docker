@@ -16,6 +16,34 @@ useful if working with older branches which are missing a configuration file):
 $ pre-commit install --allow-missing-config
 ```
 
+## Pull Request Guidelines
+
+Ensure that each proposed commit is atomic, i.e. it includes only the required
+changes to achieve its goal while moving the project to a consistent state. If
+the proposed goal requires too much code change to be atomic, consider breaking
+it into smaller goals, which are atomic by themselves and are wired up by a
+final commit. The title should follow the pattern `<scope>: <description>`,
+with `scope` being one of the previously used, if possible. The message should
+properly document why the changes should be done in the proposed way, possibly
+including context information and motivations, present tradeoffs that were
+considered, alternative implementations considered and any other relevant
+information, such as co-authors, external references and related commits.
+
+Any information relevant for understanding the proposed changes should be
+contained in the respective commit messages, and only highlighted in the PR
+description for convenience. The pull request must include a brief description
+of the overall goal of the proposed changes, and related PRs or issues when
+relevant.
+
+Feel free to add other comments regarding the status of the proposed changes,
+e.g. what changes are still missing to promote the PR to non-draft or what
+needs further validation.
+
+Add a changelog entry (usually the commit title and the pull request URL) in
+[CHANGES.md](CHANGES.md) if the proposed changes are relevant for end-users.
+Use sub-items to provide relevant additional information concisely, following
+the format of existing entries.
+
 ## Release Procedure
 
 When tagging a new release, which we will call `vX.Y.Z`, a few steps are
