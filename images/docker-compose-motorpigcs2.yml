@@ -1,12 +1,34 @@
 services:
-  motor-pigcs2:
+  motorpigcs2:
     image: ghcr.io/cnpem/motor-pigcs2-epics-ioc:$TAG
     build:
       context: ./
       dockerfile: ../Dockerfile
-      target: no-build
+      target: static-link
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        APP_DIRS: /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC
-        RUNDIR: /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2
+        REPONAME: motorPIGCS2
+        APP_DIRS: /opt/motorPIGCS2
+        IOC_NAME: PIGCS2
+        RUNDIR: /opt/motorPIGCS2/iocBoot/iocPIGCS2
+        IOC_DBD:
+          base.dbd
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          motorSupport.dbd
+          PI_GCS2Support.dbd
+        IOC_LIB:
+          PI_GCS2Support
+          motor
+          asyn
+        IOC_DB:
+          /opt/epics/modules/motor/modules/motorPIGCS2/pigcs2App/Db/PI_Support.db
+          /opt/epics/modules/motor/modules/motorPIGCS2/pigcs2App/Db/PI_SupportCL.db
+          /opt/epics/modules/motor/modules/motorPIGCS2/pigcs2App/Db/PI_SupportCtrl.db
+          /opt/epics/modules/motor/modules/motorPIGCS2/pigcs2App/Db/PI_SupportError.db
+        IOC_CMD:
+          /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2/st.cmd
+          /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2/PI_GCS2.cmd
+          /opt/epics/modules/motor/modules/motorPIGCS2/iocs/pigcs2IOC/iocBoot/iocPIGCS2/PI_GCS2.substitutions
