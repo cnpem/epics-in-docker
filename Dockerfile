@@ -78,6 +78,11 @@ FROM build-image AS build-stage
 ARG REPONAME
 ARG BUILD_PACKAGES
 ARG BUILD_TAR_PACKAGES
+ARG IOC_NAME
+ARG IOC_LIB
+ARG IOC_DBD
+ARG IOC_DB
+ARG IOC_CMD
 
 RUN if [ -n "$BUILD_PACKAGES" ]; then \
         apt update && \
@@ -88,6 +93,8 @@ RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES
 WORKDIR /opt/${REPONAME}
 
 COPY . .
+
+RUN if [ -n "$IOC_NAME" ]; then rm -rf * && lnls-create-ioc ${REPONAME} ${IOC_NAME} ${IOC_LIB} ${IOC_DBD} ${IOC_DB} ${IOC_CMD}; fi
 
 RUN cp $EPICS_RELEASE_FILE configure/RELEASE
 
