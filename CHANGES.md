@@ -41,6 +41,8 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/139
 * base: update motorPIGCS2 module to version R1-3. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/138
+* base: add motorSmarAct module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/132
 
 ## v0.14.1
 
