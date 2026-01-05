@@ -43,6 +43,8 @@
 
 ### New features
 
+* base: add motorSmarAct module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/132
 * base: add Galil module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/162
 * base: update to Debian 13 by @ericonr in
