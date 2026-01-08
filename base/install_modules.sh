@@ -171,3 +171,8 @@ rm -rf opcua/exampleTop
 install_module opcua OPCUA "
 EPICS_BASE
 "
+
+install_from_github DiamondLightSource elcomat3000 ELCOMAT3000 $ELCOMAT3000_VERSION $ELCOMAT3000_SHA256 "
+EPICS_BASE
+ASYN
+"
