@@ -8,6 +8,8 @@
   https://github.com/cnpem/epics-in-docker/pull/189
 * images: add lakeshore340 image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/190
+* base: add elcomat3000 module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/134
 
 ### Bug fixes
 
