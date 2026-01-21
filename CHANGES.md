@@ -41,7 +41,7 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/139
 * base: update motorPIGCS2 module to version R1-3. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/138
-* base: add ADPilatus module. by @guirodrigueslima in
+* base: add ADPilatus module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/136
 
 ## v0.14.1

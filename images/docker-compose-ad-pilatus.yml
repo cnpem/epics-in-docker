@@ -1,0 +1,23 @@
+services:
+  ad-pilatus:
+    image: ghcr.io/cnpem/ad-pilatus-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNTIME_PACKAGES: libxml2 libtiff6 libevent-2.1-7
+        IOC_CREATE: 1
+        REPONAME: Pilatus
+        RUNDIR: /opt/Pilatus/iocBoot/iocPilatus
+        IS_IOC_AREADETECTOR: true
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynIPPort.dbd
+          pilatusDetectorSupport.dbd
+        IOC_LIBS:
+          pilatusDetector
+          cbfad
+          asyn
