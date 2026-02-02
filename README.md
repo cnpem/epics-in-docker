@@ -20,6 +20,7 @@ without any build step.
 | IOC              | Image                                  | IOC      |
 |------------------|----------------------------------------|----------|
 | AD Xspress3 IOC  | `ghcr.io/cnpem/ad-xspress3-epics-ioc`  | `xspress3App`|
+| Elcomat300 IOC   | `ghcr.io/cnpem/elcomat3000-epics-ioc`  | `elcomat3000` |
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
 | Motor Galil IOC  | `ghcr.io/cnpem/motor-galil-epics-ioc`  | `Galil`  |
