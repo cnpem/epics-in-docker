@@ -4,7 +4,7 @@
 
 ### New features
 
-* base: add motorSmarAct module. by @guirodrigueslima in
+* base: add motorSmarAct module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/132
 
 ## v0.15.0
