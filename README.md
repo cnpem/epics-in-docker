@@ -20,6 +20,7 @@ without any build step.
 | IOC              | Image                                  | IOC      |
 |------------------|----------------------------------------|----------|
 | AD Xspress3 IOC  | `ghcr.io/cnpem/ad-xspress3-epics-ioc`  | `xspress3App`|
+| Elcomat300 IOC   | `ghcr.io/cnpem/elcomat3000-epics-ioc`  | `Elcomat3000` |
 | Industry Pack IOC | `ghcr.io/cnpem/industry-pack-epics-ioc` | `IndustryPack` |
 | LakeShore336 IOC | `ghcr.io/cnpem/lakeshore336-epics-ioc` | `lakeshore336`  |
 | LakeShore340 IOC | `ghcr.io/cnpem/lakeshore340-epics-ioc` | `lakeshore340` |
