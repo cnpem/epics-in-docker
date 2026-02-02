@@ -43,7 +43,7 @@
 
 ### New features
 
-* base: add motorSmarAct module. by @guirodrigueslima in
+* base: add motorSmarAct module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/132
 * base: add Galil module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/162
