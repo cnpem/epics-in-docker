@@ -152,3 +152,8 @@ install_module twincat-ads ADS "
 EPICS_BASE
 ASYN
 "
+
+install_from_github DiamondLightSource elcomat3000 ELCOMAT3000 $ELCOMAT3000_VERSION "
+EPICS_BASE
+ASYN
+"
