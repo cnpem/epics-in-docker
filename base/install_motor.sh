@@ -13,11 +13,7 @@ cd motor/modules
 git submodule update --init --depth 1 -j ${JOBS} \
     motorMotorSim
 
-git submodule update --init -j ${JOBS} \
-    motorPIGCS2
-
-git -C motorPIGCS2 checkout ${PIGCS2_VERSION}
-
+download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION
 download_from_github cnpem motorNewport $NEWPORT_VERSION
 download_from_github epics-motor motorParker $PARKER_VERSION
 
@@ -50,13 +46,6 @@ cd ..
 
 make -j${JOBS}
 make clean
-
-install_module -i modules/motorPIGCS2/iocs/pigcs2IOC PIGCS2 "
-EPICS_BASE
-ASYN
-MOTOR
-SNCSEQ
-"
 
 cd $EPICS_MODULES_PATH
 
