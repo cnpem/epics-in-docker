@@ -19,6 +19,7 @@ git submodule update --init -j ${JOBS} \
 git -C motorPIGCS2 checkout ${PIGCS2_VERSION}
 
 download_from_github cnpem motorNewport $NEWPORT_VERSION
+download_from_github epics-motor motorParker $PARKER_VERSION
 
 rm -rf .git
 
@@ -26,6 +27,7 @@ module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
 MOTOR_NEWPORT=${EPICS_MODULES_PATH}/motor/modules/motorNewport
+MOTOR_PARKER=${EPICS_MODULES_PATH}/motor/modules/motorParker
 MOTOR_PIGCS2=${EPICS_MODULES_PATH}/motor/modules/motorPIGCS2
 "
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}
@@ -81,17 +83,4 @@ ASYN
 CALC
 MOTOR
 BUSY
-"
-
-download_from_github cnpem motorParker $PARKER_VERSION
-install_module motorParker MOTOR_PARKER "
-EPICS_BASE
-ASYN
-MOTOR
-"
-install_module -i motorParker/iocs/parkerIOC PARKER "
-EPICS_BASE
-ASYN
-MOTOR
-MOTOR_PARKER
 "

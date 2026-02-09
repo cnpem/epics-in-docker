@@ -37,6 +37,8 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/141
 * base: add twincat-ads module and image. by @MaikTheWay in
   https://github.com/cnpem/epics-in-docker/pull/127
+* base: update motorParker module to version R1-2-1. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/139
 
 ## v0.14.1
 

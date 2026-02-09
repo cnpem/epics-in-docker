@@ -22,10 +22,10 @@ services:
           motor
           asyn
         IOC_DBS:
-          $(MOTOR_PARKER)/db/ACRAuxBi.template
-          $(MOTOR_PARKER)/db/ACRAuxBoRBV.template
-          $(MOTOR_PARKER)/db/ACRAuxBo.template
-          $(MOTOR_PARKER)/db/ACRAuxLi.template
-          $(MOTOR_PARKER)/db/ACRAuxRead.template
-          $(MOTOR_PARKER)/db/ACRAux.template
-          $(MOTOR_PARKER)/db/OEMLimitSwitch.template
+          $(MOTOR)/db/ACRAuxBi.template
+          $(MOTOR)/db/ACRAuxBoRBV.template
+          $(MOTOR)/db/ACRAuxBo.template
+          $(MOTOR)/db/ACRAuxLi.template
+          $(MOTOR)/db/ACRAuxRead.template
+          $(MOTOR)/db/ACRAux.template
+          $(MOTOR)/db/OEMSupport.template
