@@ -1,0 +1,30 @@
+services:
+  pmac:
+    image: ghcr.io/cnpem/pmac-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNTIME_PACKAGES: libssh2-1
+        IOC_CREATE: 1
+        REPONAME: pmac
+        RUNDIR: /opt/pmac/iocBoot/iocpmac
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynPowerPMACPort.dbd
+          motorSupport.dbd
+          devSoftMotor.dbd
+          pmacAsynMotorPort.dbd
+          busySupport.dbd
+          calcSupport.dbd
+        IOC_LIBS:
+          calc
+          busy
+          pmacAsynMotorPort
+          softMotor
+          motor
+          powerPmacAsynPort
+          asyn
