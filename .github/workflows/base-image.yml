@@ -66,6 +66,7 @@ jobs:
             docker-compose-motorparker.yml
             docker-compose-mca-amptek.yml
             docker-compose-ca-gateway.yml
+            docker-compose-pmac.yml
             docker-compose-pvagw.yml
             docker-compose-rgamv2.yml
             docker-compose-softioc.yml

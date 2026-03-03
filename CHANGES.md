@@ -43,8 +43,11 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/138
 * images: add softIOC image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/145
-* base: update pmac module to version 2-7-9. by @guirodrigueslima in
-  https://github.com/cnpem/epics-in-docker/pull/140
+* base: update pmac module to version 2-7-9 and add pmac image. by
+  @guirodrigueslima in https://github.com/cnpem/epics-in-docker/pull/140
+  * The image reuses the `ghcr.io/cnpem/pmac-epics-ioc` name, which used to be
+    provided by <https://github.com/cnpem/pmac-epics-ioc>, and is a full
+    replacement for it.
 
 ## v0.14.1
 
