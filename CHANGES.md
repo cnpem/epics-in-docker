@@ -33,6 +33,8 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/146
 * base: add rgamv2 module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/143
+* base: add ADEiger module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/141
 
 ## v0.14.1
 
