@@ -26,6 +26,7 @@ RUN apt update -y && \
         libsnmp-dev \
         libssl-dev \
         libtirpc-dev \
+        libzmq3-dev \
         re2c \
         unzip \
         wget \
@@ -60,6 +61,7 @@ RUN NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
 COPY cagateway_versions.sh install_cagateway.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_cagateway.sh
 
+COPY adeiger-remove-lz4.patch  $EPICS_IN_DOCKER
 COPY area_detector_versions.sh install_area_detector.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_area_detector.sh
 
