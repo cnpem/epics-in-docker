@@ -54,7 +54,7 @@ RUN COMMANDLINE_LIBRARY=READLINE_NCURSES $EPICS_IN_DOCKER/install_epics.sh
 
 WORKDIR ${EPICS_MODULES_PATH}
 
-COPY backport-ipmicomm.patch ipmicomm.patch caputlog-waveform-fix.patch $EPICS_IN_DOCKER
+COPY backport-ipmicomm.patch ipmicomm.patch $EPICS_IN_DOCKER
 COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
 RUN NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
 

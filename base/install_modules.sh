@@ -68,9 +68,7 @@ install_from_github epics-modules ipac IPAC $IPAC_VERSION "
 EPICS_BASE
 "
 
-download_from_github epics-modules caPutLog $CAPUTLOG_VERSION
-patch -d caPutLog -Np1 < $EPICS_IN_DOCKER/caputlog-waveform-fix.patch
-install_module caPutLog CAPUTLOG "
+install_from_github epics-modules caPutLog CAPUTLOG $CAPUTLOG_VERSION "
 EPICS_BASE
 "
 

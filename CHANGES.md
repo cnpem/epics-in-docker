@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: update CaPutLog to R4.2. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/142
+  * There are relevant bug fixes in R4.1 and R4.2, improving caPutJsonLog
+    support.
+
 ### New features
 
 * base: add lakeshore340 module. by @guirodrigueslima in
