@@ -104,11 +104,11 @@ make clean
 
 cd ..
 
-download_from_github cnpem ssc-pimega $LIBSSCPIMEGA_VERSION
+download_from_github cnpem ssc-pimega $LIBSSCPIMEGA_VERSION $LIBSSCPIMEGA_SHA256
 make -C ssc-pimega/c install
 rm -rf ssc-pimega
 
-install_from_github cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION "
+install_from_github cnpem NDSSCPimega NDSSCPIMEGA $NDSSCPIMEGA_VERSION $NDSSCPIMEGA_SHA256 "
 EPICS_BASE
 ASYN
 AREA_DETECTOR
