@@ -24,6 +24,7 @@ without any build step.
 | Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|
 | Motor PIGCS2 IOC | `ghcr.io/cnpem/motor-pigcs2-epics-ioc` | `PIGCS2` |
 | Motor Parker IOC | `ghcr.io/cnpem/motor-parker-epics-ioc` | `Parker` |
+| rgamv2 IOC       | `ghcr.io/cnpem/rgamv2-epics-ioc`       | `rgamv2` |
 
 The IOC binary can be found in `/opt/<IOC>/bin/linux-x86_64/<IOC>` and startup
 files such as `envPaths` can be found under `/opt/<IOC>/iocBoot/ioc<IOC>`.

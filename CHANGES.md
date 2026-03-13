@@ -31,7 +31,7 @@ for that release.
     or supported for external use.
 * base: add motorNewport module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/146
-* base: add rgamv2 module. by @guirodrigueslima in
+* base: add rgamv2 module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/143
 
 ## v0.14.1
