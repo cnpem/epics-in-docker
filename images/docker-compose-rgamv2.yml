@@ -1,0 +1,24 @@
+services:
+  rgamv2:
+    image: ghcr.io/cnpem/rgamv2-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: rgamv2
+        RUNDIR: /opt/rgamv2/iocBoot/iocrgamv2
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynIPPort.dbd
+          rgamv2Include.dbd
+        IOC_LIBS:
+          rgamv2
+          asyn
+        IOC_DBS:
+          $(RGAMV2)/db/asynRgaRec.template
+          $(RGAMV2)/db/rgaGroup.template
+          $(RGAMV2)/db/rgamv2.template
