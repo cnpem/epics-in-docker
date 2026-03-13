@@ -137,3 +137,10 @@ ASYN
 CALC
 STREAM
 "
+
+download_from_github cnpem rgamv2 $RGAMV2_VERSION
+rm -r rgamv2/etc && rm -r rgamv2/rgamv2App/opi
+install_module rgamv2 RGAMV2 "
+EPICS_BASE
+ASYN
+"
