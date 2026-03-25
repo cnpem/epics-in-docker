@@ -4,9 +4,28 @@ services:
     build:
       context: ./
       dockerfile: ../Dockerfile
-      target: no-build
+      target: dynamic-link
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        APP_DIRS: /opt/epics/modules/motorParker/iocs/parkerIOC
-        RUNDIR: /opt/epics/modules/motorParker/iocs/parkerIOC/iocBoot/iocParker
+        IOC_CREATE: 1
+        REPONAME: Parker
+        RUNDIR: /opt/Parker/iocBoot/iocParker
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          motorSupport.dbd
+          ParkerSupport.dbd
+        IOC_LIBS:
+          Parker
+          motor
+          asyn
+        IOC_DBS:
+          $(MOTOR_PARKER)/db/ACRAuxBi.template
+          $(MOTOR_PARKER)/db/ACRAuxBoRBV.template
+          $(MOTOR_PARKER)/db/ACRAuxBo.template
+          $(MOTOR_PARKER)/db/ACRAuxLi.template
+          $(MOTOR_PARKER)/db/ACRAuxRead.template
+          $(MOTOR_PARKER)/db/ACRAux.template
+          $(MOTOR_PARKER)/db/OEMLimitSwitch.template

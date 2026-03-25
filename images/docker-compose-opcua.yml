@@ -4,10 +4,15 @@ services:
     build:
       context: ./
       dockerfile: ../Dockerfile
-      target: no-build
+      target: dynamic-link
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        APP_DIRS: /opt/epics/modules/opcua
-        RUNDIR: /opt/epics/modules/opcua/iocBoot/iocUaDemoServer
+        IOC_CREATE: 1
         RUNTIME_PACKAGES: libxml2
+        REPONAME: opcua
+        RUNDIR: /opt/opcua/iocBoot/iocopcua
+        IOC_DBDS:
+          opcua.dbd
+        IOC_LIBS:
+          opcua

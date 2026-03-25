@@ -17,10 +17,15 @@ The versions used in the base image are defined in `base/*_versions.sh` files.
 Some IOC images are provided by this repository directly, and can be used
 without any build step.
 
-- OPCUA IOC: `ghcr.io/cnpem/opcua-epics-ioc`
-- MCA IOC: `ghcr.io/cnpem/mca-epics-ioc`
-- Motor PIGCS2 IOC: `ghcr.io/cnpem/motor-pigcs2-epics-ioc`
-- Motor Parker IOC: `ghcr.io/cnpem/motor-parker-epics-ioc`
+| IOC              | Image                                  | IOC      |
+|------------------|----------------------------------------|----------|
+| OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
+| MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
+| Motor PIGCS2 IOC | `ghcr.io/cnpem/motor-pigcs2-epics-ioc` | `PIGCS2` |
+| Motor Parker IOC | `ghcr.io/cnpem/motor-parker-epics-ioc` | `Parker` |
+
+The IOC binary can be found in `/opt/<IOC>/bin/linux-x86_64/<IOC>` and startup
+files such as `envPaths` can be found under `/opt/<IOC>/iocBoot/ioc<IOC>`.
 
 ## Included tool images
 

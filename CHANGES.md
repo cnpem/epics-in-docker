@@ -12,6 +12,14 @@ for that release.
   * There are relevant bug fixes in R4.1 and R4.2, improving caPutJsonLog
     support.
 
+### Breaking changes
+
+* images: change in IOC build process. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/133
+  * The changes in the internal IOC build process in epics-in-docker affect the
+    directory paths and binary locations within the images. The new paths are
+    documented in the project README.
+
 ### New features
 
 * base: add lakeshore340 module. by @guirodrigueslima in
