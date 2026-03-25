@@ -1,0 +1,34 @@
+services:
+  mca-amptek:
+    image: ghcr.io/cnpem/mca-amptek-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        RUNTIME_PACKAGES: libpcap0.8 libnet1 libusb-1.0-0
+        REPONAME: Amptek
+        RUNDIR: /opt/Amptek/iocBoot/iocAmptek
+        IOC_DBDS:
+          mcaAmptekSupport.dbd
+          mcaSupport.dbd
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          calcSupport.dbd
+          busySupport.dbd
+          sscanSupport.dbd
+        IOC_LIBS:
+          mcaAmptek
+          mca
+          calc
+          sscan busy
+          asyn
+          seq pv
+        IOC_DBS:
+          $(MCA)/db/Amptek.db
+          $(MCA)/db/Amptek_SCAn.db
+          $(MCA)/db/mca.db
