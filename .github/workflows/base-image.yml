@@ -61,6 +61,7 @@ jobs:
           files: |
             docker-compose-epics-base.yml
             docker-compose-opcua.yml
+            docker-compose-motornewport.yml
             docker-compose-motorpigcs2.yml
             docker-compose-motorparker.yml
             docker-compose-mca-amptek.yml

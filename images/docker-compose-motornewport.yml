@@ -1,0 +1,49 @@
+services:
+  motor-newport:
+    image: ghcr.io/cnpem/motor-newport-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: newport
+        RUNDIR: /opt/newport/iocBoot/iocnewport
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          calc.dbd
+          busySupport.dbd
+          motorSupport.dbd
+          devNewport.dbd
+        IOC_LIBS:
+          Newport
+          motor
+          busy
+          calc
+          asyn
+        IOC_DBS:
+          $(MOTOR)/db/asyn_motor.db
+          $(MOTOR)/db/asyn_motor_positions.req
+          $(MOTOR)/db/asyn_motor_settings.req
+          $(MOTOR)/db/basic_asyn_motor.db
+          $(MOTOR)/db/profileMoveController.template
+          $(MOTOR)/db/profileMoveController_settings.req
+          $(MOTOR)/db/profileMoveAxis.template
+          $(MOTOR)/db/profileMoveAxis_settings.req
+          $(MOTOR)/db/HXP_extra.db
+          $(MOTOR)/db/HXP_coords.db
+          $(MOTOR)/db/profileMoveControllerXPS.template
+          $(MOTOR)/db/profileMoveControllerXPS_settings.req
+          $(MOTOR)/db/profileMoveAxisXPS.template
+          $(MOTOR)/db/XPS_extra.db
+          $(MOTOR)/db/XPSPositionCompare.db
+          $(MOTOR)/db/XPSAuxBi.db
+          $(MOTOR)/db/XPSAuxBo.db
+          $(MOTOR)/db/XPSAuxLi.db
+          $(MOTOR)/db/XPSAuxLo.db
+          $(MOTOR)/db/XPSAuxAi.db
+          $(MOTOR)/db/XPSAuxAo.db

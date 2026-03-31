@@ -29,7 +29,7 @@ for that release.
   * This approach is experimental and intended for internal use within 
     the epics-in-docker project only. It is not yet considered stable 
     or supported for external use.
-* base: add motorNewport module. by @guirodrigueslima in
+* base: add motorNewport module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/146
 
 ## v0.14.1

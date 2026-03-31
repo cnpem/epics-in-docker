@@ -21,6 +21,7 @@ without any build step.
 |------------------|----------------------------------------|----------|
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
+| Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|
 | Motor PIGCS2 IOC | `ghcr.io/cnpem/motor-pigcs2-epics-ioc` | `PIGCS2` |
 | Motor Parker IOC | `ghcr.io/cnpem/motor-parker-epics-ioc` | `Parker` |
 
