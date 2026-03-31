@@ -18,11 +18,14 @@ git submodule update --init -j ${JOBS} \
 
 git -C motorPIGCS2 checkout ${PIGCS2_VERSION}
 
+download_from_github cnpem motorNewport $NEWPORT_VERSION
+
 rm -rf .git
 
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
+MOTOR_NEWPORT=${EPICS_MODULES_PATH}/motor/modules/motorNewport
 MOTOR_PIGCS2=${EPICS_MODULES_PATH}/motor/modules/motorPIGCS2
 "
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}
