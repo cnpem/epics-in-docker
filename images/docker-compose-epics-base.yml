@@ -10,7 +10,6 @@ services:
       args:
         APP_DIRS: /opt/epics/base /opt/epics/modules/pvxs
         RUNDIR: /opt/epics/base/bin/linux-x86_64
-        RUNTIME_PACKAGES: libevent-pthreads-2.1-7
         ENTRYPOINT: /usr/bin/bash
         PATH: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/epics/base/bin/linux-x86_64:/opt/epics/modules/pvxs/bin/linux-x86_64
   epics-base-latest:
