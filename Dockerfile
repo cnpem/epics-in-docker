@@ -22,6 +22,7 @@ COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt
 
 RUN apt update -y && \
     apt install -y --no-install-recommends \
+        libevent-pthreads-2.1-7 \
         libreadline8 \
         libtirpc3 \
         busybox \
