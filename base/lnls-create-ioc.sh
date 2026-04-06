@@ -46,6 +46,7 @@ echo "
 \${PROD_NAME}_DBD += devIocStats.dbd
 \${PROD_NAME}_DBD += retools.dbd
 \${PROD_NAME}_LIBS += pvxsIoc
+\${PROD_NAME}_LIBS += pvxs
 \${PROD_NAME}_LIBS += reccaster
 \${PROD_NAME}_LIBS += autosave
 \${PROD_NAME}_LIBS += caPutLog
