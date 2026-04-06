@@ -18,6 +18,12 @@ download_from_github() {
 
     lnls-get-n-unpack -l https://github.com/$github_org/$module_name/archive/$commit.tar.gz
 
+    if [ -d "$module_name" ]; then
+        # Ensure no empty directory exists, so we can properly rename the just
+        # extracted directory, or error out if we can't remove it.
+        rmdir $module_name
+    fi
+
     # GitHub tarballs for tags starting with 'v' don't include that 'v'
     commit=${commit#v}
     mv $module_name-$commit $module_name
