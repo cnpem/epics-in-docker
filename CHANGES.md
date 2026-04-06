@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+We noticed a regression in v0.13.0, it's been documented in breaking changes
+for that release.
+
 ### Bug fixes
 
 * base: update CaPutLog to R4.2. by @gustavosr8 in
@@ -62,6 +65,12 @@ Users interested in improvements added in EPICS 7.0.8 should also update.
 
 This release includes 3 new images: one with epics-base and PVXS tools, and one
 for each EPICS gateway.
+
+### Breaking changes
+
+* images: remove libssl3 from opcua image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/133
+  * This removes support for OPCUA Security.
 
 ### New features
 
