@@ -30,6 +30,26 @@ without any build step.
 The IOC binary can be found in `/opt/<IOC>/bin/linux-x86_64/<IOC>` and startup
 files such as `envPaths` can be found under `/opt/<IOC>/iocBoot/ioc<IOC>`.
 
+These IOCs don't include runnable startup scripts, and are intended to be used
+with external scripts mounted into the container. These scripts should include
+at least the following commands:
+
+```
+#!/opt/<IOC>/bin/linux-x86_64/<IOC>
+
+cd /opt/<IOC>/iocBoot/ioc<IOC>
+< envPaths
+
+## Register all support components
+dbLoadDatabase "../../dbd/<IOC>.dbd"
+<IOC>_registerRecordDeviceDriver(pdbbase)
+
+## Load record instances
+#dbLoadRecords("../../db/<TEMPLATE>","<SUBSTITUTIONS>")
+
+iocInit()
+```
+
 ## Included tool images
 
 Some images with EPICS tools are provided by this repository as well.
