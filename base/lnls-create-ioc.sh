@@ -74,22 +74,22 @@ include \${TOP}/configure/RULES
 " >> "$MAKEFILE"
 
 # Modify database file in Db/Makefile
+MAKEFILE="${IOC_NAME}App/Db/Makefile"
+
+echo "TOP=../..
+
+include \${TOP}/configure/CONFIG
+" > "$MAKEFILE"
+
 if [ -n "${IOC_DBS:-}" ]; then
-    MAKEFILE="${IOC_NAME}App/Db/Makefile"
-
-    echo "TOP=../..
-
-    include \${TOP}/configure/CONFIG
-    " > "$MAKEFILE"
-
     for db in $IOC_DBS; do
         echo "DB_INSTALLS += $db" >> "$MAKEFILE"
     done
-
-    echo "
-    include \${TOP}/configure/RULES
-    " >> "$MAKEFILE"
 fi
+
+echo "
+include \${TOP}/configure/RULES
+" >> "$MAKEFILE"
 
 # Copy command file(s) or directory(ies)
 if [ -n "${IOC_CMDS:-}" ]; then
