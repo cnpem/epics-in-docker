@@ -55,8 +55,14 @@ Some images with EPICS tools are provided by this repository as well.
 
 - EPICS Base and PVXS tools: `ghcr.io/cnpem/epics-base` (for this image, usage
   of the `latest` tag, instead of a specific tag, is encouraged)
+  - `PATH` includes the directories where these tools are installed, so they
+    can be easily used from an interactive shell or script
 - Channel Access Gateway: `ghcr.io/cnpem/epics-ca-gateway`
+  - The entrypoint to the image is the gateway executable, so arguments can be
+    passed directly as container commands
 - PVAccess Gateway: `ghcr.io/cnpem/epics-pvagw`
+  - The entrypoint to the image is the gateway executable, so arguments can be
+    passed directly as container commands
 
 ## IOC images
 
