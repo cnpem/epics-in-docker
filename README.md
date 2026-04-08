@@ -55,6 +55,7 @@ Some images with EPICS tools are provided by this repository as well.
 
 - EPICS Base and PVXS tools: `ghcr.io/cnpem/epics-base` (for this image, usage
   of the `latest` tag, instead of a specific tag, is encouraged)
+- Channel Access Gateway: `ghcr.io/cnpem/epics-ca-gateway`
 - PVAccess Gateway: `ghcr.io/cnpem/epics-pvagw`
 
 ## IOC images
