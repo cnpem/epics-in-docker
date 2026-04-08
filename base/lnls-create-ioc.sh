@@ -81,6 +81,12 @@ echo "TOP=../..
 include \${TOP}/configure/CONFIG
 " > "$MAKEFILE"
 
+echo "
+DB_INSTALLS += \${RECCASTER}/db/reccaster.db
+DB_INSTALLS += \${AUTOSAVE}/db/save_restoreStatus.db
+DB_INSTALLS += \${DEVIOCSTATS}/db/iocAdminSoft.db
+" >> "$MAKEFILE"
+
 if [ -n "${IOC_DBS:-}" ]; then
     for db in $IOC_DBS; do
         echo "DB_INSTALLS += $db" >> "$MAKEFILE"
