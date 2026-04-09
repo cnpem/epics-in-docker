@@ -1,0 +1,23 @@
+services:
+  elcomat3000:
+    image: ghcr.io/cnpem/elcomat3000-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: Elcomat3000
+        RUNDIR: /opt/Elcomat3000/iocBoot/iocElcomat3000
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          elcomat3000.dbd
+        IOC_LIBS:
+          elcomat3000
+          asyn
+        IOC_DBS:
+          $(ELCOMAT3000)/db/elcomat3000.template

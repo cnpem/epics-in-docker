@@ -19,6 +19,7 @@ without any build step.
 
 | IOC              | Image                                  | IOC      |
 |------------------|----------------------------------------|----------|
+| Elcomat300 IOC   | `ghcr.io/cnpem/elcomat3000-epics-ioc`  | `Elcomat3000` |
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
 | Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|
