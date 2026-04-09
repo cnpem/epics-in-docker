@@ -19,6 +19,7 @@ without any build step.
 
 | IOC              | Image                                  | IOC      |
 |------------------|----------------------------------------|----------|
+| AD Pilatus IOC   | `ghcr.io/cnpem/ad-pilatus-epics-ioc`   | `Pilatus`|
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
 | Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|

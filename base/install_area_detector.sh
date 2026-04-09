@@ -20,6 +20,8 @@ git submodule update --init --depth 1 -j ${JOBS} \
 download_from_github areaDetector ADEiger $ADEIGER_VERSION
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-remove-lz4.patch
 
+download_from_github areaDetector ADPilatus $ADPILATUS_VERSION
+
 rm -rf .git
 
 echo 'ADSupport/lib/linux*/libHDF5*plugin.so' > .lnls-keep-paths
@@ -31,6 +33,7 @@ AREA_DETECTOR=${EPICS_MODULES_PATH}/areaDetector
 ADARAVIS=${EPICS_MODULES_PATH}/areaDetector/ADAravis
 ADEIGER=${EPICS_MODULES_PATH}/areaDetector/ADEiger
 ADGENICAM=${EPICS_MODULES_PATH}/areaDetector/ADGenICam
+ADPILATUS=${EPICS_MODULES_PATH}/areaDetector/ADPilatus
 ADSIMDETECTOR=${EPICS_MODULES_PATH}/areaDetector/ADSimDetector
 ADSUPPORT=${EPICS_MODULES_PATH}/areaDetector/ADSupport
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
