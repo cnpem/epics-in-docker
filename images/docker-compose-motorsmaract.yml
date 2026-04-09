@@ -1,0 +1,30 @@
+services:
+  motor-smaract:
+    image: ghcr.io/cnpem/motor-smaract-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: SmarAct
+        RUNDIR: /opt/SmarAct/iocBoot/iocSmarAct
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          motorSupport.dbd
+          devSmarActMCSMotor.dbd
+          devSmarActMCS2Motor.dbd
+          devSmarActSCUMotor.dbd
+        IOC_LIBS:
+          smarActMotor
+          motor
+          asyn
+        IOC_DBS:
+          $(MOTOR)/db/basic_asyn_motor.db
+          $(MOTOR)/db/asyn_motor.db
+          $(MOTOR)/db/motorUtil.db
+          $(MOTOR)/db/MCS2_Extra.db

@@ -64,6 +64,7 @@ jobs:
             docker-compose-motornewport.yml
             docker-compose-motorpigcs2.yml
             docker-compose-motorparker.yml
+            docker-compose-motorsmaract.yml
             docker-compose-mca-amptek.yml
             docker-compose-ca-gateway.yml
             docker-compose-pvagw.yml
