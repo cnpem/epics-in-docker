@@ -1,0 +1,51 @@
+From https://github.com/areaDetector/ADEiger/pull/93
+From 3ac2f780a2b26a43228682fa39fd92490789178c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89rico=20Nogueira?= <erico.rolim@lnls.br>
+Date: Thu, 9 Apr 2026 21:08:50 -0300
+Subject: [PATCH] Fix Stream2 segfault
+
+We observed some non-deterministic crashes in the streamTask when using
+the Stream2 interface. We were able to capture a core dump, and it
+showed that the issue was in accessing 'mImageMsg->data.len'. This
+access happened before checking the message type, which meant that for
+'STREAM2_MSG_END' messages, it would trigger undefined behavior by
+accessing outside of the space allocated for s2msg.
+
+The fixed code only accesses the message through the mImageMsg pointer
+when it is of type 'STREAM2_MSG_IMAGE', and adds an additional
+sanity-check for any unexpected message types.
+---
+ eigerApp/src/stream2Api.cpp | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
+
+diff --git a/eigerApp/src/stream2Api.cpp b/eigerApp/src/stream2Api.cpp
+index be10863..3c378ad 100644
+--- a/eigerApp/src/stream2Api.cpp
++++ b/eigerApp/src/stream2Api.cpp
+@@ -209,14 +209,20 @@ int Stream2API::waitFrame (int *end, int *numThresholds, int timeout)
+         fprintf(stderr, "error: error %i parsing message\n", err);
+         return err;
+     }
+-    mImageMsg = (stream2_image_msg *)s2msg;
+-    mNumThresholds = (int)mImageMsg->data.len;
+-    *numThresholds = mNumThresholds;
+ 
+-    if (mImageMsg->type == STREAM2_MSG_END)
+-    {
+-        *end = true;
++    switch (s2msg->type) {
++        case STREAM2_MSG_IMAGE:
++            mImageMsg = (stream2_image_msg *)s2msg;
++            mNumThresholds = (int)mImageMsg->data.len;
++            *numThresholds = mNumThresholds;
++            break;
++        case STREAM2_MSG_END:
++            *end = true;
++            break;
++        default:
++            err = STREAM_ERROR;
+     }
++
+     return err;
+ }
+ 
