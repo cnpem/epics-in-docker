@@ -19,6 +19,7 @@ git submodule update --init --depth 1 -j ${JOBS} \
 
 download_from_github areaDetector ADEiger $ADEIGER_VERSION
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-remove-lz4.patch
+patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-stream2-ub.patch
 
 rm -rf .git
 
