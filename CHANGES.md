@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v0.15.0
+
+This releases adds multiple new IOC images to the project. External images for
+the new images listed below should no longer be needed.
+
 We noticed a regression in v0.13.0, it's been documented in breaking changes
 for that release.
 
