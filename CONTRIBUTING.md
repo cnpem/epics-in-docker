@@ -72,6 +72,13 @@ changes and prompt you for any further required information.
 
 Make sure the description covers all relevant points.
 
+#### Verify container image access
+
+If the release contains a new image that used to be provided by another
+repository, make sure the epics-in-docker repository has the write (or,
+ideally, admin) role for that GitHub package. Otherwise, the release workflow
+will fail since pushing to the image will be forbidden.
+
 #### Create tag
 
 The tag should be signed and created locally, and point to the release commit
