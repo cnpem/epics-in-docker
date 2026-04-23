@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add motor zaber module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/157
+
 ### Bug fixes
 
 * Rectify pyDevSup IOC dependencies by @ericonr in

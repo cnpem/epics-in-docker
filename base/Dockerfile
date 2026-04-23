@@ -14,6 +14,7 @@ RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
         cmake \
+        curl \
         git \
         libaravis-dev \
         libboost-test-dev \
