@@ -6,7 +6,7 @@
 
 * ioc: add support for module builds. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/188
-* base: add motorZaberMotion module. by @guirodrigueslima in
+* base: add motorZaberMotion module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/157
 
 ### Bug fixes
