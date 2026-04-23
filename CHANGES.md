@@ -10,7 +10,7 @@
 
 ### New features
 
-* base: add motorZaberMotion module. by @guirodrigueslima in
+* base: add motorZaberMotion module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/157
 
 ## v0.16.0
