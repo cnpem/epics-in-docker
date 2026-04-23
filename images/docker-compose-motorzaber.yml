@@ -1,0 +1,24 @@
+services:
+  motor-zaber:
+    image: ghcr.io/cnpem/motor-zaber-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: zaberMotion
+        RUNDIR: /opt/zaberMotion/iocBoot/ioczaberMotion
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynIPPort.dbd
+          motorSupport.dbd
+          zaberMotionSupport.dbd
+        IOC_LIBS:
+          ZaberMotion
+          motor
+          asyn
+        IOC_DBS:
+          $(MOTOR)/db/asyn_motor.db
