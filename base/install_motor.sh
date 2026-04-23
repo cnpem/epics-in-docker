@@ -73,3 +73,9 @@ CALC
 MOTOR
 BUSY
 "
+
+install_from_github zabertech motorZaberMotion MOTOR_ZABER_MOTION $ZABER_MOTION_VERSION "
+EPICS_BASE
+ASYN
+MOTOR
+"
