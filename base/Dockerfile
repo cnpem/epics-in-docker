@@ -78,6 +78,9 @@ RUN --mount=type=cache,target=/ccache/ $EPICS_IN_DOCKER/install_area_detector.sh
 COPY motor_versions.sh install_motor.sh $EPICS_IN_DOCKER
 RUN --mount=type=cache,target=/ccache/ $EPICS_IN_DOCKER/install_motor.sh
 
+COPY zaber_versions.sh install_zaber.sh $EPICS_IN_DOCKER
+RUN --mount=type=cache,target=/ccache/ $EPICS_IN_DOCKER/install_zaber.sh
+
 RUN ccache --show-log-stats && \
     for p in gcc g++; do ln -vsf /usr/bin/$p /usr/local/bin/$p; done
 
