@@ -8,6 +8,11 @@
   https://github.com/cnpem/epics-in-docker/pull/186
   * Fix IOC crash caused by connection problems.
 
+### New features
+
+* base: add motorZaberMotion module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/157
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh
