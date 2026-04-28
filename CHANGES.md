@@ -4,6 +4,8 @@
 
 ### Bug fixes
 
+* base: fix external trigger in ADEiger. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/158
 * base: prune broken symbolic links correctly in
   https://github.com/cnpem/epics-in-docker/pull/173
   * Improve the shared library symbolic link removal to prevent the mistaken

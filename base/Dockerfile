@@ -70,6 +70,7 @@ RUN $EPICS_IN_DOCKER/install_cagateway.sh
 
 COPY adeiger-remove-lz4.patch  $EPICS_IN_DOCKER
 COPY adeiger-stream2-ub.patch  $EPICS_IN_DOCKER
+COPY adeiger-fix-tmexternal.patch  $EPICS_IN_DOCKER
 COPY area_detector_versions.sh install_area_detector.sh $EPICS_IN_DOCKER
 RUN --mount=type=cache,target=/ccache/ $EPICS_IN_DOCKER/install_area_detector.sh
 

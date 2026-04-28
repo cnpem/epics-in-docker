@@ -1,0 +1,103 @@
+From https://github.com/areaDetector/ADEiger/pull/95
+diff --git a/eigerApp/src/eigerDetector.cpp b/eigerApp/src/eigerDetector.cpp
+index cf6e6ba..a7163d4 100644
+--- a/eigerApp/src/eigerDetector.cpp
++++ b/eigerApp/src/eigerDetector.cpp
+@@ -1011,26 +1011,25 @@ void eigerDetector::controlTask (void)
+                 getIntegerParam(ADStatus, &adStatus);
+             }
+         }
+-        else // TMExternalSeries or TMExternalEnable
++
++        // Wait for detector to stop acquiring.
++        // Essential for TMExternalSeries or TMExternalEnable,
++        // which have to wait for external action.
++        FLOW("waiting for detector state");
++        string state;
++        for(;;)
+         {
+-            // The Eiger does not indicate when acquisition is complete.
+-            // Wait either until the NumImagesCounter is the expected value or
+-            // until there is a manual stop event.
+-            int expectedImages = numImages * numTriggers;
+-            int numImagesCounter;
+-            for(;;)
+-            {
+-                getIntegerParam(ADNumImagesCounter, &numImagesCounter);
+-                if (numImagesCounter >= expectedImages) break;
+-                if (mStopEvent.tryWait()) break;
+-                unlock();
+-                epicsThreadSleep(0.1);
+-                lock();
+-            }
++            mState->fetch(state);
++            callParamCallbacks();
++            // We must exit this loop without the lock
++            unlock();
++            if (state != "configure" && state != "ready" && state != "acquire") break;
++            if (mStopEvent.wait(0.1)) break;
++            // If we haven't exited yet, grab the lock so we can update the param library
++            lock();
+         }
+ 
+         // All triggers issued, disarm the detector
+-        unlock();
+         status = mApi.disarm();
+         lock();
+ 
+@@ -1045,11 +1044,17 @@ void eigerDetector::controlTask (void)
+         {
+             // Wait FileWriter to go out of the "acquire" state
+             FLOW("waiting for FileWriter");
+-            string fwAcquire;
+-            do
++
++            for(;;)
+             {
+-                mFWState->get(fwAcquire);
+-            }while(fwAcquire == "acquire");
++                string fwAcquire;
++                lock();
++                mFWState->fetch(fwAcquire);
++                callParamCallbacks();
++                unlock();
++                if (fwAcquire != "acquire") break;
++                epicsThreadSleep(0.1);
++            }
+             epicsThreadSleep(0.5);
+ 
+             // Request polling task to stop
+@@ -1195,8 +1200,6 @@ void eigerDetector::downloadTask (void)
+ 
+         FLOW_ARGS("file=%s", file->name);
+ 
+-        file->refCount = file->parse + file->save;
+-
+         // Download the file
+         if(mApi.getFile(file->name, &file->data, &file->len))
+         {
+diff --git a/eigerApp/src/eigerDetector.h b/eigerApp/src/eigerDetector.h
+index 551c1e9..8831485 100644
+--- a/eigerApp/src/eigerDetector.h
++++ b/eigerApp/src/eigerDetector.h
+@@ -1,6 +1,7 @@
+ #ifndef EIGER_DETECTOR_H
+ #define EIGER_DETECTOR_H
+ 
++#include <atomic>
+ #include <map>
+ #include <vector>
+ 
+@@ -269,7 +270,11 @@ class eigerDetector : public ADDriver
+             mPollDoneEvent, mRestartEvent, mInitializeEvent;
+     epicsMessageQueue mPollQueue, mDownloadQueue, mParseQueue, mSaveQueue,
+             mReapQueue;
+-    bool mPollStop, mPollComplete, mStreamComplete;
++    std::atomic<bool> mPollStop;
++    // Access to this variable is synchronized by mPollQueue and mPollDoneEvent
++    bool mPollComplete;
++    // Access to this variable is synchronized by mStreamEvent and mStreamDoneEvent
++    bool mStreamComplete;
+     unsigned int mFrameNumber;
+     uid_t mFsUid, mFsGid;
+     EigerParamSet mParams;
