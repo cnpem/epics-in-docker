@@ -4,7 +4,7 @@
 
 ### New features
 
-* base: add specsAnalyser module. by @guirodrigueslima in
+* base: add specsAnalyser module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/160
 
 ## v0.15.0
