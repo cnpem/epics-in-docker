@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: fix external trigger in ADEiger. by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/158
+
 ## v0.15.0
 
 This releases adds multiple new IOC images to the project. External images for
