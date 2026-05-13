@@ -41,6 +41,8 @@
 
 ### New features
 
+* base: add Galil module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/162
 * base: update to Debian 13 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
   * This update includes a more recent release of procServ, with support for
