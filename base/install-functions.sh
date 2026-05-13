@@ -24,8 +24,8 @@ download_from_github() {
         rmdir $module_name
     fi
 
-    # GitHub tarballs for tags starting with 'v' don't include that 'v'
-    commit=${commit#v}
+    # GitHub tarballs for tags starting with 'v' or 'V' don't include those characters
+    commit=${commit#[vV]}
     mv $module_name-$commit $module_name
 }
 
