@@ -73,3 +73,13 @@ CALC
 MOTOR
 BUSY
 "
+
+install_from_github motorapp Galil GALIL $GALIL_VERSION "
+EPICS_BASE
+ASYN
+MOTOR
+CALC
+SSCAN
+AUTOSAVE
+BUSY
+"
