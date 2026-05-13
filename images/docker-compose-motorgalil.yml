@@ -1,0 +1,29 @@
+services:
+  motor-galil:
+    image: ghcr.io/cnpem/motor-galil-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: Galil
+        RUNDIR: /opt/Galil/iocBoot/iocGalil
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          motorSupport.dbd
+          calcSupport.dbd
+          busySupport.dbd
+          sscanSupport.dbd
+          GalilSupport.dbd
+        IOC_LIBS:
+          GalilSupport
+          motor
+          asyn
+          calc
+          busy
+          sscan
