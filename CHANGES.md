@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### New features
+
+* base: update PVXS to 1.5.1 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * We were on version 1.3.0. Changelog is available in
+    https://epics-base.github.io/pvxs/releasenotes.html
+
 ## v0.15.0
 
 This releases adds multiple new IOC images to the project. External images for
