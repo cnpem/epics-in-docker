@@ -73,6 +73,9 @@ ARG DEBIAN_VERSION
 COPY opcua_versions.sh install_opcua.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_opcua.sh
 
+COPY zaber_versions.sh install_zaber.sh $EPICS_IN_DOCKER
+RUN $EPICS_IN_DOCKER/install_zaber.sh
+
 COPY lnls-build-ioc.sh /usr/local/bin/lnls-build-ioc
 COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
 COPY lnls-run.sh /usr/local/bin/lnls-run

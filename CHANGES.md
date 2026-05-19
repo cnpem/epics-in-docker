@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add motor zaber module and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/157
+
 ## v0.15.0
 
 This releases adds multiple new IOC images to the project. External images for
