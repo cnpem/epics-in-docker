@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add Galil module and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/162
+
 ## v0.15.0
 
 This releases adds multiple new IOC images to the project. External images for
