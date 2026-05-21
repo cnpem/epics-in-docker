@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: update StreamDevice to 2.8.26 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Bugfix in the buffer handling.
+
 ### New features
 
 * base: update modbus to R3-4 by @ericonr in
