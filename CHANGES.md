@@ -4,6 +4,9 @@
 
 ### Bug fixes
 
+* base: update sscan to R2-12 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Bugfixes in the buffer handling.
 * base: update autosave to R6-0 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Changelog available in
