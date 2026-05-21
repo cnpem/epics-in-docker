@@ -4,6 +4,10 @@
 
 ### New features
 
+* base: update modbus to R3-4 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Changelog documenting new features is available in
+    https://github.com/epics-modules/modbus/blob/R3-4/RELEASE.md
 * base: update asyn to R4-45 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * This release brings support for destructible ports.
