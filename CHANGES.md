@@ -21,6 +21,10 @@
 
 ### New features
 
+* base: update `ether_ip` to 3-10 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Changelog documenting new features is available in
+    https://github.com/epics-modules/ether_ip/blob/ether_ip-3-10/changes.md
 * base: update modbus to R3-4 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Changelog documenting new features is available in
