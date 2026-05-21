@@ -4,6 +4,8 @@
 
 ### Bug fixes
 
+* base: update reccaster to 1.9.5 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
 * base: update sscan to R2-12 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Bugfixes in the buffer handling.
