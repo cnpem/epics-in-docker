@@ -31,6 +31,8 @@
 
 ### New features
 
+* base: update to Alpine 3.23 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
 * base: update epics-base to 7.0.10 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
   * Changelog is available in
