@@ -98,7 +98,7 @@ echo 'python3*/linux*/' > pyDevSup/.lnls-keep-paths
 
 mkdir snmp
 cd snmp
-lnls-get-n-unpack -l https://groups.nscl.msu.edu/controls/files/epics-snmp-$SNMP_VERSION.zip
+lnls-get-n-unpack -l https://groups.frib.msu.edu/controls/files/epics-snmp-$SNMP_VERSION.zip
 cd ..
 install_module -i snmp SNMP "
 EPICS_BASE
