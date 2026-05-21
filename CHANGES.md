@@ -21,6 +21,12 @@
 
 ### New features
 
+* base: update iocStats to 4.0.1 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Added PVs for PVA environment variables.
+  * PVs for CA environment variables have been renamed and the old names are
+    deprecated:
+    https://github.com/epics-modules/iocStats/blob/4.0.1/iocAdmin/Db/siteEnvVarAliases.template
 * base: update `ether_ip` to 3-10 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Changelog documenting new features is available in
