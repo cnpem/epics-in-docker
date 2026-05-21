@@ -4,6 +4,9 @@
 
 ### New features
 
+* base: update asyn to R4-45 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * This release brings support for destructible ports.
 * base: update PVXS to 1.5.1 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * We were on version 1.3.0. Changelog is available in
