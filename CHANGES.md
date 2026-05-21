@@ -4,6 +4,12 @@
 
 ### Bug fixes
 
+* base: update autosave to R6-0 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/164
+  * Changelog available in
+    https://github.com/epics-modules/autosave/releases/tag/R6-0
+  * NFS functionality of autosave is not relevant to our build, so the breaking
+    change doesn't affect us.
 * base: update StreamDevice to 2.8.26 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Bugfix in the buffer handling.
