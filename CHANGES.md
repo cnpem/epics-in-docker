@@ -23,6 +23,10 @@
 
 ### New features
 
+* base: update opcua to v0.11.2, use open62541 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
+  * open62541 is a different implementation of an OPCUA client. Behavior should
+    remain the same. This also restores OPCUA Security support.
 * base: update iocStats to 4.0.1 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
   * Added PVs for PVA environment variables.

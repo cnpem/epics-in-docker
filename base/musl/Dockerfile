@@ -6,6 +6,7 @@ ARG JOBS
 
 RUN apk add --no-cache \
     bash \
+    cmake \
     git \
     g++ \
     libevent-dev \
@@ -15,11 +16,15 @@ RUN apk add --no-cache \
     libtirpc-dev \
     libtirpc-static \
     libusb-dev \
+    libxml2-dev \
+    libxml2-static \
     linux-headers \
     make \
     musl-dev \
     ncurses-terminfo \
     net-snmp-dev \
+    openssl-dev \
+    openssl-libs-static \
     patch \
     perl \
     rpcsvc-proto \

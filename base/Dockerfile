@@ -13,6 +13,7 @@ RUN echo 'APT::Sandbox::User "root";' > /etc/apt/apt.conf.d/90-disable-sandbox.c
 RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
+        cmake \
         git \
         libaravis-dev \
         libevent-dev \
@@ -67,10 +68,6 @@ RUN $EPICS_IN_DOCKER/install_area_detector.sh
 
 COPY motor_versions.sh install_motor.sh $EPICS_IN_DOCKER
 RUN $EPICS_IN_DOCKER/install_motor.sh
-
-ARG DEBIAN_VERSION
-COPY opcua_versions.sh install_opcua.sh $EPICS_IN_DOCKER
-RUN $EPICS_IN_DOCKER/install_opcua.sh
 
 COPY lnls-build-ioc.sh /usr/local/bin/lnls-build-ioc
 COPY lnls-prune-artifacts.sh /usr/local/bin/lnls-prune-artifacts
