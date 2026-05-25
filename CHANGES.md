@@ -21,6 +21,14 @@
   https://github.com/cnpem/epics-in-docker/pull/164
   * Bugfix in the buffer handling.
 
+### Breaking changes
+
+* images: use static-link target for opcua by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
+  * Files sourced from other modules instead of the version installed in the
+    IOC will no longer be available. However, we don't expect this usage to have
+    been common.
+
 ### New features
 
 * base: update opcua to v0.11.2, use open62541 by @ericonr in

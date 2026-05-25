@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: ../Dockerfile
-      target: dynamic-link
+      target: static-link
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
