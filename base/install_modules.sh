@@ -149,3 +149,24 @@ install_module twincat-ads ADS "
 EPICS_BASE
 ASYN
 "
+
+download_from_github open62541 open62541 $OPEN62541_VERSION
+mkdir open62541/build
+cd open62541/build
+cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_SHARED_LIBS=OFF -DUA_ENABLE_ENCRYPTION=OPENSSL ..
+make -j$JOBS
+make install
+cd ../../
+rm -rf open62541
+
+download_from_github epics-modules opcua $OPCUA_VERSION
+cat << EOF > opcua/configure/CONFIG_SITE.local
+OPEN62541=/usr/local/lib
+OPEN62541_DEPLOY_MODE=SYSTEM
+OPEN62541_USE_CRYPTO=YES
+OPEN62541_USE_XMLPARSER=YES
+EOF
+rm -rf opcua/exampleTop
+install_module opcua OPCUA "
+EPICS_BASE
+"

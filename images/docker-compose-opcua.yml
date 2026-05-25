@@ -9,7 +9,7 @@ services:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
         IOC_CREATE: 1
-        RUNTIME_PACKAGES: libxml2
+        RUNTIME_PACKAGES: libxml2 libssl3
         REPONAME: opcua
         RUNDIR: /opt/opcua/iocBoot/iocopcua
         IOC_DBDS:
