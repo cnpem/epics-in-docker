@@ -160,11 +160,6 @@ hardware access), the `SKIP_TESTS` argument can be set to `1`.
 must include `libxml2` and `libtiff6` in the `RUNTIME_PACKAGES`, as they are
 not built in `ADSupport`.
 
-### Pmac IOCs
-
-`Pmac` IOCs must include `libssh2-1` in the `RUNTIME PACKAGES`, because the
-module depends on it.
-
 ### pyDevSup IOCs
 
 `pyDevSup` IOCs must include `libpython3-dev` in the `BUILD_PACKAGES`,
