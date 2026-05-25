@@ -16,6 +16,7 @@ git submodule update --init --depth 1 -j ${JOBS} \
 download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION
 download_from_github cnpem motorNewport $NEWPORT_VERSION
 download_from_github epics-motor motorParker $PARKER_VERSION
+download_from_github epics-motor motorSmarAct $SMARACT_VERSION
 
 rm -rf .git
 
@@ -25,6 +26,7 @@ MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
 MOTOR_NEWPORT=${EPICS_MODULES_PATH}/motor/modules/motorNewport
 MOTOR_PARKER=${EPICS_MODULES_PATH}/motor/modules/motorParker
 MOTOR_PIGCS2=${EPICS_MODULES_PATH}/motor/modules/motorPIGCS2
+MOTOR_SMARACT=${EPICS_MODULES_PATH}/motor/modules/motorSmarAct
 "
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}
 
