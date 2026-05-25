@@ -31,6 +31,10 @@
 
 ### New features
 
+* base: update epics-base to 7.0.10 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
+  * Changelog is available in
+    https://docs.epics-controls.org/projects/base/en/latest/RELEASE_NOTES.html#epics-release-7-0-10
 * base: update opcua to v0.11.2, use open62541 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
   * open62541 is a different implementation of an OPCUA client. Behavior should
