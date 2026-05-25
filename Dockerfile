@@ -1,4 +1,4 @@
-ARG DEBIAN_VERSION=12.14
+ARG DEBIAN_VERSION=13.5
 
 FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.15.0-dev AS build-image
 
@@ -17,6 +17,7 @@ ENV PATH=$PATH
 
 LABEL br.lnls.epics-in-docker.version="v0.15.0-dev"
 LABEL br.lnls.epics-in-docker.debian.version=${DEBIAN_VERSION}
+LABEL br.lnls.procserv.supported-features.oneshot="true"
 
 COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
 

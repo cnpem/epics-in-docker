@@ -1,4 +1,4 @@
-ARG DEBIAN_VERSION=12.14
+ARG DEBIAN_VERSION=13.5
 
 FROM debian:${DEBIAN_VERSION}
 
@@ -34,6 +34,7 @@ RUN apt update -y && \
         python3-dev \
         cython3 \
         python3-numpy \
+        python3-setuptools \
         ca-certificates
 
 COPY lnls-get-n-unpack.sh /usr/local/bin/lnls-get-n-unpack

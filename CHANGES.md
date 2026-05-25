@@ -34,6 +34,10 @@
 
 ### New features
 
+* base: update to Debian 13 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
+  * This update includes a more recent release of procServ, with support for
+    the `--oneshot` flag.
 * base: update to Alpine 3.23 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
 * base: update epics-base to 7.0.10 by @ericonr in
