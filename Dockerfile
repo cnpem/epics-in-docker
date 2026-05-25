@@ -1,4 +1,4 @@
-ARG DEBIAN_VERSION=12.14
+ARG DEBIAN_VERSION=13.5
 
 FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.15.0-dev AS build-image
 
