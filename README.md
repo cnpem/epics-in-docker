@@ -162,9 +162,8 @@ not built in `ADSupport`.
 
 ### pyDevSup IOCs
 
-`pyDevSup` IOCs must include `libpython3-dev` in the `BUILD_PACKAGES`,
-`libpython3.11` in the `RUNTIME_PACKAGES` and `numpy==1.24` in the
-`RUNTIME_PIP_PACKAGES`.
+`pyDevSup` IOCs must include `libpython3-dev` in the `BUILD_PACKAGES` and
+`python3-numpy` in the `RUNTIME_PACKAGES`.
 
 ### Possible issues
 
