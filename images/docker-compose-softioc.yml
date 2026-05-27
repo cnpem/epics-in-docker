@@ -8,8 +8,7 @@ services:
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
-        RUNTIME_PACKAGES: libpython3.11
-        RUNTIME_PIP_PACKAGES: numpy==1.24
+        RUNTIME_PACKAGES: python3-numpy
         IOC_CREATE: 1
         REPONAME: softIOC
         RUNDIR: /opt/softIOC/iocBoot/iocsoftIOC

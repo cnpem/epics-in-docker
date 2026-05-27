@@ -4,6 +4,9 @@
 
 ### Bug fixes
 
+* Rectify pyDevSup IOC dependencies by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/165
+  * Refer to the README for updated guidance on pyDevSup IOCs.
 * base: update snmp to 1.1.0.6 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/164
 * base: update reccaster to 1.9.5 by @ericonr in
