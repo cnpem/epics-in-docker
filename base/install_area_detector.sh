@@ -53,7 +53,8 @@ ln -s RELEASE.local RELEASE_LIBS.local
 echo "
 BUILD_IOCS=NO
 
-WITH_BOOST=NO
+WITH_BOOST=YES
+BOOST_EXTERNAL=YES
 
 WITH_PVA=YES
 WITH_QSRV=YES
@@ -106,6 +107,8 @@ cd -
 
 make -j${JOBS}
 make clean
+
+ADCore/bin/*/plugin-test
 
 cd ..
 

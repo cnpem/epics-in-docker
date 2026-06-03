@@ -16,6 +16,8 @@ RUN apt update -y && \
         cmake \
         git \
         libaravis-dev \
+        libboost-test-dev \
+        libboost-system-dev \
         libevent-dev \
         libnet-dev \
         libpcap-dev \
