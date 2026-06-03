@@ -35,9 +35,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push tagged image
-        uses: docker/bake-action@v5
+        uses: docker/bake-action@v7
         with:
-          workdir: ${{ matrix.image.dir }}
+          source: ${{ matrix.image.dir }}
           files: docker-compose.yml
           load: true
           set: |
@@ -53,9 +53,9 @@ jobs:
           driver: docker
       - name: Build and push included IOC images
         if: ${{ matrix.image.name == 'lnls-debian-epics-7' }}
-        uses: docker/bake-action@v5
+        uses: docker/bake-action@v7
         with:
-          workdir: images/
+          source: images/
           builder: ${{ steps.dockerbuilder.outputs.name }}
           allow: fs.read=../Dockerfile
           files: |
