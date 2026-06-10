@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+* base: add ip module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/169
+
 ### Bug fixes
 
 * Rectify pyDevSup IOC dependencies by @ericonr in
