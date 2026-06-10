@@ -1,0 +1,29 @@
+services:
+  industry-pack:
+    image: ghcr.io/cnpem/industry-pack-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: IndustryPack
+        RUNDIR: /opt/IndustryPack/iocBoot/iocIndustryPack
+        IOC_DBDS:
+          asyn.dbd
+          devEpics.dbd
+          devGpib.dbd
+          calc.dbd
+          drvAsynIPPort.dbd
+          drvAsynIPPort.dbd
+          stream.dbd
+          ip.dbd
+          ipSupport.dbd
+        IOC_LIBS:
+          ip
+          asyn
+          calc
+          seq pv
+          stream

@@ -61,6 +61,7 @@ jobs:
           files: |
             docker-compose-ad-xspress3.yml
             docker-compose-epics-base.yml
+            docker-compose-industry-pack.yml
             docker-compose-opcua.yml
             docker-compose-motorgalil.yml
             docker-compose-motornewport.yml

@@ -84,7 +84,7 @@
     https://epics-base.github.io/pvxs/releasenotes.html
 * base: add xspress3 module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/173
-* base: add ip module. by @guirodrigueslima in
+* base: add ip module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/169
 
 ## v0.15.0
