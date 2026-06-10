@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* base: add ip module. by @guirodrigueslima in
+* base: add ip module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/169
 
 ### Bug fixes

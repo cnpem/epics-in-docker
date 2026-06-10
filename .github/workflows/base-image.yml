@@ -60,6 +60,7 @@ jobs:
           allow: fs.read=../Dockerfile
           files: |
             docker-compose-epics-base.yml
+            docker-compose-industry-pack.yml
             docker-compose-opcua.yml
             docker-compose-motornewport.yml
             docker-compose-motorpigcs2.yml
