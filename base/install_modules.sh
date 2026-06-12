@@ -171,3 +171,7 @@ rm -rf opcua/exampleTop
 install_module opcua OPCUA "
 EPICS_BASE
 "
+
+install_from_github paulscherrerinstitute s7plc S7PLC $S7_VERSION $S7_SHA256 "
+EPICS_BASE
+"
