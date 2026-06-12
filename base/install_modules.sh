@@ -170,3 +170,9 @@ rm -rf opcua/exampleTop
 install_module opcua OPCUA "
 EPICS_BASE
 "
+
+install_from_github epics-modules ip IP $IP_VERSION "
+EPICS_BASE
+SNCSEQ
+ASYN
+"
