@@ -21,6 +21,8 @@ download_from_github areaDetector ADEiger $ADEIGER_VERSION $ADEIGER_SHA256
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-remove-lz4.patch
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-stream2-ub.patch
 
+download_from_github cnpem specsAnalyser $ADSPECS_VERSION $ADSPECS_SHA256
+
 rm -rf .git
 
 echo 'ADSupport/lib/linux*/libHDF5*plugin.so' > .lnls-keep-paths
@@ -35,6 +37,7 @@ ADGENICAM=${EPICS_MODULES_PATH}/areaDetector/ADGenICam
 ADSIMDETECTOR=${EPICS_MODULES_PATH}/areaDetector/ADSimDetector
 ADSUPPORT=${EPICS_MODULES_PATH}/areaDetector/ADSupport
 ADCORE=${EPICS_MODULES_PATH}/areaDetector/ADCore
+SPECSANALYSER=${EPICS_MODULES_PATH}/areaDetector/specsAnalyser
 "
 
 echo "$module_releases" >> ${EPICS_RELEASE_FILE}

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add specsAnalyser module and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/160
+
 ### Bug fixes
 
 * Rectify pyDevSup IOC dependencies by @ericonr in

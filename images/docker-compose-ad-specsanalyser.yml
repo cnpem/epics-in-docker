@@ -1,0 +1,25 @@
+services:
+  ad-specsanalyser:
+    image: ghcr.io/cnpem/ad-specsanalyser-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNTIME_PACKAGES: libxml2 libtiff6
+        IOC_CREATE: 1
+        REPONAME: specsAnalyser
+        RUNDIR: /opt/specsAnalyser/iocBoot/iocspecsAnalyser
+        IS_IOC_AREADETECTOR: true
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynIPPort.dbd
+          specsAnalyserSupport.dbd
+        IOC_LIBS:
+          specs
+          asyn
+        IOC_DBS:
+          $(SPECSANALYSER)/db/specsAnalyser.template
+          $(SPECSANALYSER)/db/specsAnalyserDLD.template

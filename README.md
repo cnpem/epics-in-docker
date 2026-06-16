@@ -19,6 +19,7 @@ without any build step.
 
 | IOC              | Image                                  | IOC      |
 |------------------|----------------------------------------|----------|
+| AD specsAnalyser IOC | `ghcr.io/cnpem/ad-specsanalyser-epics-ioc` | `specsAnalyser` |
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
 | Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|
