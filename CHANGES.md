@@ -34,6 +34,8 @@
 
 ### New features
 
+* base: add SeaBreeze library and Ocean Optics module by @GuPecz in
+  https://github.com/cnpem/epics-in-docker/pull/170
 * base: update to Debian 13 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
   * This update includes a more recent release of procServ, with support for

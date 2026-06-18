@@ -171,3 +171,14 @@ rm -rf opcua/exampleTop
 install_module opcua OPCUA "
 EPICS_BASE
 "
+
+download_from_github NSLS2 OceanOptics $OCEANOPTICS_VERSION $OCEANOPTICS_SHA256
+cd OceanOptics/QEProSupport
+download_from_github jwlodek SeaBreeze $SEABREEZE_VERSION $SEABREEZE_SHA256
+make -C SeaBreeze -j$JOBS
+cd ../../
+sed -i s/iocs// OceanOptics/Makefile
+install_module OceanOptics QEPRO "
+EPICS_BASE
+ASYN
+"

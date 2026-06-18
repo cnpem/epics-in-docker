@@ -20,6 +20,7 @@ RUN apk add --no-cache \
     libtirpc-dev \
     libtirpc-static \
     libusb-dev \
+    libusb-compat-dev \
     libxml2-dev \
     libxml2-static \
     linux-headers \
