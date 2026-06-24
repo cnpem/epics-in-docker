@@ -108,7 +108,11 @@ cd -
 make -j${JOBS}
 make clean
 
-ADCore/bin/*/plugin-test
+(
+    cd $(mktemp -d)
+    ${EPICS_MODULES_PATH}/areaDetector/ADCore/bin/*/plugin-test
+    rm -rf $PWD
+)
 
 cd ..
 
