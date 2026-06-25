@@ -31,6 +31,8 @@
   * Files sourced from other modules instead of the version installed in the
     IOC will no longer be available. However, we don't expect this usage to have
     been common.
+* base: remove NDSSCPimega areaDetector plugin by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/172
 
 ### New features
 
