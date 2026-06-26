@@ -1,0 +1,23 @@
+services:
+  ad-xspress3:
+    image: ghcr.io/cnpem/ad-xspress3-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNTIME_PACKAGES: libxml2 libtiff6 netbase
+        IOC_CREATE: 1
+        REPONAME: xspress3App
+        RUNDIR: /opt/xspress3App/iocBoot/iocxspress3App
+        IS_IOC_AREADETECTOR: true
+        IOC_DBDS:
+          asyn.dbd
+          xspress3Support.dbd
+        IOC_LIBS:
+          xspress3Epics
+          xspress3
+          img_mod
+          asyn

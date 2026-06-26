@@ -76,7 +76,7 @@
   https://github.com/cnpem/epics-in-docker/pull/164
   * We were on version 1.3.0. Changelog is available in
     https://epics-base.github.io/pvxs/releasenotes.html
-* base: add xspress3 module. by @guirodrigueslima in
+* base: add xspress3 module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/173
 
 ## v0.15.0
