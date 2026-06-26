@@ -115,3 +115,11 @@ make clean
 )
 
 cd ..
+
+install_from_github epics-modules xspress3 XSPRESS3 $XSPRESS3_VERSION $XSPRESS3_SHA256 "
+EPICS_BASE
+ASYN
+AREA_DETECTOR
+ADSUPPORT
+ADCORE
+"
