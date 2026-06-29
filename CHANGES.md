@@ -4,6 +4,11 @@
 
 ### Bug fixes
 
+* base: prune broken symbolic links correctly in
+  https://github.com/cnpem/epics-in-docker/pull/173
+  * Improve the shared library symbolic link removal to prevent the mistaken
+    pruning of linked libraries when there are hard-copies of shared objects
+    instead of proper symlinks.
 * Rectify pyDevSup IOC dependencies by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/165
   * Refer to the README for updated guidance on pyDevSup IOCs.

@@ -204,13 +204,24 @@ remove_unused_shared_libraries() {
         if find $keep_paths -path "$lib" -exec false {} + 2> /dev/null; then
             echo "Removing shared library '$lib' ($size)..."
 
-            rm -f ${lib%.so*}.so*
+            rm -f "$lib"
         else
             echo "Keeping shared library '$lib' ($size)..."
         fi
     done
 }
 
+remove_broken_symlinks() {
+    # Depend on the GNU-specific implementation of find(1) to follow the link
+    # before the existence check
+    while read -r link; do
+        echo "Removing broken symlink '$link'..."
+
+        unlink "$link"
+    done < <(find $@ -xtype l)
+}
+
 clean_up_epics_modules $@
 remove_static_libraries /opt /usr/local
 remove_unused_shared_libraries $@
+remove_broken_symlinks /opt /usr/local
