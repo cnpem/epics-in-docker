@@ -86,7 +86,7 @@
   https://github.com/cnpem/epics-in-docker/pull/173
 * base: add ip module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/169
-* base: add motorSymetrie module. by @guirodrigueslima in
+* base: add motorSymetrie module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/175
 
 ## v0.15.0

@@ -29,6 +29,7 @@ without any build step.
 | Motor Parker IOC | `ghcr.io/cnpem/motor-parker-epics-ioc` | `Parker` |
 | Motor SmarAct IOC| `ghcr.io/cnpem/motor-smaract-epics-ioc`| `SmarAct`|
 | Motor Pmac IOC   | `ghcr.io/cnpem/pmac-epics-ioc`         | `pmac`   |
+| Motor Symetrie IOC | `ghcr.io/cnpem/motor-symetrie-epics-ioc` | `symetrie`   |
 | rgamv2 IOC       | `ghcr.io/cnpem/rgamv2-epics-ioc`       | `rgamv2` |
 | SoftIOC          | `ghcr.io/cnpem/softioc-epics-ioc`      | `softIOC`|
 | Twincat ADS IOC  | `ghcr.io/cnpem/twincat-ads-epics-ioc`  | `twincatADS` |

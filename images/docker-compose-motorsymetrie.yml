@@ -1,0 +1,38 @@
+services:
+  motor-symetrie:
+    image: ghcr.io/cnpem/motor-symetrie-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: dynamic-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        RUNTIME_PACKAGES: libssh2-1
+        IOC_CREATE: 1
+        REPONAME: symetrie
+        RUNDIR: /opt/symetrie/iocBoot/iocsymetrie
+        IOC_DBDS:
+          asyn.dbd
+          calc.dbd
+          busySupport.dbd
+          motorSupport.dbd
+          devSoftMotor.dbd
+          drvAsynPowerPMACPort.dbd
+          pmacAsynMotorPort.dbd
+          SYMETRIE_EPICS.dbd
+        IOC_LIBS:
+          symetrie
+          pmacAsynMotorPort
+          powerPmacAsynPort
+          softMotor
+          motor
+          busy
+          calc
+          asyn
+        IOC_DBS:
+          $(MOTOR_SYMETRIE)/db/SymetriePmac.template
+          $(MOTOR_SYMETRIE)/db/SymetriePmacAxis.template
+          $(MOTOR_SYMETRIE)/db/SymetriePmacError.template
+          $(MOTOR_SYMETRIE)/db/SymetriePmac.substitutions
+          $(MOTOR)/db/asyn_motor.db
