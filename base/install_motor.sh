@@ -5,19 +5,15 @@ set -ex
 . $EPICS_IN_DOCKER/install-functions.sh
 . $EPICS_IN_DOCKER/motor_versions.sh
 
-git clone --depth 1 --branch ${MOTOR_VERSION} \
-    https://github.com/epics-modules/motor
+download_from_github epics-modules motor ${MOTOR_VERSION} ${MOTOR_SHA256}
 
 cd motor/modules
 
-git submodule update --init --depth 1 -j ${JOBS} \
-    motorMotorSim
+download_from_github epics-motor motorMotorSim ${MOTORSIM_VERSION} ${MOTORSIM_SHA256}
 
 download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION $PIGCS2_SHA256
 download_from_github cnpem motorNewport $NEWPORT_VERSION $NEWPORT_SHA256
 download_from_github epics-motor motorParker $PARKER_VERSION $PARKER_SHA256
-
-rm -rf .git
 
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
