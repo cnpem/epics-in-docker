@@ -97,6 +97,13 @@ echo "
 include \${TOP}/configure/RULES
 " >> "$MAKEFILE"
 
+CONFIG_SITE="configure/CONFIG_SITE"
+
+# Include areaDetector CONFIG_SITE
+if [ "${IS_IOC_AREADETECTOR:-false}" = "true" ]; then
+    echo "include \$(AREA_DETECTOR)/configure/CONFIG_SITE" >> "$CONFIG_SITE"
+fi
+
 # Copy command file(s) or directory(ies)
 if [ -n "${IOC_CMDS:-}" ]; then
     for cmd in $IOC_CMDS; do
