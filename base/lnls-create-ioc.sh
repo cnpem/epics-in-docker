@@ -18,8 +18,14 @@ INITIAL_FILES=$(ls -A)
 ${EPICS_BASE_PATH}/bin/linux-x86_64/makeBaseApp.pl -t ioc -p ${IOC_NAME} -u root ${IOC_NAME}
 ${EPICS_BASE_PATH}/bin/linux-x86_64/makeBaseApp.pl -i -t ioc -p ${IOC_NAME} -u root ${IOC_NAME}
 
+# Checks whether the IOC_NAME variable ends with App.
+IOC_APPDIR="$IOC_NAME"
+if [ "${IOC_NAME%App}" = "$IOC_NAME" ]; then
+    IOC_APPDIR="${IOC_NAME}App"
+fi
+
 # Modify src/Makefile with database and libraries dependency.
-MAKEFILE="${IOC_NAME}App/src/Makefile"
+MAKEFILE="${IOC_APPDIR}/src/Makefile"
 
 echo "TOP=../..
 
@@ -60,7 +66,7 @@ done
 
 echo "
 \${PROD_NAME}_SRCS += \${PROD_NAME}_registerRecordDeviceDriver.cpp
-\${PROD_NAME}_SRCS_DEFAULT += \${PROD_NAME}Main.cpp
+\${PROD_NAME}_SRCS_DEFAULT += ${IOC_NAME%App}Main.cpp
 " >> "$MAKEFILE"
 
 if [ "${IS_IOC_AREADETECTOR:-false}" = "true" ]; then
@@ -74,7 +80,7 @@ include \${TOP}/configure/RULES
 " >> "$MAKEFILE"
 
 # Modify database file in Db/Makefile
-MAKEFILE="${IOC_NAME}App/Db/Makefile"
+MAKEFILE="${IOC_APPDIR}/Db/Makefile"
 
 echo "TOP=../..
 
@@ -97,6 +103,7 @@ echo "
 include \${TOP}/configure/RULES
 " >> "$MAKEFILE"
 
+# Modify configure/CONFIG_SITE
 CONFIG_SITE="configure/CONFIG_SITE"
 
 # Include areaDetector CONFIG_SITE
