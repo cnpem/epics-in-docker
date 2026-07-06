@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## v0.16.0
+
+This update is recommended for most users. It greatly improves iocsh
+interactive usability, includes a slew of bug fixes and new features, and
+updates the base distributions to their latest versions.
+
+Extensive testing should be performed when possible to ensure reliability and
+compatibility with these new features.
+
 ### Bug fixes
 
 * base: fix external trigger in ADEiger. by @ericonr in
