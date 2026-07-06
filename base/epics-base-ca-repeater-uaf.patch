@@ -1,0 +1,29 @@
+From https://github.com/epics-base/epics-base/pull/904
+From 98da687717fc68f584ef2029aad2180b0bef6c27 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89rico=20Nogueira?= <erico.rolim@lnls.br>
+Date: Fri, 3 Jul 2026 19:29:48 -0300
+Subject: [PATCH] Fix UAF in caRepeaterThread
+
+The ca_repeater function has some failure cases which can cause it to
+return. In such a situation, a reference to the current thread's
+epicsThreadId is kept in the taskwd, causing an eventual use-after-free
+when the taskwd tries to determine the task's status.
+
+We fix this problem by removing the thread from the taskwd if
+ca_repeater ever returns.
+---
+ modules/ca/src/client/repeater.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/modules/ca/src/client/repeater.cpp b/modules/ca/src/client/repeater.cpp
+index 9ccf071e36..832d03b171 100644
+--- a/modules/ca/src/client/repeater.cpp
++++ b/modules/ca/src/client/repeater.cpp
+@@ -645,6 +645,7 @@ extern "C" void caRepeaterThread ( void * /* pDummy */ )
+ {
+     taskwdInsert ( epicsThreadGetIdSelf(), NULL, NULL );
+     ca_repeater ();
++    taskwdRemove ( 0 );
+ }
+ 
+ 

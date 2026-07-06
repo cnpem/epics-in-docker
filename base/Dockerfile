@@ -56,7 +56,7 @@ ENV EPICS_RELEASE_FILE=$EPICS_IN_DOCKER/RELEASE
 
 WORKDIR /opt/epics
 
-COPY epics-base-static-linking.patch $EPICS_IN_DOCKER
+COPY epics-base-static-linking.patch epics-base-ca-repeater-uaf.patch $EPICS_IN_DOCKER
 COPY epics_versions.sh install_epics.sh $EPICS_IN_DOCKER
 RUN --mount=type=cache,target=/ccache/ USE_CCACHE=1 $EPICS_IN_DOCKER/install_epics.sh
 

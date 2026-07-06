@@ -9,6 +9,7 @@ lnls-get-n-unpack -l https://epics-controls.org/download/base/base-${EPICS_BASE_
 mv base-${EPICS_BASE_VERSION} ${EPICS_BASE_PATH}
 
 patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/epics-base-static-linking.patch
+patch -d ${EPICS_BASE_PATH} -Np1 < $EPICS_IN_DOCKER/epics-base-ca-repeater-uaf.patch
 
 echo "USR_CFLAGS += -std=gnu17" >> ${EPICS_BASE_PATH}/configure/CONFIG_SITE.local
 
