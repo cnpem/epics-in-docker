@@ -1,0 +1,45 @@
+From: https://github.com/slac-epics-modules/ipmiComm/pull/38
+From 7004924ee9e2fd107648224251070debccc45b4b Mon Sep 17 00:00:00 2001
+From: Gustavo de Souza dos Reis <gustavo.reis@lnls.br>
+Date: Fri, 12 Jun 2026 16:02:24 -0300
+Subject: [PATCH] Make explicit db dependencies on Makefile.
+
+Since we use a tree-like template structure to define the final dbs, the
+build order must be defined to ensure that the dependencies are built
+sequentially. This becomes relevant when building the module with
+multiples jobs.
+
+Motivated by: https://github.com/cnpem/epics-in-docker/issues/159
+Based on: https://github.com/epics-modules/iocStats/pull/79
+---
+ Db/Makefile | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/Db/Makefile b/Db/Makefile
+index 59e9ca7..aa2ca36 100644
+--- a/Db/Makefile
++++ b/Db/Makefile
+@@ -58,12 +58,15 @@ include $(TOP)/configure/RULES
+ #----------------------------------------
+ #  ADD RULES AFTER THIS LINE
+ #
+-USR_DBFLAGS = -I$(COMMON_DIR)
+-
+-# End of file
+-
+-
+ 
++fru_cu.db$(DEP): $(COMMON_DIR)/fru_basic.db
++shelf_microtca_12slot.db$(DEP): $(COMMON_DIR)/fru_basic.db $(COMMON_DIR)/fru_cu.db $(COMMON_DIR)/fru_pm.db
++shelf_atca_7slot.db$(DEP): $(COMMON_DIR)/fru_basic.db $(COMMON_DIR)/fru_atca_fb.db $(COMMON_DIR)/fru_atca_rtm.db
+ 
++shelf_microtca_12slot_lcls.db$(DEP): $(COMMON_DIR)/shelf_microtca_12slot.db
++server_pc_lcls.db$(DEP): $(COMMON_DIR)/server_pc.db $(COMMON_DIR)/system_common_lcls.db
++shelf_atca_7slot_lcls.db$(DEP): $(COMMON_DIR)/system_common_lcls.db $(COMMON_DIR)/fru_atca_fb_lcls.db $(COMMON_DIR)/fru_atca_rtm_lcls.db
+ 
++USR_DBFLAGS = -I$(COMMON_DIR)
+ 
++# End of file
+-- 
+2.47.3
+
