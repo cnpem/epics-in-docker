@@ -62,6 +62,7 @@ RUN --mount=type=cache,target=/ccache/ USE_CCACHE=1 $EPICS_IN_DOCKER/install_epi
 
 WORKDIR ${EPICS_MODULES_PATH}
 
+COPY ipmicomm-build-fix.patch  $EPICS_IN_DOCKER
 COPY modules_versions.sh install_modules.sh $EPICS_IN_DOCKER
 RUN --mount=type=cache,target=/ccache/ NEEDS_TIRPC=YES $EPICS_IN_DOCKER/install_modules.sh
 

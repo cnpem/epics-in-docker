@@ -84,7 +84,9 @@ install_from_github epics-modules iocStats DEVIOCSTATS $IOCSTATS_VERSION $IOCSTA
 EPICS_BASE
 "
 
-JOBS=1 install_from_github slac-epics-modules ipmiComm IPMICOMM $IPMICOMM_VERSION $IPMICOMM_SHA256 "
+download_from_github slac-epics-modules ipmiComm $IPMICOMM_VERSION $IPMICOMM_SHA256
+patch -d ipmiComm -Np1 < $EPICS_IN_DOCKER/ipmicomm-build-fix.patch
+install_module ipmiComm IPMICOMM "
 EPICS_BASE
 ASYN
 "
