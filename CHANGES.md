@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* images: add modbus image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/183
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh

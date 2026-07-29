@@ -1,0 +1,23 @@
+services:
+  modbus:
+    image: ghcr.io/cnpem/modbus-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: modbus
+        RUNDIR: /opt/modbus/iocBoot/iocmodbus
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          modbusSupport.dbd
+        IOC_LIBS:
+          modbus
+          asyn
+        IOC_DBS:
+          $(ASYN)/db/asynRecord.db
