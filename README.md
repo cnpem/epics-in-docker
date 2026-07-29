@@ -23,6 +23,7 @@ without any build step.
 | Industry Pack IOC | `ghcr.io/cnpem/industry-pack-epics-ioc` | `IndustryPack` |
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
+| Modbus IOC       | `ghcr.io/cnpem/modbus-epics-ioc`       | `modbus` |
 | Motor Galil IOC  | `ghcr.io/cnpem/motor-galil-epics-ioc`  | `Galil`  |
 | Motor Newport IOC| `ghcr.io/cnpem/motor-newport-epics-ioc`| `newport`|
 | Motor PIGCS2 IOC | `ghcr.io/cnpem/motor-pigcs2-epics-ioc` | `PIGCS2` |
