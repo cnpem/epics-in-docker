@@ -69,7 +69,7 @@ echo "
 \${PROD_NAME}_SRCS_DEFAULT += ${IOC_NAME%App}Main.cpp
 " >> "$MAKEFILE"
 
-if [ "${IS_IOC_AREADETECTOR:-false}" = "true" ]; then
+if [ "${IS_IOC_AREADETECTOR:-0}" -eq 1 ]; then
     echo "include \${ADCORE}/ADApp/commonDriverMakefile" >> "$MAKEFILE"
 fi
 
@@ -107,7 +107,7 @@ include \${TOP}/configure/RULES
 CONFIG_SITE="configure/CONFIG_SITE"
 
 # Include areaDetector CONFIG_SITE
-if [ "${IS_IOC_AREADETECTOR:-false}" = "true" ]; then
+if [ "${IS_IOC_AREADETECTOR:-0}" -eq 1 ]; then
     echo "include \$(AREA_DETECTOR)/configure/CONFIG_SITE" >> "$CONFIG_SITE"
 fi
 
