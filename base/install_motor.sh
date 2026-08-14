@@ -86,7 +86,7 @@ AUTOSAVE
 BUSY
 "
 
-install_from_github epics-motor motorSymetrie MOTOR_SYMETRIE $SYMETRIE_VERSION $SYMETRIE_SHA256 "
+install_from_github epics-motor motorSymetrie SYMETRIE $SYMETRIE_VERSION $SYMETRIE_SHA256 "
 EPICS_BASE
 ASYN
 MOTOR

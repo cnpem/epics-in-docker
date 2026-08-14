@@ -31,8 +31,8 @@ services:
           calc
           asyn
         IOC_DBS:
-          $(MOTOR_SYMETRIE)/db/SymetriePmac.template
-          $(MOTOR_SYMETRIE)/db/SymetriePmacAxis.template
-          $(MOTOR_SYMETRIE)/db/SymetriePmacError.template
-          $(MOTOR_SYMETRIE)/db/SymetriePmac.substitutions
+          $(SYMETRIE)/db/SymetriePmac.template
+          $(SYMETRIE)/db/SymetriePmacAxis.template
+          $(SYMETRIE)/db/SymetriePmacError.template
+          $(SYMETRIE)/db/SymetriePmac.substitutions
           $(MOTOR)/db/asyn_motor.db
