@@ -16,6 +16,9 @@
   https://github.com/cnpem/epics-in-docker/pull/191
   *  python3-numpy doesn't install libpython3.13 as expected. Install it
      manually.
+* base: fix symetrie path variable. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/185
+  * This meant the provided substitutions file wasn't working correctly.
 
 ## v0.16.0
 
