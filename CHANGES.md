@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: update twincat-ads to v2.2.1 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/186
+  * Fix IOC crash caused by connection problems.
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh
