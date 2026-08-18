@@ -12,8 +12,8 @@ ARG CCACHE_STATSLOG=/tmp/ccache.statslog
 # without subuid and subgid configured.
 RUN echo 'APT::Sandbox::User "root";' > /etc/apt/apt.conf.d/90-disable-sandbox.conf
 
-RUN apt update -y && \
-    apt install -y --no-install-recommends \
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
         ccache \

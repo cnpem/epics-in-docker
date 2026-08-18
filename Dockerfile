@@ -22,8 +22,8 @@ LABEL br.lnls.procserv.supported-features.oneshot="true"
 
 COPY --from=build-image /etc/apt/apt.conf.d/90-disable-sandbox.conf /etc/apt/apt.conf.d/90-disable-sandbox.conf
 
-RUN apt update -y && \
-    apt install -y --no-install-recommends \
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends \
         libevent-pthreads-2.1-7 \
         libreadline8 \
         libtirpc3 \
@@ -33,7 +33,7 @@ RUN apt update -y && \
         $([ -n "$RUNTIME_PIP_PACKAGES" ] && echo pip) \
         $RUNTIME_PACKAGES && \
     busybox --install && \
-    apt clean && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=build-image /usr/local/lib /usr/local/lib
@@ -83,8 +83,8 @@ ARG BUILD_PACKAGES
 ARG BUILD_TAR_PACKAGES
 
 RUN if [ -n "$BUILD_PACKAGES" ]; then \
-        apt update && \
-        apt install -y --no-install-recommends $BUILD_PACKAGES; \
+        apt-get update && \
+        apt-get install -y --no-install-recommends $BUILD_PACKAGES; \
     fi
 RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES
 
