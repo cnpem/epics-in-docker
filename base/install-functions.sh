@@ -4,6 +4,11 @@ if [ "$JOBS" -eq "-1" ]; then
 fi
 
 get_module_path() {
+    if [ "$1" = "*" ]; then
+        cat "$EPICS_RELEASE_FILE"
+        return
+    fi
+
     for module in $@; do
         if [ -n "$module" ]; then
             grep -E "^$module=" $EPICS_RELEASE_FILE
