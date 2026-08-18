@@ -7,6 +7,11 @@
 * base: update twincat-ads to v2.2.1 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/186
   * Fix IOC crash caused by connection problems.
+  
+### New features
+
+* base: get all module paths. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/188
 
 ## v0.16.0
 
