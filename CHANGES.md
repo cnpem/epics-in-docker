@@ -12,6 +12,8 @@
 
 * base: get all module paths. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/188
+* base: add support for module builds. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/188
 
 ## v0.16.0
 
