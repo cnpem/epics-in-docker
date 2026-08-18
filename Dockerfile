@@ -14,6 +14,7 @@ ARG RUNTIME_PIP_PACKAGES
 
 ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$PATH
+ENV DEBIAN_FRONTEND=noninteractive
 
 LABEL br.lnls.epics-in-docker.version="v0.16.0-dev"
 LABEL br.lnls.epics-in-docker.debian.version=${DEBIAN_VERSION}
