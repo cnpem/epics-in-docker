@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* ioc: add support for module builds. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/188
+
 ### Bug fixes
 
 * ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
