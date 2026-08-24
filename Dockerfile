@@ -91,6 +91,8 @@ WORKDIR /opt/${REPONAME}
 
 COPY . .
 
+ARG IS_MODULE
+ARG MODULE_NAME
 ARG IOC_CREATE
 ARG IOC_LIBS
 ARG IOC_DBDS
@@ -98,7 +100,9 @@ ARG IOC_DBS
 ARG IOC_CMDS
 ARG IS_IOC_AREADETECTOR
 
-RUN if [ "$IOC_CREATE" = 1 ]; then lnls-create-ioc; fi
+RUN if [ "$IS_MODULE" = 1 ]; then lnls-build-module; fi
+
+RUN if [ "$IS_MODULE" = 1 ] || [ "$IOC_CREATE" = 1 ]; then lnls-create-ioc; fi
 
 RUN cp $EPICS_RELEASE_FILE configure/RELEASE
 
