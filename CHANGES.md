@@ -6,6 +6,8 @@
 
 * images: add lakeshore336 image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/189
+* images: add lakeshore340 image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/190
 
 ### Bug fixes
 
