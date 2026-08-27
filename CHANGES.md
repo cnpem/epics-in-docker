@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* images: add lakeshore336 image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/189
+
 ### Bug fixes
 
 * base: update twincat-ads to v2.2.1 by @ericonr in

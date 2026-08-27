@@ -1,0 +1,28 @@
+services:
+  lakeshore336:
+    image: ghcr.io/cnpem/lakeshore336-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: lakeshore336
+        RUNDIR: /opt/lakeshore336/iocBoot/ioclakeshore336
+        IOC_DBDS:
+          calc.dbd
+          stream-base.dbd
+          asyn.dbd
+          busySupport.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+        IOC_LIBS:
+          calc
+          stream
+          asyn
+          busy
+        IOC_DBS:
+          $(wildcard $(LAKESHORE)/db/*.template)
+          $(LAKESHORE)/protocol/ls336.proto
