@@ -1,0 +1,24 @@
+services:
+  lakeshore340:
+    image: ghcr.io/cnpem/lakeshore340-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: lakeshore340
+        RUNDIR: /opt/lakeshore340/iocBoot/ioclakeshore340
+        IOC_DBDS:
+          stream-base.dbd
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+        IOC_LIBS:
+          stream
+          asyn
+        IOC_DBS:
+          $(LAKESHORE340)/db/lakeshore340.template
+          $(LAKESHORE340)/lakeshore340App/protocol/lakeshore340.proto
