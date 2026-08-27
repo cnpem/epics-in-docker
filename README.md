@@ -21,6 +21,7 @@ without any build step.
 |------------------|----------------------------------------|----------|
 | AD Xspress3 IOC  | `ghcr.io/cnpem/ad-xspress3-epics-ioc`  | `xspress3App`|
 | Industry Pack IOC | `ghcr.io/cnpem/industry-pack-epics-ioc` | `IndustryPack` |
+| LakeShore336 IOC | `ghcr.io/cnpem/lakeshore336-epics-ioc` | `lakeshore336`  |
 | OPCUA IOC        | `ghcr.io/cnpem/opcua-epics-ioc`        | `opcua`  |
 | MCA IOC          | `ghcr.io/cnpem/mca-epics-ioc`          | `Amptek` |
 | Motor Galil IOC  | `ghcr.io/cnpem/motor-galil-epics-ioc`  | `Galil`  |
