@@ -7,6 +7,10 @@
 * base: update twincat-ads to v2.2.1 by @ericonr in
   https://github.com/cnpem/epics-in-docker/pull/186
   * Fix IOC crash caused by connection problems.
+* Partially revert "Rectify pyDevSup IOC dependencies" by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/191
+  *  python3-numpy doesn't install libpython3.13 as expected. Install it
+     manually.
 
 ## v0.16.0
 
