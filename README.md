@@ -167,9 +167,9 @@ not built in `ADSupport`.
 
 ### pyDevSup IOCs
 
-`pyDevSup` IOCs must include `python3-numpy` in the `RUNTIME_PACKAGES`. If the
-IOC includes Python extensions, it is also necessary to add `libpython3-dev` to
-the `BUILD_PACKAGES`.
+`pyDevSup` IOCs must include `libpython3.13` and `python3-numpy` in the
+`RUNTIME_PACKAGES`. If the IOC includes Python extensions, it is also necessary
+to add `libpython3-dev` to the `BUILD_PACKAGES`.
 
 ### Possible issues
 
