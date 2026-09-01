@@ -22,6 +22,13 @@
   https://github.com/cnpem/epics-in-docker/pull/185
   * This meant the provided substitutions file wasn't working correctly.
 
+### Breaking changes
+
+* images: static link industry-pack IOC by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/192
+  * Database and protocol files which were being pulled from `$(IP)` should now
+    be pulled from `$(TOP)`.
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh
