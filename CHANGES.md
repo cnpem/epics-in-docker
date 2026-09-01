@@ -21,6 +21,9 @@
 * base: fix symetrie path variable. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/185
   * This meant the provided substitutions file wasn't working correctly.
+* base: fix undefined variable error in lnls-build-static-ioc by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/193
+  * `SKIP_TESTS` can now be unset.
 
 ### Breaking changes
 

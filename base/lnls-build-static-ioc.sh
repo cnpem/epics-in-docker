@@ -42,7 +42,7 @@ make_skip() {
 make_skip distclean
 make -j$(nproc)
 
-if [ "$SKIP_TESTS" != 1 ]; then
+if [ "${SKIP_TESTS:-}" != 1 ]; then
     make runtests
 fi
 
