@@ -4,7 +4,7 @@ services:
     build:
       context: ./
       dockerfile: ../Dockerfile
-      target: dynamic-link
+      target: static-link
       labels:
         org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
       args:
@@ -27,3 +27,5 @@ services:
           calc
           seq pv
           stream
+        IOC_DBS:
+          $(wildcard $(IP)/db/*)
