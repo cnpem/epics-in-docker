@@ -1,6 +1,6 @@
 ARG DEBIAN_VERSION=13.5
 
-FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.16.0-dev AS build-image
+FROM ghcr.io/cnpem/lnls-debian-epics-7:v0.17.0 AS build-image
 
 FROM debian:${DEBIAN_VERSION}-slim AS base
 
@@ -16,7 +16,7 @@ ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$PATH
 ENV DEBIAN_FRONTEND=noninteractive
 
-LABEL br.lnls.epics-in-docker.version="v0.16.0-dev"
+LABEL br.lnls.epics-in-docker.version="v0.17.0"
 LABEL br.lnls.epics-in-docker.debian.version=${DEBIAN_VERSION}
 LABEL br.lnls.procserv.supported-features.oneshot="true"
 

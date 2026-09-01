@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.0
+
+This update is recommended for users of the images affected by the bug fixes.
+
 ### New features
 
 * images: add lakeshore336 image. by @guirodrigueslima in
