@@ -5,24 +5,26 @@ set -ex
 . $EPICS_IN_DOCKER/install-functions.sh
 . $EPICS_IN_DOCKER/area_detector_versions.sh
 
-git clone --depth 1 --branch ${AREA_DETECTOR_VERSION} \
-    https://github.com/areaDetector/areaDetector
+download_from_github areaDetector areaDetector \
+    ${AREA_DETECTOR_VERSION} ${AREA_DETECTOR_SHA256}
 
 cd areaDetector
 
-git submodule update --init --depth 1 -j ${JOBS} \
-    ADAravis \
-    ADGenICam \
-    ADSimDetector \
-    ADSupport \
-    ADCore
+download_from_github areaDetector ADAravis ${ADARAVIS_VERSION} ${ADARAVIS_SHA256}
+
+download_from_github areaDetector ADGenICam ${ADGENICAM_VERSION} ${ADGENICAM_SHA256}
+
+download_from_github areaDetector ADSimDetector \
+    ${ADSIMDETECTOR_VERSION} ${ADSIMDETECTOR_SHA256}
+
+download_from_github areaDetector ADSupport ${ADSUPPORT_VERSION} ${ADSUPPORT_SHA256}
+
+download_from_github areaDetector ADCore ${ADCORE_VERSION} ${ADCORE_SHA256}
 
 download_from_github areaDetector ADEiger $ADEIGER_VERSION $ADEIGER_SHA256
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-remove-lz4.patch
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-stream2-ub.patch
 patch -d ADEiger -Np1 < ${EPICS_IN_DOCKER}/adeiger-fix-tmexternal.patch
-
-rm -rf .git
 
 echo 'ADSupport/lib/linux*/libHDF5*plugin.so' > .lnls-keep-paths
 
