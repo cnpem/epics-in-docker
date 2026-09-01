@@ -17,6 +17,11 @@
   *  python3-numpy doesn't install libpython3.13 as expected. Install it
      manually.
 
+### New features
+
+* base: add motorZaberMotion module and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/157
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh

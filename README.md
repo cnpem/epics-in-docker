@@ -31,6 +31,7 @@ without any build step.
 | Motor SmarAct IOC| `ghcr.io/cnpem/motor-smaract-epics-ioc`| `SmarAct`|
 | Motor Pmac IOC   | `ghcr.io/cnpem/pmac-epics-ioc`         | `pmac`   |
 | Motor Symetrie IOC | `ghcr.io/cnpem/motor-symetrie-epics-ioc` | `symetrie`   |
+| Motor Zaber IOC  | `ghcr.io/cnpem/motor-zaber-epics-ioc`  | `ZaberMotion` |
 | rgamv2 IOC       | `ghcr.io/cnpem/rgamv2-epics-ioc`       | `rgamv2` |
 | SoftIOC          | `ghcr.io/cnpem/softioc-epics-ioc`      | `softIOC`|
 | Twincat ADS IOC  | `ghcr.io/cnpem/twincat-ads-epics-ioc`  | `twincatADS` |
