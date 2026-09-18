@@ -68,6 +68,8 @@ SSH_INCLUDE     = $(pkg-config --cflags-only-I libssh2)
 WITH_BOOST = NO
 " >> pmac/configure/CONFIG_SITE
 
+sed -i '/^substitute/,$d' pmac/pmacApp/Db/dls_pmac_asyn_motor.template
+
 JOBS=1 install_module pmac PMAC "
 EPICS_BASE
 ASYN

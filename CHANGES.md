@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* base: fix syntax error in PMAC module template. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/194
+  * This error would stop processing a substitutions file loaded by
+    `dbLoadTemplate`, so any subsequent records from other files in the
+    substitution wouldn't be instantiated.
+
 ## v0.17.0
 
 This update is recommended for users of the images affected by the bug fixes.
