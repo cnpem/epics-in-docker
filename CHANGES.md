@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* ioc: run ldconfig after installing build tarball packages by
+  @henriquesimoes in https://github.com/cnpem/epics-in-docker/pull/195
+  * Don't prune used libraries installed via `BUILD_TAR_PACKAGES`. This is
+    relevant when a library is installed via this mechanism to any path which
+    is later copied to the runtime image.
+
 ## v0.17.1
 
 This update is recommended for users of the PMAC image.

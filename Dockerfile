@@ -86,7 +86,8 @@ RUN if [ -n "$BUILD_PACKAGES" ]; then \
         apt-get update && \
         apt-get install -y --no-install-recommends $BUILD_PACKAGES; \
     fi
-RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES
+RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES && \
+    ldconfig
 
 WORKDIR /opt/${REPONAME}
 
