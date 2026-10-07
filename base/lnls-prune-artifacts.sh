@@ -191,7 +191,7 @@ remove_static_libraries() {
 
 remove_unused_shared_libraries() {
     target_libs=$(find_shared_libraries $@)
-    linked_libs=$(find_linked_libraries $@)
+    linked_libs=$(realpath $(find_linked_libraries $@))
     remove_libs=$(find_shared_libraries /opt /usr/local)
 
     keep_paths="$target_libs $linked_libs"

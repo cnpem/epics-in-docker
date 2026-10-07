@@ -4,6 +4,10 @@
 
 ### Bug fixes
 
+* ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
+  in https://github.com/cnpem/epics-in-docker/pull/196
+  * Resolve the mistaken removal of libraries when binaries are linked to
+    versioned libraries installed via symbolic links.
 * ioc: run ldconfig after installing build tarball packages by
   @henriquesimoes in https://github.com/cnpem/epics-in-docker/pull/195
   * Don't prune used libraries installed via `BUILD_TAR_PACKAGES`. This is
