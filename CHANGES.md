@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.17.1
+
+This update is recommended for users of the PMAC image.
+
 ### Bug fixes
 
 * base: fix syntax error in PMAC module template. by @guirodrigueslima in
