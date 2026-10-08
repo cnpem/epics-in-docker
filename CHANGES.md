@@ -38,6 +38,11 @@ This update is recommended for users of the images affected by the bug fixes.
   * Database and protocol files which were being pulled from `$(IP)` should now
     be pulled from `$(TOP)`.
 
+### Breaking changes
+
+* base: take only numeric values for IS_IOC_AREADETECTOR. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/184
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh
