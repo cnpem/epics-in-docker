@@ -62,6 +62,11 @@ This update is recommended for users of the images affected by the bug fixes.
   * Database and protocol files which were being pulled from `$(IP)` should now
     be pulled from `$(TOP)`.
 
+### New features
+
+* base: add motorZaberMotion module and image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/157
+
 ## v0.16.0
 
 This update is recommended for most users. It greatly improves iocsh
