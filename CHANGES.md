@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+### New features
+
+* ioc: copy locally installed software from build stages by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/55
+  * This allows the IOC build scripts to install custom software, available at
+    runtime, under `/usr/local` tree for all targets or software installed via
+    `BUILD_TAR_PACKAGES` to be automatically available at runtime if installed
+    to that tree.
+
 ### Bug fixes
 
 * ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
