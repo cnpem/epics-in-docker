@@ -12,7 +12,7 @@ services:
         IOC_CREATE: 1
         REPONAME: xspress3App
         RUNDIR: /opt/xspress3App/iocBoot/iocxspress3App
-        IS_IOC_AREADETECTOR: true
+        IS_IOC_AREADETECTOR: 1
         IOC_DBDS:
           asyn.dbd
           xspress3Support.dbd
