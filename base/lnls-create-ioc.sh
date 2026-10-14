@@ -114,7 +114,7 @@ fi
 # Copy command file(s) or directory(ies)
 if [ -n "${IOC_CMDS:-}" ]; then
     for cmd in $IOC_CMDS; do
-        cp -r "$cmd" "iocBoot/ioc$IOC_NAME"
+        cp -a "$cmd" "iocBoot/ioc$IOC_NAME"
     done
 fi
 
