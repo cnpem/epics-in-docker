@@ -9,6 +9,10 @@
 
 ### Bug fixes
 
+* ioc: preserve file permissions for IOC_CMDS files. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/197
+  * IOC builds copying an executable `st.cmd` file would lose that executable
+    permission
 * ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
   in https://github.com/cnpem/epics-in-docker/pull/196
   * Resolve the mistaken removal of libraries when binaries are linked to
