@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: update motorNewport module. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/199
+
 ### Bug fixes
 
 * ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
