@@ -4,6 +4,8 @@
 
 ### Bug fixes
 
+* base: Preserve file permissions when generating IOCs with makeBaseApp. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/197
 * ioc: resolve symlinks to linked libraries before pruning by @henriquesimoes
   in https://github.com/cnpem/epics-in-docker/pull/196
   * Resolve the mistaken removal of libraries when binaries are linked to
