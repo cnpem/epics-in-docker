@@ -11,6 +11,7 @@ ARG ENTRYPOINT=/usr/local/bin/lnls-run
 ARG RUNTIME_PACKAGES
 ARG RUNTIME_TAR_PACKAGES
 ARG RUNTIME_PIP_PACKAGES
+ARG RUNTIME_SDK_INSTALL
 
 ARG PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PATH=$PATH
@@ -42,6 +43,14 @@ RUN lnls-get-n-unpack -r $RUNTIME_TAR_PACKAGES && \
     ldconfig
 RUN if [ -n "$RUNTIME_PIP_PACKAGES" ]; then \
         pip install --break-system-packages $RUNTIME_PIP_PACKAGES; \
+    fi
+
+RUN --mount=type=bind,source=.,target=/tmp/context,readonly \
+    if [ -n "$RUNTIME_SDK_INSTALL" ]; then \
+        mkdir -p /tmp/sdk-install; \
+        cp -a /tmp/context/. /tmp/sdk-install/; \
+        cd /tmp/sdk-install; \
+        $RUNTIME_SDK_INSTALL; \
     fi
 
 COPY --from=build-image /usr/local/bin/lnls-run /usr/local/bin/lnls-run
@@ -78,9 +87,11 @@ COPY --from=pruned-build /opt /opt
 
 FROM build-image AS build-stage
 
+ARG REPO_SOURCE_DIR
 ARG REPONAME
 ARG BUILD_PACKAGES
 ARG BUILD_TAR_PACKAGES
+ARG BUILD_SDK_INSTALL
 
 RUN if [ -n "$BUILD_PACKAGES" ]; then \
         apt-get update && \
@@ -89,9 +100,17 @@ RUN if [ -n "$BUILD_PACKAGES" ]; then \
 RUN lnls-get-n-unpack -r $BUILD_TAR_PACKAGES && \
     ldconfig
 
+RUN --mount=type=bind,source=.,target=/tmp/context,readonly \
+    if [ -n "$BUILD_SDK_INSTALL" ]; then \
+        mkdir -p /tmp/sdk-install; \
+        cp -a /tmp/context/. /tmp/sdk-install/; \
+        cd /tmp/sdk-install; \
+        $BUILD_SDK_INSTALL; \
+    fi
+
 WORKDIR /opt/${REPONAME}
 
-COPY . .
+COPY ./${REPO_SOURCE_DIR} .
 
 ARG JOBS=1
 ARG IS_MODULE
