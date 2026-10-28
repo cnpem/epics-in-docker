@@ -71,11 +71,7 @@ download() {
 
         shacheck $download_dir/$filename $sha $url
 
-        if [[ ${filename,,} == *".zip" ]]; then
-            unzip -qo $download_dir/$filename -d $dest
-        else
-            tar --no-same-owner -xf $download_dir/$filename -C $dest
-        fi
+        bsdtar --no-same-owner -xf $download_dir/$filename -C $dest
 
         rm -rf $download_dir /tmp/wget.log
     done

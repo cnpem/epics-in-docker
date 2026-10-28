@@ -18,6 +18,7 @@ RUN apt-get update -y && \
         cmake \
         ccache \
         git \
+        libarchive-tools \
         libaravis-dev \
         libboost-test-dev \
         libboost-system-dev \
@@ -34,7 +35,6 @@ RUN apt-get update -y && \
         libtirpc-dev \
         libzmq3-dev \
         re2c \
-        unzip \
         wget \
         python3-dev \
         cython3 \

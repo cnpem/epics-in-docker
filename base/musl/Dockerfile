@@ -13,6 +13,7 @@ RUN apk add --no-cache \
     ccache \
     git \
     g++ \
+    libarchive-tools \
     libevent-dev \
     libevent-static \
     libnet-dev \
