@@ -8,6 +8,8 @@
   https://github.com/cnpem/epics-in-docker/pull/188
 * base: add motorZaberMotion module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/157
+* base: update to Alpine 3.24 by @ericonr in
+  https://github.com/cnpem/epics-in-docker/pull/201
 
 ### Bug fixes
 
