@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.18.0
+
+This update is recommended for users and builders of IOC images.
+
 ### New features
 
 * ioc: add support for module builds. by @guirodrigueslima in
