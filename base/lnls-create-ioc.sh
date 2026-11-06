@@ -64,6 +64,10 @@ for lib in $IOC_LIBS; do
     echo "\${PROD_NAME}_LIBS += $lib" >> "$MAKEFILE"
 done
 
+for lib in $IOC_SYS_LIBS; do
+    echo "\${PROD_NAME}_SYS_LIBS += $lib" >> "$MAKEFILE"
+done
+
 echo "
 \${PROD_NAME}_SRCS += \${PROD_NAME}_registerRecordDeviceDriver.cpp
 \${PROD_NAME}_SRCS_DEFAULT += ${IOC_NAME%App}Main.cpp
@@ -105,6 +109,12 @@ include \${TOP}/configure/RULES
 
 # Modify configure/CONFIG_SITE
 CONFIG_SITE="configure/CONFIG_SITE"
+
+if [ -n "${IOC_BUILD_VARS:-}" ]; then
+    for var in "${IOC_BUILD_VARS}"; do
+        echo $var >> "$CONFIG_SITE"
+    done
+fi
 
 # Include areaDetector CONFIG_SITE
 if [ "${IS_IOC_AREADETECTOR:-0}" -eq 1 ]; then
