@@ -6,6 +6,8 @@
 
 * images: include IndustryPack requirement files in image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/203
+* ioc: install dependencies to use `RUNTIME_TAR_PACKAGES` by @henriquesimoes in
+  https://github.com/cnpem/epics-in-docker/pull/202
 
 ## v0.18.0
 

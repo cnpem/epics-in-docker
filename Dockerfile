@@ -30,6 +30,7 @@ RUN apt-get update -y && \
         busybox \
         netcat-openbsd \
         procserv \
+        $([ -n "$RUNTIME_TAR_PACKAGES" ] && echo libarchive-tools) \
         $([ -n "$RUNTIME_PIP_PACKAGES" ] && echo pip) \
         $RUNTIME_PACKAGES && \
     busybox --install && \
