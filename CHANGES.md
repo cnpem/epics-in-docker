@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Bug fixes
+
+* images: include IndustryPack requirement files in image. by @guirodrigueslima in
+  https://github.com/cnpem/epics-in-docker/pull/203
+
 ## v0.18.0
 
 This update is recommended for users and builders of IOC images.

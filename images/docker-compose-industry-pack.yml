@@ -29,3 +29,4 @@ services:
           stream
         IOC_DBS:
           $(wildcard $(IP)/db/*)
+          $(wildcard $(IP)/ipApp/Db/*.req)
