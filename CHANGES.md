@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v0.18.1
+
+Users of the `ghcr.io/cnpem/industry-pack-epics-ioc` image and
+`RUNTIME_TAR_PACKAGES` feature are advised to upgrade to this release.
+
 ### Bug fixes
 
 * images: include IndustryPack requirement files in image. by @guirodrigueslima in
