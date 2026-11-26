@@ -1,0 +1,29 @@
+services:
+  motor-newfocus:
+    image: ghcr.io/cnpem/motor-newfocus-epics-ioc:$TAG
+    build:
+      context: ./
+      dockerfile: ../Dockerfile
+      target: static-link
+      labels:
+        org.opencontainers.image.source: https://github.com/cnpem/epics-in-docker
+      args:
+        IOC_CREATE: 1
+        REPONAME: newfocus
+        RUNDIR: /opt/newfocus/iocBoot/iocnewfocus
+        IOC_DBDS:
+          asyn.dbd
+          drvAsynSerialPort.dbd
+          drvAsynIPPort.dbd
+          calc.dbd
+          busySupport.dbd
+          motorSupport.dbd
+          devNewFocus.dbd
+        IOC_LIBS:
+          NewFocus
+          motor
+          busy
+          calc
+          asyn
+        IOC_DBS:
+          $(wildcard $(MOTOR)/db/*)
