@@ -14,6 +14,7 @@ git submodule update --init --depth 1 -j ${JOBS} \
     motorMotorSim
 
 download_from_github epics-motor motorPIGCS2 $PIGCS2_VERSION $PIGCS2_SHA256
+download_from_github epics-motor motorNewFocus $NEWFOCUS_VERSION $NEWFOCUS_SHA256
 download_from_github cnpem motorNewport $NEWPORT_VERSION $NEWPORT_SHA256
 download_from_github epics-motor motorParker $PARKER_VERSION $PARKER_SHA256
 download_from_github epics-motor motorSmarAct $SMARACT_VERSION $SMARACT_SHA256
@@ -23,6 +24,7 @@ rm -rf .git
 module_releases="
 MOTOR=${EPICS_MODULES_PATH}/motor
 MOTOR_MOTORSIM=${EPICS_MODULES_PATH}/motor/modules/motorMotorSim
+MOTOR_NEWFOCUS=${EPICS_MODULES_PATH}/motor/modules/motorNewFocus
 MOTOR_NEWPORT=${EPICS_MODULES_PATH}/motor/modules/motorNewport
 MOTOR_PARKER=${EPICS_MODULES_PATH}/motor/modules/motorParker
 MOTOR_PIGCS2=${EPICS_MODULES_PATH}/motor/modules/motorPIGCS2
