@@ -4,7 +4,7 @@
 
 ### New features
 
-* base: add motorNewFocus module. by @gustavosr8 in
+* base: add motorNewFocus module and image. by @gustavosr8 in
   https://github.com/cnpem/epics-in-docker/pull/205
 
 ## v0.18.1

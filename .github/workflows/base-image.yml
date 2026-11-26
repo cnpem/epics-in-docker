@@ -67,6 +67,7 @@ jobs:
             docker-compose-lakeshore340.yml
             docker-compose-opcua.yml
             docker-compose-motorgalil.yml
+            docker-compose-motornewfocus.yml
             docker-compose-motornewport.yml
             docker-compose-motorpigcs2.yml
             docker-compose-motorparker.yml
