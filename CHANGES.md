@@ -223,8 +223,8 @@ for that release.
   https://github.com/cnpem/epics-in-docker/pull/123
 * base: new method for IOC build. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/133
-  * This approach is experimental and intended for internal use within 
-    the epics-in-docker project only. It is not yet considered stable 
+  * This approach is experimental and intended for internal use within
+    the epics-in-docker project only. It is not yet considered stable
     or supported for external use.
 * base: add motorNewport module and image. by @guirodrigueslima in
   https://github.com/cnpem/epics-in-docker/pull/146
