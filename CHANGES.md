@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### New features
+
+* base: add motorNewFocus module. by @gustavosr8 in
+  https://github.com/cnpem/epics-in-docker/pull/205
+
 ## v0.18.1
 
 Users of the `ghcr.io/cnpem/industry-pack-epics-ioc` image and
